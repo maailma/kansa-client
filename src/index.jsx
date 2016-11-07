@@ -27,7 +27,7 @@ const theme = getMuiTheme({
   fontFamily: '"Open Sans", sans-serif'
 });
 
-const history = process.env.NODE_ENV === 'production' ? browserHistory : hashHistory;
+const history = ENV === 'production' ? browserHistory : hashHistory;
 const store = createStore(reducers, middleware(history));
 
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
