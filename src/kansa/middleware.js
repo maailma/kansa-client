@@ -13,6 +13,28 @@ export default ({ dispatch }) => (next) => (action) => {
 
   if (!action.error) switch (action.type) {
 
+    case 'BUY_UPGRADE': {
+      const { amount, callback, id, membership, paper_pubs, token } = action;
+      api.POST('kansa/purchase', {
+        amount,
+        email: token.email,
+        token: token.id,
+        upgrades: [{ id, membership, paper_pubs }]
+      })
+        .then(() => api.GET('kansa/user'))
+        .then(user => dispatch(memberSet(user)))
+        .then(() => callback && callback())
+        .catch(handleError);
+    } return;
+
+    case 'GET_PRICES': {
+      api.GET('kansa/purchase/prices')
+        .then(prices => {
+          next({ ...action, prices });
+        })
+        .catch(handleError);
+    } return;
+
     case 'KEY_REQUEST': {
       const { email } = action;
       if (!email) return next({ ...action, error: 'Email missing for key request' });
@@ -23,13 +45,13 @@ export default ({ dispatch }) => (next) => (action) => {
     } return;
 
     case 'KEY_LOGIN': {
-      const { email, key } = action;
+      const { email, key, path } = action;
       if (!email || !key) return handleError('Missing parameters for key login');
       api.POST('kansa/login', { email, key })
         .then(() => api.GET('kansa/user'))
         .then(user => {
           dispatch(memberSet(user));
-          dispatch(push(PATH_IN));
+          dispatch(replace(path || PATH_IN));
         })
         .catch(err => {
           handleError(err);

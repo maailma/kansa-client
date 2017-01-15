@@ -30,6 +30,12 @@ export default ({ dispatch, getState }) => (next) => (action) => {
         .catch(handleError(action));
     }
 
+    case 'FETCH_ALL_BALLOTS': {
+      return api.GET('hugo/admin/ballots')
+        .then(data => next({ ...action, data }))
+        .catch(handleError(action));
+    }
+
     case 'FETCH_BALLOTS': {
       return api.GET(`hugo/admin/ballots/${action.category}`)
         .then(data => next({ ...action, data }))
@@ -38,7 +44,7 @@ export default ({ dispatch, getState }) => (next) => (action) => {
 
     case 'INIT_HUGO_ADMIN': {
       if (!ws) {
-        ws = new WebSocket(`wss://${process.env.API_HOST}/api/hugo/admin/canon-updates`);
+        ws = new WebSocket(`wss://${API_HOST || location.host}/api/hugo/admin/canon-updates`);
         ws.onmessage = (msg) => {
           const { canon, classification } = JSON.parse(msg.data);
           if (canon) dispatch(addCanon(canon));

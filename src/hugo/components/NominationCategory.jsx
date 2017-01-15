@@ -50,6 +50,7 @@ class NominationActionsRow extends React.Component {
           icon={<ListCheck />}
           onTouchTap={onSave}
           style={{ float: 'right', marginLeft: 15 }}
+          title='Save this category'
         />
         <RaisedButton
           label='Reset'
@@ -58,6 +59,7 @@ class NominationActionsRow extends React.Component {
           icon={<ContentUndo />}
           onTouchTap={onReset}
           style={{ float: 'right', marginLeft: 15 }}
+          title='Reset this category'
         />
       </Col>
     </Row>;
@@ -77,7 +79,6 @@ const NominationBody = ({ colSpan, fields, maxNominations, onChange, onSave, onR
   const serverTime = state.get('serverTime');
   const isFetching = state.get('isFetching');
   const rows = clientData.size < maxNominations ? clientData.push(Map()) : clientData;
-  const lastRow = {};
   return <div>
     {
       rows.map((rowValues, idx) => <NominationRow
@@ -88,11 +89,10 @@ const NominationBody = ({ colSpan, fields, maxNominations, onChange, onSave, onR
         fields={fields}
         onChange={ (field, value) => onChange(idx, rowValues.set(field, value)) }
         onRemove={ () => onChange(idx, null) }
-        setLastField={ (field, ref) => lastRow[field] = ref }
         values={rowValues}
       />)
     }
-    { nominationRowLinks(maxNominations - rows.size, { colSpan, fields, lastRow }) }
+    { nominationRowLinks(maxNominations - rows.size, { colSpan, fields }) }
     <NominationActionsRow
       disabled={ isFetching || clientData.equals(serverData) }
       onSave={onSave}
@@ -125,9 +125,7 @@ const NominationCategory = ({ category, ...props }) => {
 
   return <Card className='NominationCategory'>
     <CardHeader
-      actAsExpander={true}
       className='NominationHeader'
-      showExpandableButton={true}
       title={title}
       titleStyle={{
         fontSize: 24,
@@ -136,7 +134,7 @@ const NominationCategory = ({ category, ...props }) => {
         width: '100%',
       }}
     />
-    <CardText expandable={true}>
+    <CardText>
       { description }
     </CardText>
     <CardText>
@@ -161,9 +159,9 @@ const NominationCategory = ({ category, ...props }) => {
 export default connect(
   (state, { category }) => ({
     state: state.nominations.get(category)
-  }), (dispatch, { category }) => bindActionCreators({
+  }), (dispatch, { category, signature }) => bindActionCreators({
     onChange: (idx, values) => editNomination(category, idx, values),
-    onSave: () => submitNominations(category),
+    onSave: () => submitNominations(category, signature),
     onReset: () => resetNominations(category)
   }, dispatch)
 )(NominationCategory);

@@ -8,6 +8,8 @@ import { createStore } from 'redux'
 import injectTapEventPlugin from 'react-tap-event-plugin'
 injectTapEventPlugin();
 
+import './lib/polyfills'
+
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
@@ -29,8 +31,20 @@ const theme = getMuiTheme({
   fontFamily: '"Open Sans", sans-serif'
 });
 
-const history = process.env.NODE_ENV === 'production' ? browserHistory : hashHistory;
+const history = ENV === 'production' ? browserHistory : hashHistory;
 const store = createStore(reducers, middleware(history));
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-66635432-3', 'auto');
+history.listen(({ pathname }) => {
+  if (pathname.indexOf('/login') !== -1) pathname = '/login';
+  ga('set', 'page', pathname);
+  ga('send', 'pageview');
+});
 
 const authCheck = ({ location: { pathname }}, replace, callback) => {
   const email = store.getState().user.get('email');
@@ -41,8 +55,8 @@ const authCheck = ({ location: { pathname }}, replace, callback) => {
   }));
 }
 
-const doLogin = ({ params: { email, key } }) => {
-  store.dispatch(keyLogin(email, key));
+const doLogin = ({ params: { email, key, id } }) => {
+  store.dispatch(keyLogin(email, key, id ? `/hugo/${id}` : null));
 }
 
 ReactDOM.render(
@@ -53,6 +67,7 @@ ReactDOM.render(
           <IndexRedirect to={PATH_IN} />
           <Route path="login" onEnter={authCheck} component={Login} />
           <Route path="login/:email/:key" onEnter={doLogin} />
+          <Route path="login/:email/:key/:id" onEnter={doLogin} />
           <Route path="profile" onEnter={authCheck} component={MemberList} />
           <Route path="exhibition/:id" component={ExhibitReg} />
           <Route path="hugo" onEnter={authCheck} >

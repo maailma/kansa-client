@@ -14,20 +14,22 @@
  */
 
 
-import { Map } from 'immutable'
+import { List, Map, Seq } from 'immutable'
+
+import { maxNominationsPerCategory } from '../hugo/constants';
 
 
 /**
  * Count the number of uncanonicalised ballots that contain the specified
  * `nomination`
  *
- * @param {List<Map<{ nominations: Iterable<Nomination> }>>} rawBallots
+ * @param {Iterable<Iterable<Nomination>>} rawBallots
  * @param {Nomination} nomination
  * @returns {number}
  */
 export function countRawBallots(rawBallots, nomination) {
   return rawBallots.reduce((res, ballot) => {
-    if (ballot.get('nominations').includes(nomination)) ++res;
+    if (ballot.includes(nomination)) ++res;
     return res;
   }, 0);
 }
@@ -36,22 +38,69 @@ export function countRawBallots(rawBallots, nomination) {
 /**
  * Canonicalise & simplify ballots, removing duplicates and empty nominations
  *
- * @param {List<Map<{ nominations: Iterable<Nomination> }>>} rawBallots
- * @param {List<Map<{ canon_id: number, data: Nomination }>>} nominations
+ * @param {string} category
+ * @param {Map<string, Map<number, List<Nomination>>>} allBallots
+ * @param {Map<string, List<Map<{ canon_id: number, data: Nomination }>>>} allNominations
  * @param {Map<canon_id, Nomination>} canon
  * @returns {List<Set<Nomination>>}
  */
-export function cleanBallots(rawBallots, nominations, canon) {
-  let ballots = rawBallots.map(ballot => ballot.get('nominations'));
-  nominations.forEach(nomination => {
-    const rawNom = nomination.get('data');
-    const canonNom = canon.get(nomination.get('canon_id'));
-    if (rawNom && canonNom) ballots = ballots.map(ballot => (
-      ballot.map(nom => nom.equals(rawNom) ? canonNom : nom)
-    ))
+export function cleanBallots(category, allBallots, allNominations, canon) {
+  const ballots = allBallots.get(category).withMutations(ballots => {
+    allNominations.forEach((nominations, cat) => {
+      nominations.forEach(nomination => {
+        const ci = nomination.get('canon_id');
+        const cd = ci && canon.get(ci);
+        if (cat === category) {
+          const nd = nomination.get('data');
+          if (cd) {
+            if (cd.get('disqualified')) {
+              // remove disqualified nomination
+              ballots.forEach((ballot, id) => {
+                if (ballot.includes(nd)) {
+                  ballots.set(id, ballot.filter(nom => !nd.equals(nom)));
+                }
+              });
+            } else {
+              // canonicalise nomination within category
+              ballots.forEach((ballot, id) => {
+                if (ballot.includes(nd)) {
+                  ballots.set(id, ballot.map(nom => nd.equals(nom) ? cd : nom));
+                }
+              });
+            }
+          } else if (ci) {
+            // canonicalise nomination to another category
+            ballots.forEach((ballot, id) => {
+              if (ballot.includes(nd)) {
+                ballots.set(id, ballot.filter(nom => !nd.equals(nom)));
+              }
+            });
+          }
+        } else if (cd && !cd.get('disqualified')) {
+          // canonicalise nomination from another category
+          const nd = nomination.get('data');
+          allBallots.get(cat).forEach((srcBallot, id) => {
+            if (srcBallot.includes(nd)) {
+              const tgtBallot = ballots.get(id);
+              if (!tgtBallot) {
+                ballots.set(id, List.of(cd));
+              } else if (tgtBallot.size < maxNominationsPerCategory) {
+                ballots.set(id, tgtBallot.push(cd));
+              } else {
+                console.log(
+                  `Dropping mis-nomination by #${id} due to full ballot`,
+                  cd.toJS(), `from ${cat}`, srcBallot.toJS(),
+                  `to ${category}`, tgtBallot.toJS()
+                );
+              }
+            }
+          });
+        }
+      });
+    });
   });
   const emptyNom = Map();
-  return ballots.map(ballot => ballot.toSet().delete(emptyNom));
+  return ballots.toList().map(ballot => ballot.toSet().delete(emptyNom));
 }
 
 
@@ -180,8 +229,8 @@ export function selectFinalists(numSelected, ballots, log) {
   do {
     const counts = countNominations(ballots);
     const elimNoms = nominationsForElimination(counts);
-    if (log) log(ballots.size, counts.size, elimNoms);
     const nextSize = counts.size - elimNoms.size;
+    if (log) log(ballots, counts, nextSize < numSelected ? Seq() : elimNoms);
     if (nextSize === numSelected) {
       return counts.keySeq().filterNot(nom => elimNoms.includes(nom));
     } else if (nextSize < numSelected) {

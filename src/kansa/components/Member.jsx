@@ -17,7 +17,8 @@ export default class Member extends React.Component {
     member: ImmutablePropTypes.mapContains({
       paper_pubs: ImmutablePropTypes.map
     }),
-    onUpdate: React.PropTypes.func.isRequired
+    onUpdate: React.PropTypes.func.isRequired,
+    showHugoActions: React.PropTypes.bool
   }
 
   static contextTypes = {
@@ -89,7 +90,7 @@ export default class Member extends React.Component {
     };
 
   render() {
-    const { member, onUpdate } = this.props;
+    const { member, onUpdate, showHugoActions } = this.props;
     if (!member) return null;
     const membership = member.get('membership', 'NonMember');
     const formProps = {
@@ -98,7 +99,7 @@ export default class Member extends React.Component {
       onChange: (path, value) => this.setState({ member: this.state.member.setIn(path, value) })
     };
 
-    return <Card>
+    return <Card style={{ marginBottom: 24 }}>
       <CardHeader
         title={ membership }
         subtitle={ membership !== 'NonMember' ? '#' + member.get('member_number') : null }
@@ -112,7 +113,14 @@ export default class Member extends React.Component {
         <br />
 
       </CardText>
-      <CardActions>
+      <CardActions
+        style={{
+          display: 'flex',
+          flexDirection: 'row-reverse',
+          paddingRight: 8,
+          paddingBottom: 16
+        }}
+      >
         <RaisedButton key='ok'
           disabled={ this.state.sent || this.changes.size == 0 || !this.valid }
           label={ this.state.sent ? 'Working...' : 'Apply changes' }
@@ -121,8 +129,16 @@ export default class Member extends React.Component {
             console.log('updating', member, onUpdate);
             onUpdate(member.get('id'), this.changes);
           }}
+          style={{ flexShrink: 0 }}
         />
-        { member.get('can_hugo_nominate') ? <Link
+        <Upgrade
+          member={member}
+          style={{ marginRight: 8 }}
+        >
+          <RaisedButton label='Upgrade' />
+        </Upgrade>
+        { showHugoActions ? <Link
+          style={{ flexGrow: 1, marginLeft: 8 }}
           to={`/hugo/${member.get('id')}/nominate`}
         >Nominate for the Hugo Awards</Link> : null }
         <DropDownMenu value={this.state.value} className="menuToRight" onChange={this.handleMenu.bind(this)}>
