@@ -17,53 +17,11 @@ import Divider from 'material-ui/Divider';
 import Paper from 'material-ui/Paper';
 import FileInput from 'react-file-input'
 
-const raami = 'https://localhost:4430/api/raami/'
-const people = 'https://localhost:4430/api/people/'
+import { API_ROOT } from '../../constants'
+import API from '../../lib/api'
+
+const raami = new API(`${API_ROOT}raami/`);
 var ID = null
-
-  function getapi(url) {
-    // RETURN the promise
-    return fetch(url).then((response)=>{
-        return response.json(); // process it inside the `then`
-    });
-  }
-  
-  function postapi(url, json) {
-    // RETURN the promise
-    return fetch(url, {
-      headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-      },
-      method: 'POST',
-      body: JSON.stringify(json)
-    }).then((response)=>{
-        return response.json(); // process it inside the `then`
-    });
-  }
-
-  function putapi(url, json) {
-    // RETURN the promise
-    return fetch(url, {
-      headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-      },
-      method: 'PUT',
-      body: JSON.stringify(json)
-    }).then((response)=>{
-        return response.json(); // process it inside the `then`
-    });
-  }
-
-   function delapi(url) {
-    // RETURN the promise
-    return fetch(url, {
-       method: 'DELETE',
-    }).then((response)=>{
-        return response.json(); // process it inside the `then`
-    });
-  } 
 
 export default class ExhibitReg extends React.Component {
 
@@ -102,13 +60,13 @@ export default class ExhibitReg extends React.Component {
 
       }
 
-    getapi(raami+'people/'+member).then((data)=>{
+    raami.GET(`people/${member}`).then((data)=>{
       if(data.length > 0 && data[0].id > 0) {
         this.setState(data[0])
         ID = data[0].id
         var _work = this.state.Works.slice();
         _work[0].artist_id = ID
-        getapi(raami+'works/'+ID).then(res => {
+        raami.GET(`works/${ID}`).then(res => {
           console.log(res)
           if('works' in res) {
             res.works.forEach((item) => {
@@ -134,12 +92,12 @@ export default class ExhibitReg extends React.Component {
     console.log(artist)
 
     if(this.state.id !== null) {
-      putapi(raami+'artist/'+this.state.id, artist).then(res=>{
+      raami.PUT(`artist/${artist.id}`, artist).then(res=>{
         console.log(res)
       })      
     } else {
 
-      postapi(raami+'artist', artist).then(res=>{
+      raami.POST('artist', artist).then(res=>{
         console.log(res)
         ID = res.inserted
         this.setState({id:res.inserted})
@@ -167,13 +125,13 @@ export default class ExhibitReg extends React.Component {
 
     if(_id !== null) {
       console.log(work)
-      putapi(raami+'work/'+_id, work).then(res=>{
+      raami.PUT(`work/${_id}`, work).then(res=>{
         console.log(res)
 
       })      
     } else {
       // delete work.id
-      postapi(raami+'work', work).then(res=>{
+      raami.POST('work', work).then(res=>{
         console.log(res)
         var _work = this.state.Works.slice();
         _work[i].id = res.inserted
@@ -185,9 +143,9 @@ export default class ExhibitReg extends React.Component {
 
   deleteWork(i) {
     if(this.state.Works[i].id) {
-      console.log(raami+'work/'+this.state.Works[i].id)
+      console.log('work/'+this.state.Works[i].id)
 
-        delapi(raami+'work/'+this.state.Works[i].id).then(res=>{
+        raami.DELETE(`work/${this.state.Works[i].id}`).then(res=>{
           console.log(res)
     
         })
