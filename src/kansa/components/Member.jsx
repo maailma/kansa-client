@@ -4,12 +4,11 @@ import { Link } from 'react-router'
 
 import { Card, CardActions, CardHeader, CardText } from 'material-ui/Card'
 import RaisedButton from 'material-ui/RaisedButton'
-import DropDownMenu from 'material-ui/DropDownMenu';
-import MenuItem from 'material-ui/MenuItem';
 
 const ImmutablePropTypes = require('react-immutable-proptypes');
 
 import { CommonFields, PaperPubsFields } from './form-components'
+import MemberMenu from './MemberMenu'
 import Upgrade from './Upgrade'
 
 export default class Member extends React.Component {
@@ -19,10 +18,6 @@ export default class Member extends React.Component {
     }),
     onUpdate: React.PropTypes.func.isRequired,
     showHugoActions: React.PropTypes.bool
-  }
-
-  static contextTypes = {
-    router: React.PropTypes.object
   }
 
   static defaultProps = {
@@ -80,15 +75,6 @@ export default class Member extends React.Component {
     return false;
   }
 
-
-  handleMenu(event, index, value) {
-    console.log(this.context.router)
-    if(value != '') {
-      this.context.router.push(value)
-
-      }
-    };
-
   render() {
     const { member, onUpdate, showHugoActions } = this.props;
     if (!member) return null;
@@ -103,15 +89,17 @@ export default class Member extends React.Component {
       <CardHeader
         title={ membership }
         subtitle={ membership !== 'NonMember' ? '#' + member.get('member_number') : null }
-      />
+      >
+        <MemberMenu
+          id={member.get('id')}
+          style={{ float: 'right', marginRight: -12, marginTop: -4 }}
+        />
+      </CardHeader>
 
       <CardText>
-
         <CommonFields { ...formProps } />
         <br />
         <PaperPubsFields { ...formProps } />
-        <br />
-
       </CardText>
       <CardActions
         style={{
@@ -141,11 +129,6 @@ export default class Member extends React.Component {
           style={{ flexGrow: 1, marginLeft: 8 }}
           to={`/hugo/${member.get('id')}/nominate`}
         >Nominate for the Hugo Awards</Link> : null }
-        <DropDownMenu value={this.state.value} className="menuToRight" onChange={this.handleMenu.bind(this)}>
-          <MenuItem primaryText="Actions" />
-          <MenuItem value={`/exhibition/${member.get('id')}`} primaryText="Register to Art Exhibtion" />
-        </DropDownMenu>
-
       </CardActions>
     </Card>;
   }
