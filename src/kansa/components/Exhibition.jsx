@@ -529,4 +529,3 @@ export default class ExhibitReg extends React.Component {
       )
   };
 }
-

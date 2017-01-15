@@ -10,7 +10,6 @@ import MenuItem from 'material-ui/MenuItem';
 const ImmutablePropTypes = require('react-immutable-proptypes');
 
 import { CommonFields, PaperPubsFields } from './form-components'
-
 import Upgrade from './Upgrade'
 
 export default class Member extends React.Component {
@@ -135,4 +134,3 @@ export default class Member extends React.Component {
     </Card>;
   }
 }
-

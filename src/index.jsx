@@ -45,8 +45,6 @@ const doLogin = ({ params: { email, key } }) => {
   store.dispatch(keyLogin(email, key));
 }
 
-const Test = 
-
 ReactDOM.render(
   <Provider store={store} >
     <MuiThemeProvider muiTheme={theme}>
