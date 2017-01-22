@@ -45,6 +45,8 @@ export default class ExhibitReg extends React.Component {
       auction:'',
       print:'',
       digital: false,
+      agent:'',
+      waitinglist: false,
       open: false,
       Works: [{ id: null, 
             artist_id: ID, 
@@ -60,6 +62,7 @@ export default class ExhibitReg extends React.Component {
             gallery: ''}]
 
       }
+
 
     raami.GET(`people/${member}`).then((data)=>{
       if(data.length > 0 && data[0].id > 0) {
@@ -200,7 +203,6 @@ export default class ExhibitReg extends React.Component {
   }
 
   handleCheck(field, e, val) {
-    console.log(field,val)
     var newState = {}; 
     newState[field] = val; 
     this.setState(newState);
@@ -257,7 +259,6 @@ export default class ExhibitReg extends React.Component {
   render() {
 
 
-  var total = this.state.auction*20+this.state.print*10+(this.state.digital ? 20 : 0)
 
   
   /**** inline styles ****/
@@ -278,6 +279,9 @@ export default class ExhibitReg extends React.Component {
       zIndex: '0',
       position: 'absolute'
   }
+
+
+  var total = this.state.auction*20+this.state.print*10+(this.state.digital ? 20 : 0)+(this.state.postage > 0 ? parseInt(this.state.postage) + 20 : 0 )
 
   var works = []
   
@@ -440,7 +444,7 @@ export default class ExhibitReg extends React.Component {
 
     <Row>
     <Col>
-      <h3>Reserve gallery space</h3>
+      <h3>Reserve Gallery Space</h3>
     </Col>
     </Row>
     <Row>
@@ -452,21 +456,34 @@ export default class ExhibitReg extends React.Component {
     </Col>
     </Row>
     <Row>
-    <Col>
+    <Col xs={4}>
     <Checkbox label="Digital gallery (Max 20 works)" labelPosition="left" labelStyle={grey}
       onCheck={this.handleCheck.bind(this,'digital')} value={this.state.digital} />
+          <br/><br/>
+
     </Col>
     </Row>
     <Row>
-    <Col>
-    <label style={grey} >Total cost of this submission </label>
+    <Col xs={2}>
+    <label style={grey} >Total Cost of This Submission </label>
+    </Col>
+    <Col xs={4}>
     <TextField type="number" name="total" value={total} /> &euro;
     </Col>
-    <Col></Col>
-    
     </Row>
-        <Row>
-    <Col>
+    <Row>
+    <Col xs={2}>
+    <label style={grey} >Estimated Return Postage (plus 20 € for handling) </label>
+    </Col>
+    <Col xs={4}>
+    <TextField type="number" name="postage" value={this.postage} onChange={this.handleChange.bind(this, 'postage')} /> &euro;
+    </Col>
+    </Row>
+
+    <Row>
+    <Col xs={4}>
+              <br/><br/>
+
       <Checkbox label="Submit to waiting list" labelPosition="left" labelStyle={grey}
       onCheck={this.handleCheck.bind(this, 'waitinglist')} value={this.state.waitinglist} />
     </Col>
