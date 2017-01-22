@@ -202,7 +202,7 @@ export default class ExhibitReg extends React.Component {
   handleCheck(field, e, val) {
     var newState = {}; 
     newState[field] = val; 
-    this.setState(newState);   
+    this.setState(newState);
   }
 
   handleSelect(field, e, key, val) {
@@ -252,9 +252,13 @@ export default class ExhibitReg extends React.Component {
 
   }
 
+
   render() {
 
 
+  var total = this.state.auction*20+this.state.print*10+(this.state.digital ? 20 : 0)
+
+  
   /**** inline styles ****/
 
   const grey = { 
@@ -421,12 +425,18 @@ export default class ExhibitReg extends React.Component {
       floatingLabelText="Select Transportation method" 
       onChange={this.handleSelect.bind(this, 'transport')} value={this.state.transport}>
             <MenuItem value={'Air mail'} primaryText="Air mail" />
-            <MenuItem value={'Courier'} primaryText="Couerier" />
+            <MenuItem value={'Courier'} primaryText="Courier" />
             <MenuItem value={'Self'} primaryText="Deliver self" />
       </SelectField>
       <br />
       </Col>
     </Row>
+    <Row>
+    <Col xs={12} sm={6}>
+      <TextField  floatingLabelText="Agent" onChange={this.handleChange.bind(this, 'agent')} value={this.state.url} />
+    </Col>
+  </Row>
+
     <Row>
     <Col>
       <h3>Reserve gallery space</h3>
@@ -442,19 +452,34 @@ export default class ExhibitReg extends React.Component {
     </Row>
     <Row>
     <Col>
-    <label style={grey} >Digital gallery (Max 20 works)
-    <Checkbox onChange={this.handleCheck.bind(this,'digital')} value={this.state.digital} /></label>
+    <Checkbox label="Digital gallery (Max 20 works)" labelPosition="left" labelStyle={grey}
+      onCheck={this.handleCheck.bind(this,'digital')} value={this.state.digital} />
     </Col>
     </Row>
+    <Row>
+    <Col>
+    <label style={grey} >Total cost of this submission </label>
+    <TextField type="number" name="total" value={total} /> &euro;
+    </Col>
+    <Col></Col>
+    
+    </Row>
+        <Row>
+    <Col>
+      <Checkbox label="Submit to waiting list" labelPosition="left" labelStyle={grey}
+      onCheck={this.handleCheck.bind(this, 'waitinglist')} value={this.state.waitinglist} />
+    </Col>
+  </Row>
+
       <Row>
         <Col xs={12} sm={3}><br /><br />
       <RaisedButton type="submit" label="Save"
-      disabled={ this.state.legal } 
+      disabled={ this.state.legal} 
       className="button-submit" onClick={this.handleSubmit.bind(this)} primary={true} />
       </Col>
           <Col ><br /><br />
       <a href="javascript:void(0);" onClick={ this.handleOpen } style={grey}>Accept Basic Rules</a>
-      <Checkbox onChange={this.handleCheck.bind(this,'legal')} value={this.state.legal} />
+      <Checkbox onCheck={this.handleCheck.bind(this,'legal')} value={this.state.legal} />
       <Dialog
           title="Accept Basic rules"
           modal={false}
