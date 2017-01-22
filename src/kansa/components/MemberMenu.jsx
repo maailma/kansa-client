@@ -15,7 +15,7 @@ const MemberMenu = ({ id, push, ...props }) => <IconMenu
 >
   <MenuItem
     onTouchTap={ () => push(`/exhibition/${id}`) }
-    primaryText='Register for the Art Exhibition'
+    primaryText='Register for the Art Show'
   />
 </IconMenu>;
 
