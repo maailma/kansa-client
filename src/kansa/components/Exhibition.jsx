@@ -200,6 +200,7 @@ export default class ExhibitReg extends React.Component {
   }
 
   handleCheck(field, e, val) {
+    console.log(field,val)
     var newState = {}; 
     newState[field] = val; 
     this.setState(newState);
@@ -474,7 +475,7 @@ export default class ExhibitReg extends React.Component {
       <Row>
         <Col xs={12} sm={3}><br /><br />
       <RaisedButton type="submit" label="Save"
-      disabled={ this.state.legal} 
+      disabled={ !this.state.legal } 
       className="button-submit" onClick={this.handleSubmit.bind(this)} primary={true} />
       </Col>
           <Col ><br /><br />
