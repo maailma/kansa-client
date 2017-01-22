@@ -11,11 +11,12 @@ import MenuItem from 'material-ui/MenuItem';
 import SelectField from 'material-ui/SelectField';
 import TextField from 'material-ui/TextField';
 const { Col, Row } = require('react-flexbox-grid');
-// import { Receiver } from 'react-file-uploader';
 import { Card, CardActions, CardHeader, CardText } from 'material-ui/Card'
 import Divider from 'material-ui/Divider';
 import Paper from 'material-ui/Paper';
-import FileInput from 'react-file-input'
+import FileInput from 'react-file-input';
+
+import BasicRules from './basic-rules';
 
 import { API_ROOT } from '../../constants'
 import API from '../../lib/api'
@@ -371,7 +372,7 @@ export default class ExhibitReg extends React.Component {
     return (
   <Card>
   <CardHeader>
-  <h2>Worldcon 75 Art Exhibition Registration Form</h2>
+  <h2>Worldcon 75 Art Show Registration Form</h2>
   </CardHeader>
   <CardText>
   <Row>
@@ -452,17 +453,16 @@ export default class ExhibitReg extends React.Component {
       className="button-submit" onClick={this.handleSubmit.bind(this)} primary={true} />
       </Col>
           <Col ><br /><br />
-      <a href="javascript:void(0);" onClick={ this.handleOpen } style={grey}>Accept legal note</a>
+      <a href="javascript:void(0);" onClick={ this.handleOpen } style={grey}>Accept Basic Rules</a>
       <Checkbox onChange={this.handleCheck.bind(this,'legal')} value={this.state.legal} />
       <Dialog
-          title="Legal note"
+          title="Accept Basic rules"
           modal={false}
           open={this.state.open}
           onRequestClose={this.handleClose}
+          autoScrollBodyContent = {true}
         >
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque quis tellus pulvinar, auctor justo id, eleifend augue. Nunc ultrices feugiat magna, non consectetur arcu sagittis et. Morbi sit amet facilisis neque. Mauris aliquam sollicitudin elit, eu facilisis magna sagittis at. Etiam feugiat eu urna ut lobortis. Vivamus eros libero, posuere vel fringilla nec, interdum at magna. Vestibulum placerat, velit at venenatis maximus, turpis leo rutrum nibh, in imperdiet metus diam vel nunc. Maecenas lorem risus, euismod a luctus sed, suscipit viverra massa. Vivamus nisi quam, ullamcorper et nisl ac, pulvinar consequat lorem. Praesent bibendum, est id fringilla sagittis, neque ipsum mattis turpis, a vulputate ipsum sapien ut sapien. Integer sollicitudin vulputate nisi. Nam molestie porttitor lectus vel porta.
-        <br/>
-        Suspendisse vehicula egestas massa ut porttitor. Integer molestie elementum placerat. Phasellus vestibulum feugiat odio et mattis. Ut lacinia augue id enim suscipit, quis suscipit nibh molestie. Suspendisse congue eros mattis molestie varius. Nam commodo ante sapien, a porttitor orci blandit nec. Quisque aliquet lacus sed nunc condimentum fringilla. Proin elementum, eros vitae vulputate mattis, sapien dolor tincidunt sem, in venenatis felis nisl vel felis. Morbi eu posuere libero, sit amet viverra augue. Fusce eleifend vehicula lectus, at feugiat ex faucibus non. Vestibulum hendrerit ex at sem placerat, in suscipit augue efficitur. Cras porta dui ut mauris pellentesque, fermentum vestibulum mauris dictum. Phasellus dignissim tortor vitae mattis ornare. Curabitur dignissim volutpat scelerisque. Pellentesque tempus tempor nisl lobortis consequat. Aenean rutrum augue a euismod mollis.
+        <BasicRules />
 
         </Dialog>
     </Col>
