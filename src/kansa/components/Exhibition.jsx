@@ -46,6 +46,7 @@ export default class ExhibitReg extends React.Component {
       print:'',
       digital: false,
       agent:'',
+      contact:'',
       waitinglist: false,
       open: false,
       Works: [{ id: null, 
