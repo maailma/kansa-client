@@ -94,7 +94,6 @@ export default class ExhibitReg extends React.Component {
     // const { dispatch } = this.props;
 
     var artist = this.state
-
     console.log(artist)
 
     if(this.state.id !== null) {
@@ -159,6 +158,7 @@ export default class ExhibitReg extends React.Component {
         alert('Cant delete nothing!')
       }
   }
+  
   addWork() {
     // const { dispatch } = this.props;
     
