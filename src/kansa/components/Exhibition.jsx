@@ -47,7 +47,7 @@ export default class ExhibitReg extends React.Component {
       digital: false,
       agent:'',
       contact:'',
-      waitinglist: false,
+      waitlist: false,
       open: false,
       Works: [{ id: null, 
             artist_id: ID, 
@@ -486,7 +486,7 @@ export default class ExhibitReg extends React.Component {
               <br/><br/>
 
       <Checkbox label="Submit to waiting list" labelPosition="left" labelStyle={grey}
-      onCheck={this.handleCheck.bind(this, 'waitinglist')} value={this.state.waitinglist} />
+      onCheck={this.handleCheck.bind(this, 'waitlist')} value={this.state.waitlist} />
     </Col>
   </Row>
 
