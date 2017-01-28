@@ -1,7 +1,5 @@
 import React from 'react';
 
-// import { Form, actions, Control, Field, Errors } from 'react-redux-form';
-// import LocalForm from 'react-redux-form';
 
 import Checkbox from 'material-ui/Checkbox';
 import Dialog from 'material-ui/Dialog';
@@ -91,7 +89,6 @@ export default class ExhibitReg extends React.Component {
   }
 
   handleSubmit(artist) {
-    // const { dispatch } = this.props;
 
     var artist = this.state
     console.log(artist)
@@ -160,7 +157,6 @@ export default class ExhibitReg extends React.Component {
   }
   
   addWork() {
-    // const { dispatch } = this.props;
     
     var _work = this.state.Works.slice();
 
@@ -282,6 +278,7 @@ export default class ExhibitReg extends React.Component {
       position: 'absolute'
   }
 
+  /**** calculate costs ****/
 
   var total = this.state.auction*20+this.state.print*10+(this.state.digital ? 20 : 0)+(this.state.postage > 0 ? parseInt(this.state.postage) + 20 : 0 )
 
