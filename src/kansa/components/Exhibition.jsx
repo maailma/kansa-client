@@ -48,6 +48,7 @@ export default class ExhibitReg extends React.Component {
       agent:'',
       contact:'',
       waitlist: false,
+      postage: 0,
       open: false,
       Works: [{ id: null, 
             artist_id: ID, 
