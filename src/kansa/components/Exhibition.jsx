@@ -29,6 +29,8 @@ export default class ExhibitReg extends React.Component {
     
     const member = props.params.id
 
+    console.log(member)
+
     this.state = {
       id: parseInt(ID),
       person_id: parseInt(member),
@@ -93,7 +95,7 @@ export default class ExhibitReg extends React.Component {
     var artist = this.state
     console.log(artist)
 
-    if(this.state.id !== null) {
+    if(this.state.id > 0 ) {
       raami.PUT(`artist/${artist.id}`, artist).then(res=>{
         console.log(res)
       })      
