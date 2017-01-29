@@ -30,8 +30,8 @@ export default class ExhibitReg extends React.Component {
     const member = props.params.id
 
     this.state = {
-      id: ID,
-      person_id: member,
+      id: parseInt(ID),
+      person_id: parseInt(member),
       name: '',
       url:'',
       description:'',
@@ -40,8 +40,8 @@ export default class ExhibitReg extends React.Component {
       filename:'',
       filedata: null,
       legal: false,
-      auction:'',
-      print:'',
+      auction:0,
+      print:0,
       digital: false,
       agent:'',
       contact:'',
@@ -51,15 +51,15 @@ export default class ExhibitReg extends React.Component {
       Works: [{ id: null, 
             artist_id: ID, 
             title: '',
-            width: '',
-            height: '', 
+            width: 0,
+            height: 0, 
             technique: '', 
             orientation: '', 
             filename: '', 
             filedata: null,
             year: '', 
-            price: '', 
-            gallery: ''}]
+            price: 0, 
+            gallery: 0}]
 
       }
 
