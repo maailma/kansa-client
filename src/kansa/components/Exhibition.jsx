@@ -280,7 +280,6 @@ export default class ExhibitReg extends React.Component {
 
   /**** calculate costs ****/
 
-  var total = this.state.auction*20+this.state.print*10+(this.state.digital ? 20 : 0)+(this.state.postage > 0 ? parseInt(this.state.postage) + 20 : 0 )
 
   var works = []
   
@@ -359,7 +358,7 @@ export default class ExhibitReg extends React.Component {
           <TextField  type="number" floatingLabelText="Year"  onChange={this.handleWork.bind(this,  i, 'year')} required={true} value={this.state.Works[i].year}/>
         </Col>
           <Col xs={12} sm={6}>
-          <TextField  type="number" floatingLabelText="Estimated value (euro)"  onChange={this.handleWork.bind(this,  i, 'price')} required={true} value={this.state.Works[i].price} />
+          <TextField  type="number" floatingLabelText="Estimated value (&euro;)"  onChange={this.handleWork.bind(this,  i, 'price')} required={true} value={this.state.Works[i].price} />
         </Col>
       </Row>
       <Row>
@@ -376,6 +375,8 @@ export default class ExhibitReg extends React.Component {
   })
 
   // console.log(this.state.Works.length+1)
+
+  var total = this.state.auction*20+this.state.print*10+(this.state.digital ? 20 : 0)+(this.state.postage > 0 ? parseInt(this.state.postage) + 20 : 0 )
 
     return (
   <Card>
@@ -472,10 +473,10 @@ export default class ExhibitReg extends React.Component {
     </Row>
     <Row>
     <Col xs={2}>
-    <label style={grey} >Estimated Return Postage (plus 20 € for handling) </label>
+    <label style={grey} >Estimated Return Postage (plus 20 &euro; for handling) </label>
     </Col>
     <Col xs={4}>
-    <TextField type="number" name="postage" value={this.postage} onChange={this.handleChange.bind(this, 'postage')} /> &euro;
+    <TextField type="number" name="postage" value={this.state.postage} onChange={this.handleChange.bind(this, 'postage')} /> &euro;
     </Col>
     </Row>
 
