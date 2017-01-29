@@ -40,8 +40,8 @@ export default class ExhibitReg extends React.Component {
       filename:'',
       filedata: null,
       legal: false,
-      auction:0,
-      print:0,
+      auction: 0,
+      print: 0,
       digital: false,
       agent:'',
       contact:'',
@@ -280,7 +280,7 @@ export default class ExhibitReg extends React.Component {
 
   /**** calculate costs ****/
 
-  var total = this.state.auction*20+this.state.print*10+(this.state.digital ? 20 : 0)+(this.state.postage > 0 ? parseInt(this.state.postage) + 20 : 0 )
+  var total = this.state.auction*20+this.state.print*10+(this.state.digital ? 20 : 0)+(this.state.postage > 0 ? this.state.postage + 20 : 0 )
 
   var works = []
   
