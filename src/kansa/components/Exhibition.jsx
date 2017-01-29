@@ -458,7 +458,7 @@ export default class ExhibitReg extends React.Component {
     <Row>
     <Col xs={4}>
     <Checkbox label="Digital gallery (Max 20 works)" labelPosition="left" labelStyle={grey}
-      onCheck={this.handleCheck.bind(this,'digital')} value={this.state.digital} />
+      onCheck={this.handleCheck.bind(this,'digital')} checked={this.state.digital} />
           <br/><br/>
 
     </Col>
@@ -485,7 +485,7 @@ export default class ExhibitReg extends React.Component {
               <br/><br/>
 
       <Checkbox label="Submit to waiting list" labelPosition="left" labelStyle={grey}
-      onCheck={this.handleCheck.bind(this, 'waitlist')} value={this.state.waitlist} />
+      onCheck={this.handleCheck.bind(this, 'waitlist')} checked={this.state.waitlist} />
     </Col>
   </Row>
 
@@ -497,7 +497,7 @@ export default class ExhibitReg extends React.Component {
       </Col>
           <Col ><br /><br />
       <a href="javascript:void(0);" onClick={ this.handleOpen } style={grey}>Accept Basic Rules</a>
-      <Checkbox onCheck={this.handleCheck.bind(this,'legal')} value={this.state.legal} />
+      <Checkbox onCheck={this.handleCheck.bind(this,'legal')} checked={this.state.legal} />
       <Dialog
           title="Accept Basic rules"
           modal={false}
