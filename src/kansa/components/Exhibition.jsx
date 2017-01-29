@@ -20,7 +20,7 @@ import { API_ROOT } from '../../constants'
 import API from '../../lib/api'
 
 const raami = new API(`${API_ROOT}raami/`);
-var ID = null
+var ID = 0
 
 export default class ExhibitReg extends React.Component {
 
@@ -29,10 +29,8 @@ export default class ExhibitReg extends React.Component {
     
     const member = props.params.id
 
-    console.log(member)
-
     this.state = {
-      id: parseInt(ID),
+      id: ID,
       person_id: parseInt(member),
       name: '',
       url:'',
@@ -439,7 +437,7 @@ export default class ExhibitReg extends React.Component {
     </Row>
     <Row>
     <Col xs={12} sm={6}>
-      <TextField  floatingLabelText="Agent" onChange={this.handleChange.bind(this, 'agent')} value={this.state.url} />
+      <TextField  floatingLabelText="Agent" onChange={this.handleChange.bind(this, 'agent')} value={this.state.agent} />
     </Col>
   </Row>
 
