@@ -340,7 +340,10 @@ export default class ExhibitReg extends React.Component {
           <TextField type="number" floatingLabelText="Width"  style={{width: '100px' }} floatingLabelStyle={label} value={this.state.Works[i].width} onChange={this.handleWork.bind(this,  i, 'width')} /> 
         </Col>
           <Col >
-          <TextField type="number" floatingLabelText="Height"  style={{width: '100px' }} floatingLabelStyle={label} value={this.state.Works[i].height} onChange={this.handleWork.bind(this,  i,  'height')}/> cm 
+          <TextField type="number" floatingLabelText="Height"  style={{width: '100px' }} floatingLabelStyle={label} value={this.state.Works[i].height} onChange={this.handleWork.bind(this,  i,  'height')}/>  
+        </Col>
+          <Col >
+          <TextField type="number" floatingLabelText="Depth"  style={{width: '100px' }} floatingLabelStyle={label} value={this.state.Works[i].depth} onChange={this.handleWork.bind(this,  i,  'depth')}/> cm 
         </Col>
       </Row>
         <Row>
@@ -354,6 +357,7 @@ export default class ExhibitReg extends React.Component {
               <MenuItem value={'Photograph'} primaryText="Photograph" />
               <MenuItem value={'Digital'} primaryText="Digital" />
               <MenuItem value={'3D'} primaryText="3D (ie. sculpture)" />
+              <MenuItem value={'Other'} primaryText="Other (eg. jewellery)" />
           </SelectField>
           </Col>
         </Row>
@@ -503,7 +507,7 @@ export default class ExhibitReg extends React.Component {
       className="button-submit" onClick={this.handleSubmit.bind(this)} primary={true} />
       </Col>
           <Col ><br /><br />
-      <a href="javascript:void(0);" onClick={ this.handleOpen } style={grey}>By ticking this box you accept the W75 Accept Basic Rules</a>
+      <a href="javascript:void(0);" onClick={ this.handleOpen } style={grey}>By ticking this box you accept <br/>the W75 Accept Basic Rules</a>
       <Checkbox onCheck={this.handleCheck.bind(this,'legal')} checked={this.state.legal} />
       <Dialog
           title="Accept W75 Basic rules"
