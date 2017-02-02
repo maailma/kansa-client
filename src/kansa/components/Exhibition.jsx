@@ -262,9 +262,15 @@ export default class ExhibitReg extends React.Component {
   /**** inline styles ****/
 
   const grey = { 
-      color: '#bbb',
-      fontSize: '17px',
+      color: '#888',
+      fontSize: '16px',
       zIndex: '0'
+     }
+
+  const label = { 
+      color: '#888',
+      fontSize: '16px',
+
      }
 
   const paper = {
@@ -278,6 +284,10 @@ export default class ExhibitReg extends React.Component {
       position: 'absolute'
   }
 
+  const center = {
+    textAlign: 'center'
+  }
+
   /**** calculate costs ****/
 
 
@@ -286,14 +296,27 @@ export default class ExhibitReg extends React.Component {
   this.state.Works.forEach((work, i)=> {
 
     works.push(
-      <Col xs={12} sm={6} key={ i }>
-    <form>        
+      <Col  key={ i }>
           <Paper style={paper}>
       <Row>
         <Col >
-          <TextField  floatingLabelText="Work title"  value={this.state.Works[i].title} onChange={this.handleWork.bind(this, i, 'title')} required={true} />
+          <TextField  floatingLabelText="Artwork title, year completed" style={{width: '500px' }}
+           floatingLabelStyle={label} value={this.state.Works[i].title} onChange={this.handleWork.bind(this, i, 'title')} />
         </Col>
       </Row>
+        <Row>
+        <Col>
+        <label style={label}>Select Gallery </label><br/>
+        <SelectField floatingLabelStyle={label} 
+          floatingLabelText=""  value={this.state.Works[i].gallery}
+          onChange={this.selectWork.bind(this, i, 'gallery')}>
+              <MenuItem value={'Auction'} primaryText="Auction gallery" />
+              <MenuItem value={'Printshop'} primaryText="Printshop" />
+              <MenuItem value={'Digital'} primaryText="Digital galler" />
+          </SelectField>
+          </Col>
+        </Row>
+
       <Row>
     <Col className="upload">    
     <span style={grey}>Upload image (max 2 MB)</span>
@@ -306,31 +329,21 @@ export default class ExhibitReg extends React.Component {
                        <br/><br/>
         </span><br/>
       {this.state.Works[i].filedata &&
-        <img src={this.state.Works[i].filedata} required={true} width="250px" />
+        <img src={this.state.Works[i].filedata} width="250px" />
       }
         </Col>
       </Row>
       <Row>
-        <Col xs={12} sm={6}>
-          <TextField type="number" floatingLabelText="Width (cm)"  value={this.state.Works[i].width} onChange={this.handleWork.bind(this,  i, 'width')} required={true} />
+        <Col >
+          <TextField type="number" floatingLabelText="Width"  style={{width: '100px' }} floatingLabelStyle={label} value={this.state.Works[i].width} onChange={this.handleWork.bind(this,  i, 'width')} /> 
         </Col>
-          <Col xs={12} sm={6}>
-          <TextField type="number" floatingLabelText="Height (cm)"  required={true} value={this.state.Works[i].height} onChange={this.handleWork.bind(this,  i,  'height')}/>
+          <Col >
+          <TextField type="number" floatingLabelText="Height"  style={{width: '100px' }} floatingLabelStyle={label} value={this.state.Works[i].height} onChange={this.handleWork.bind(this,  i,  'height')}/> cm 
         </Col>
       </Row>
         <Row>
         <Col>
-      <SelectField
-          floatingLabelText="Display"
-          onChange={this.selectWork.bind(this, i, 'orientation')}  value={this.state.Works[i].orientation}>
-              <MenuItem value={'Table'} primaryText="Table-top display" />
-              <MenuItem value={'Wall'} primaryText="Wall mounted" />
-          </SelectField>
-          </Col>
-        </Row>
-        <Row>
-        <Col>
-      <SelectField
+      <SelectField floatingLabelStyle={label}
           floatingLabelText="Technique" value={this.state.Works[i].technique}
           onChange={this.selectWork.bind(this, i, 'technique')} >
               <MenuItem value={'Painting'} primaryText="Painting" />
@@ -345,22 +358,13 @@ export default class ExhibitReg extends React.Component {
         <Row>
         <Col>
       <SelectField
-          floatingLabelText="Select Gallery"  value={this.state.Works[i].gallery}
-          onChange={this.selectWork.bind(this, i, 'gallery')}>
-              <MenuItem value={'Auction'} primaryText="Auction gallery" />
-              <MenuItem value={'Printshop'} primaryText="Printshop" />
-              <MenuItem value={'Digital'} primaryText="Digital galler" />
+          floatingLabelText="Display" floatingLabelStyle={label}
+          onChange={this.selectWork.bind(this, i, 'orientation')}  value={this.state.Works[i].orientation}>
+              <MenuItem value={'Table'} primaryText="Table-top display" />
+              <MenuItem value={'Wall'} primaryText="Wall mounted" />
           </SelectField>
           </Col>
         </Row>
-      <Row>
-        <Col xs={12} sm={6}>
-          <TextField  type="number" floatingLabelText="Year"  onChange={this.handleWork.bind(this,  i, 'year')} required={true} value={this.state.Works[i].year}/>
-        </Col>
-          <Col xs={12} sm={6}>
-          <TextField  type="number" floatingLabelText="Estimated value (&euro;)"  onChange={this.handleWork.bind(this,  i, 'price')} required={true} value={this.state.Works[i].price} />
-        </Col>
-      </Row>
       <Row>
        <Col>
           <FlatButton type="submit" label="Save" onClick={this.submitWork.bind(this, i)} className="button-submit" primary={true} />
@@ -369,7 +373,6 @@ export default class ExhibitReg extends React.Component {
         </Col>
         </Row>
         </Paper> 
-        </form> 
         </Col>
     )
   })
@@ -379,45 +382,41 @@ export default class ExhibitReg extends React.Component {
   var total = this.state.auction*20+this.state.print*10+(this.state.digital ? 20 : 0)+(this.state.postage > 0 ? parseInt(this.state.postage) + 20 : 0 )
 
     return (
+      <form novalidate >
   <Card>
   <CardHeader>
   <h2>Worldcon 75 Art Show Registration Form</h2>
+  <div sx={6} style = {center}>
+  <i>Please fill in the general fields to register to the W75 art show. 
+  You can edit and fill the details concerning individual art works also later. <br/>
+  The fee is a preliminary estimate and may change. Payment will be due in April latest. 
+  Changes and additions to this form will be notified by email.</i></div>
   </CardHeader>
   <CardText>
   <Row>
-    <Col xs={12} sm={6}>
-      <TextField  floatingLabelText="Artist name" value={this.state.name} onChange={this.handleChange.bind(this, 'name')} required={true} />
+    <Col>
+      <TextField  floatingLabelText="Artist name" style={{width: '500px' }}
+      floatingLabelStyle={label} value={this.state.name} 
+      onChange={this.handleChange.bind(this, 'name')} />
     </Col>
   </Row>
     <Row>
-    <Col xs={12} sm={6}>
-      <TextField  floatingLabelText="Website URL" onChange={this.handleChange.bind(this, 'url')} value={this.state.url} />
+    <Col>
+      <TextField  style={{width: '500px' }} 
+      floatingLabelText="Website URL" 
+      floatingLabelStyle={label} onChange={this.handleChange.bind(this, 'url')} value={this.state.url} />
     </Col>
   </Row>
   <Row>
-    <Col xs={12} sm={4}>
-      <TextField floatingLabelText="Artist's description" id="description" value={this.state.description} onChange={this.handleChange.bind(this, 'description')} multiLine={true} rows={5}/>
+    <Col>
+      <TextField floatingLabelText="Short description for catalogue/website (500 characters)" style={{width: '500px' }}
+      floatingLabelStyle={label} id="description" floatingLabelStyle={label} value={this.state.description} onChange={this.handleChange.bind(this, 'description')} multiLine={true} rows={5}/>
     </Col>
     </Row>
-    <Row>
-    <Col className="upload">    
-    <span style={grey}>Upload image (Max 2MB)</span>
-    <br/>
-    <span style={zindex} className="upload">
-        <FileInput name="Image"
-                       accept=".jpg"
-                       placeholder="[ Preview image ]" 
-                       onChange={this.handlePreview.bind(this)} />
-        </span><br/>
-        {this.state.filedata &&
-            <img src={this.state.filedata} width="250px" />
-          }
-    </Col>
-  </Row>
   <Row>
   <Col>
   <SelectField
-      floatingLabelText="Continent for tax purposes" 
+      floatingLabelText="Continent for tax purposes" floatingLabelStyle={label}
       onChange={this.handleSelect.bind(this, 'continent')} value={this.state.continent}>
           <MenuItem value={'EU'} primaryText="EU" />
           <MenuItem value={'NON-EU'} primaryText="NON-EU" />
@@ -427,7 +426,7 @@ export default class ExhibitReg extends React.Component {
   <Row>
   <Col>
   <SelectField
-      floatingLabelText="Select Transportation method" 
+      floatingLabelText="Select Transportation method" floatingLabelStyle={label}
       onChange={this.handleSelect.bind(this, 'transport')} value={this.state.transport}>
             <MenuItem value={'Air mail'} primaryText="Air mail" />
             <MenuItem value={'Courier'} primaryText="Courier" />
@@ -437,8 +436,9 @@ export default class ExhibitReg extends React.Component {
       </Col>
     </Row>
     <Row>
-    <Col xs={12} sm={6}>
-      <TextField  floatingLabelText="Agent" onChange={this.handleChange.bind(this, 'agent')} value={this.state.agent} />
+    <Col >
+      <TextField  floatingLabelText="Delivery contact" style={{width: '500px' }}
+       floatingLabelStyle={label} onChange={this.handleChange.bind(this, 'agent')} value={this.state.agent} />
     </Col>
   </Row>
 
@@ -448,16 +448,20 @@ export default class ExhibitReg extends React.Component {
     </Col>
     </Row>
     <Row>
-      <Col>
-        <TextField type="number" floatingLabelText="Auction gallery (m)" min="0" onChange={this.handleChange.bind(this, 'auction')} value={this.state.auction}/>
+    <Col sm={6}>
+      <label style={label}>Auction gallery </label>
+        <TextField type="number" floatingLabelStyle={label} style={{width: '100px' }} floatingLabelText="" min="0" onChange={this.handleChange.bind(this, 'auction')} value={this.state.auction}/> m      
       </Col>
-    <Col>
-    <TextField type="number" floatingLabelText="Printshop gallery (m)" min="0" onChange={this.handleChange.bind(this, 'print')} value={this.state.print} />
-    </Col>
+      </Row>
+      <Row>
+    <Col sm={6}>
+           <label style={label}>Printshop gallery</label>
+      <TextField type="number" floatingLabelStyle={label} style={{width: '100px' }} floatingLabelText="" min="0" onChange={this.handleChange.bind(this, 'print')} value={this.state.print} /> m
+     </Col>
     </Row>
     <Row>
-    <Col xs={4}>
-    <Checkbox label="Digital gallery (Max 20 works)" labelPosition="left" labelStyle={grey}
+    <Col sm={6}>
+    <Checkbox label="Digital gallery (Max 20 works)" labelPosition="left" labelStyle={grey} floatingLabelStyle={label}
       onCheck={this.handleCheck.bind(this,'digital')} checked={this.state.digital} />
           <br/><br/>
 
@@ -465,18 +469,19 @@ export default class ExhibitReg extends React.Component {
     </Row>
     <Row>
     <Col xs={2}>
-    <label style={grey} >Total Cost of This Submission </label>
+    <label style={label} >Total Cost of This Submission </label>
     </Col>
     <Col xs={4}>
-    <TextField type="number" name="total" value={total} /> &euro;
+    <TextField type="number" style={{width: '100px' }}
+     name="total" value={total} /> &euro;
     </Col>
     </Row>
     <Row>
     <Col xs={2}>
-    <label style={grey} >Estimated Return Postage (plus 20 &euro; for handling) </label>
+    <label style={label} >Estimated Return Postage (plus 20 &euro; for handling) </label>
     </Col>
     <Col xs={4}>
-    <TextField type="number" name="postage" value={this.state.postage} onChange={this.handleChange.bind(this, 'postage')} /> &euro;
+    <TextField type="number" name="postage" style={{width: '100px' }} value={this.state.postage} onChange={this.handleChange.bind(this, 'postage')} /> &euro;
     </Col>
     </Row>
 
@@ -484,7 +489,7 @@ export default class ExhibitReg extends React.Component {
     <Col xs={4}>
               <br/><br/>
 
-      <Checkbox label="Submit to waiting list" labelPosition="left" labelStyle={grey}
+      <Checkbox label="If the art show is full then I would like to go on the waiting list." labelPosition="left" labelStyle={grey}
       onCheck={this.handleCheck.bind(this, 'waitlist')} checked={this.state.waitlist} />
     </Col>
   </Row>
@@ -499,7 +504,7 @@ export default class ExhibitReg extends React.Component {
       <a href="javascript:void(0);" onClick={ this.handleOpen } style={grey}>Accept Basic Rules</a>
       <Checkbox onCheck={this.handleCheck.bind(this,'legal')} checked={this.state.legal} />
       <Dialog
-          title="Accept Basic rules"
+          title="By ticking this box I will accept the W75 Accept Basic rules"
           modal={false}
           open={this.state.open}
           onRequestClose={this.handleClose}
@@ -514,19 +519,24 @@ export default class ExhibitReg extends React.Component {
       <Col xs={12}>
       < br/>
       <Divider />
-            <h3>Submitted art works </h3>
+            <h3>Submitted Artworks </h3>
+            <div xs={6} style= { center } >
+            <i>Please fill fields to submit individual artworks to the art show. <br/>
+            You may edit submitted artworks and their details at later date.</i></div>
+            <br/>
           </Col>
       </Row>
       <Row>
         { works }
 
-        <Col>
+        <Col xs= {12} >
         <br />
         <RaisedButton type="button" label="Add" onClick={this.addWork.bind(this)} className="button-submit" />
         </Col>
         </Row>
       </CardText>
   </Card>
+  </form>
       )
   };
 }

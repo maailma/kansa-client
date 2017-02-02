@@ -23,7 +23,7 @@ function label(path) {
   return ps.charAt(0).toUpperCase() + ps.slice(1).replace(/_/g, ' ');
 }
 
-const TextInput = ({ getDefaultValue, getValue, onChange, path, required, style = {}, ...props }) => {
+const TextInput = ({ getDefaultValue, getValue, onChange, path, required, style = {color:'#000' }, ...props }) => {
   if (!Array.isArray(path)) path = [ path ];
   const value = getValue(path);
   if (value === null) return null;
