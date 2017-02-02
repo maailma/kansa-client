@@ -52,14 +52,16 @@ export default class ExhibitReg extends React.Component {
             artist_id: ID, 
             title: '',
             width: 0,
-            height: 0, 
+            height: 0,
+            depth: 0, 
             technique: '', 
             orientation: '', 
             filename: '', 
             filedata: null,
             year: '', 
             price: 0, 
-            gallery: 0}]
+            gallery: 0}
+            ]
 
       }
 
@@ -501,10 +503,10 @@ export default class ExhibitReg extends React.Component {
       className="button-submit" onClick={this.handleSubmit.bind(this)} primary={true} />
       </Col>
           <Col ><br /><br />
-      <a href="javascript:void(0);" onClick={ this.handleOpen } style={grey}>Accept Basic Rules</a>
+      <a href="javascript:void(0);" onClick={ this.handleOpen } style={grey}>By ticking this box you accept the W75 Accept Basic Rules</a>
       <Checkbox onCheck={this.handleCheck.bind(this,'legal')} checked={this.state.legal} />
       <Dialog
-          title="By ticking this box I will accept the W75 Accept Basic rules"
+          title="Accept W75 Basic rules"
           modal={false}
           open={this.state.open}
           onRequestClose={this.handleClose}
