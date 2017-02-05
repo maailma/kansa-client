@@ -314,7 +314,7 @@ export default class ExhibitReg extends React.Component {
           onChange={this.selectWork.bind(this, i, 'gallery')}>
               <MenuItem value={'Auction'} primaryText="Auction gallery" />
               <MenuItem value={'Printshop'} primaryText="Printshop" />
-              <MenuItem value={'Digital'} primaryText="Digital galler" />
+              <MenuItem value={'Digital'} primaryText="Digital gallery" />
           </SelectField>
           </Col>
         </Row>
@@ -461,25 +461,15 @@ export default class ExhibitReg extends React.Component {
       </Row>
       <Row>
     <Col sm={6}>
-           <label style={label}>Printshop gallery</label>
+           <label style={label}>Printshop gallery </label>
       <TextField type="number" floatingLabelStyle={label} style={{width: '100px' }} floatingLabelText="" min="0" onChange={this.handleChange.bind(this, 'print')} value={this.state.print} /> m
      </Col>
     </Row>
     <Row>
-    <Col sm={6}>
+    <Col sm={4}>
     <Checkbox label="Digital gallery (Max 20 works)" labelPosition="left" labelStyle={grey} floatingLabelStyle={label}
       onCheck={this.handleCheck.bind(this,'digital')} checked={this.state.digital} />
-          <br/><br/>
-
-    </Col>
-    </Row>
-    <Row>
-    <Col xs={2}>
-    <label style={label} >Total Cost of This Submission </label>
-    </Col>
-    <Col xs={4}>
-    <TextField type="number" style={{width: '100px' }}
-     name="total" value={total} /> &euro;
+          <br/>
     </Col>
     </Row>
     <Row>
@@ -490,11 +480,19 @@ export default class ExhibitReg extends React.Component {
     <TextField type="number" name="postage" style={{width: '100px' }} value={this.state.postage} onChange={this.handleChange.bind(this, 'postage')} /> &euro;
     </Col>
     </Row>
-
+    <Row>
+    <Col xs={2}>
+    <br/>
+    <label style={{color:'#000',fontSize:'16px'}} >Total Cost of This Submission </label>
+    </Col>
+    <Col xs={4}>
+    <TextField type="number" style={{width: '100px' }}
+     name="total" value={total} /> &euro;
+    </Col>
+    </Row>
     <Row>
     <Col xs={4}>
               <br/><br/>
-
       <Checkbox label="If the art show is full then I would like to go on the waiting list." labelPosition="left" labelStyle={grey}
       onCheck={this.handleCheck.bind(this, 'waitlist')} checked={this.state.waitlist} />
     </Col>
