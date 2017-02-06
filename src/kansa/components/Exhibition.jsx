@@ -118,6 +118,7 @@ export default class ExhibitReg extends React.Component {
     work.price = parseFloat(work.price)
     work.width = parseFloat(work.width)
     work.height = parseFloat(work.height)
+    work.depth = parseFloat(work.depth)
     
     var _id = null
 
@@ -388,11 +389,11 @@ export default class ExhibitReg extends React.Component {
   var total = this.state.auction*20+this.state.print*10+(this.state.digital ? 20 : 0)+(this.state.postage > 0 ? parseInt(this.state.postage) + 20 : 0 )
 
     return (
-      <form novalidate >
+      <form noValidate >
   <Card>
   <CardHeader>
   <h2>Worldcon 75 Art Show Registration Form</h2>
-  <div sx={6} style = {center}>
+  <div style = {center}>
   <i>Please fill in the general fields to register to the W75 art show. 
   You can edit and fill the details concerning individual art works also later. <br/>
   The fee is a preliminary estimate and may change. Payment will be due in April latest. 
@@ -416,7 +417,7 @@ export default class ExhibitReg extends React.Component {
   <Row>
     <Col>
       <TextField floatingLabelText="Short description for catalogue/website (500 characters)" style={{width: '500px' }}
-      floatingLabelStyle={label} id="description" floatingLabelStyle={label} value={this.state.description} onChange={this.handleChange.bind(this, 'description')} multiLine={true} rows={5}/>
+      floatingLabelStyle={label} id="description" value={this.state.description} onChange={this.handleChange.bind(this, 'description')} multiLine={true} rows={5}/>
     </Col>
     </Row>
   <Row>
@@ -467,7 +468,7 @@ export default class ExhibitReg extends React.Component {
     </Row>
     <Row>
     <Col sm={4}>
-    <Checkbox label="Digital gallery (Max 20 works)" labelPosition="left" labelStyle={grey} floatingLabelStyle={label}
+    <Checkbox label="Digital gallery (Max 20 works)" labelPosition="left" labelStyle={grey} 
       onCheck={this.handleCheck.bind(this,'digital')} checked={this.state.digital} />
           <br/>
     </Col>
@@ -524,7 +525,7 @@ export default class ExhibitReg extends React.Component {
       < br/>
       <Divider />
             <h3>Submitted Artworks </h3>
-            <div xs={6} style= { center } >
+            <div style= { center } >
             <i>Please fill fields to submit individual artworks to the art show. <br/>
             You may edit submitted artworks and their details at later date.</i></div>
             <br/>
