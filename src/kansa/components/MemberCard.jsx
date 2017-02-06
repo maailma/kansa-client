@@ -46,11 +46,11 @@ export default class Member extends React.Component {
         title={ membership }
         subtitle={ membership !== 'NonMember' ? '#' + member.get('member_number') : null }
       >
-      <label style={{float:'right'}}>More </label> 
         <MemberMenu
           id={member.get('id')}
           style={{ float: 'right', marginRight: -12, marginTop: -4 }}
         />
+      <label style={{float:'right',marginTop:12px,fontSize:'120%'}}>More</label> 
       </CardHeader>
       <CardText>
         <MemberForm
