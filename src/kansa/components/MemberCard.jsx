@@ -50,7 +50,7 @@ export default class Member extends React.Component {
           id={member.get('id')}
           style={{ float: 'right', marginRight: -12, marginTop: -4 }}
         />
-      <label style={{float:'right',marginTop:12px,fontSize:'120%'}}>More</label> 
+      <label style={{float:'right',marginTop:12,fontSize:'120%'}}>More</label> 
       </CardHeader>
       <CardText>
         <MemberForm
