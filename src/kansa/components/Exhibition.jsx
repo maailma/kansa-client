@@ -279,7 +279,9 @@ export default class ExhibitReg extends React.Component {
   const paper = {
       display: 'inline-block',
       float: 'left',
-      padding: '20px'
+      padding: '20px',
+      marginTop: '20px',
+      marginLeft: '20px'
   }
 
   const zindex = {
