@@ -321,11 +321,11 @@ export default class ExhibitReg extends React.Component {
     <span style={grey}>Upload image (max 2 MB)</span>
     <br/>
     <span style={zindex} className="upload">
-        <FileInput name="work" 
-                       accept=".jpg"
-                       placeholder="[ Work preview ]" 
-                       onChange={this.handleImage.bind(this, i)} />
-                       <br/><br/>
+        <FileInput 
+               accept=".jpg"
+               placeholder="[ Work preview ]" 
+               onChange={this.handleImage.bind(this, i)} />
+               <br/><br/>
         </span><br/>
       {this.state.Works[i].filedata &&
         <img src={this.state.Works[i].filedata} width="250px" />
@@ -385,7 +385,6 @@ export default class ExhibitReg extends React.Component {
   var total = this.state.auction*20+this.state.print*10+(this.state.digital ? 20 : 0)+(this.state.postage > 0 ? parseInt(this.state.postage) + 20 : 0 )
 
     return (
-      <form noValidate >
   <Card>
   <CardHeader>
   <h2>Worldcon 75 Art Show Registration Form</h2>
@@ -474,7 +473,7 @@ export default class ExhibitReg extends React.Component {
     <label style={label} >Estimated Return Postage (plus 20 &euro; for handling) </label>
     </Col>
     <Col xs={4}>
-    <TextField type="number" name="postage" style={{width: '100px' }} value={this.state.postage} onChange={this.handleChange.bind(this, 'postage')} /> &euro;
+    <TextField type="number" style={{width: '100px' }} value={this.state.postage} onChange={this.handleChange.bind(this, 'postage')} /> &euro;
     </Col>
     </Row>
     <Row>
@@ -484,7 +483,7 @@ export default class ExhibitReg extends React.Component {
     </Col>
     <Col xs={4}>
     <TextField type="number" style={{width: '100px' }}
-     name="total" value={total} /> &euro;
+     value={total} /> &euro;
     </Col>
     </Row>
     <Row>
@@ -537,7 +536,6 @@ export default class ExhibitReg extends React.Component {
         </Row>
       </CardText>
   </Card>
-  </form>
       )
   };
 }
