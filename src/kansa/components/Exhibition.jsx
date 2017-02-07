@@ -58,9 +58,9 @@ export default class ExhibitReg extends React.Component {
             orientation: '', 
             filename: '', 
             filedata: null,
-            year: '', 
+            year: 0, 
             price: 0, 
-            gallery: 0}
+            gallery: ''}
             ]
 
       }
@@ -126,10 +126,10 @@ export default class ExhibitReg extends React.Component {
         _id =  this.state.Works[i].id
     }
 
-    console.log(work)
+    console.log('work ', JSON.stringify(work))
 
     if(_id !== null) {
-      console.log(work)
+      // console.log(work)
       raami.PUT(`work/${_id}`, work).then(res=>{
         console.log(res)
 
@@ -137,7 +137,7 @@ export default class ExhibitReg extends React.Component {
     } else {
       // delete work.id
       raami.POST('work', work).then(res=>{
-        console.log(res)
+        // console.log(res)
         var _work = this.state.Works.slice();
         _work[i].id = res.inserted
         this.setState({Works:_work})
@@ -237,7 +237,7 @@ export default class ExhibitReg extends React.Component {
           this.setState({Works:_work});   
       }
     reader.readAsDataURL(file)
-    console.log(this.state.Works[i])
+    console.log('image',this.state.Works[i])
     }
 
   handlePreview(e) {
@@ -446,7 +446,7 @@ export default class ExhibitReg extends React.Component {
     </Row>
     <Row>
     <Col >
-      <TextField  floatingLabelText="Delivery contact" style={{width: '500px' }}
+      <TextField  floatingLabelText="Delivery contact if you don't mail or deliver your self" style={{width: '500px' }}
        floatingLabelStyle={label} onChange={this.handleChange.bind(this, 'agent')} value={this.state.agent} />
     </Col>
   </Row>
