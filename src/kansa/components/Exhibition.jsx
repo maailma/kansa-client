@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 import Checkbox from 'material-ui/Checkbox';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
@@ -73,15 +72,14 @@ export default class ExhibitReg extends React.Component {
         var _work = this.state.Works.slice();
         _work[0].artist_id = ID
         raami.GET(`works/${ID}`).then(res => {
-          console.log(res)
           if('works' in res) {
             res.works.forEach((item) => {
               _work.unshift(item)
               
             })
           this.setState({Works:_work})
-          console.log(this.state)
           }
+          console.log('artist',this.state)
       })
 
         }
@@ -129,7 +127,7 @@ export default class ExhibitReg extends React.Component {
     console.log('work ', JSON.stringify(work))
 
     if(_id !== null) {
-      // console.log(work)
+      console.log('udpate work')
       raami.PUT(`work/${_id}`, work).then(res=>{
         console.log(res)
 
@@ -175,8 +173,8 @@ export default class ExhibitReg extends React.Component {
             filedata: null, 
             price: '',
             year: '', 
-            gallery: ''}
-
+            gallery: ''
+          }
       )
 
     this.setState({Works: _work})
@@ -237,7 +235,7 @@ export default class ExhibitReg extends React.Component {
           this.setState({Works:_work});   
       }
     reader.readAsDataURL(file)
-    console.log('image',this.state.Works[i])
+    // console.log('image',this.state.Works[i])
     }
 
   handlePreview(e) {
@@ -256,12 +254,8 @@ export default class ExhibitReg extends React.Component {
 
   }
 
-
   render() {
 
-
-
-  
   /**** inline styles ****/
 
   const grey = { 
