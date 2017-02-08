@@ -299,7 +299,7 @@ export default class ExhibitReg extends React.Component {
           <Paper style={paper}>
       <Row>
         <Col >
-          <TextField  floatingLabelText="Artwork title, year completed" style={{width: '500px' }}
+          <TextField  floatingLabelText="Artwork title" style={{width: '500px' }}
            floatingLabelStyle={label} value={this.state.Works[i].title} onChange={this.handleWork.bind(this, i, 'title')} />
         </Col>
       </Row>
@@ -316,14 +316,18 @@ export default class ExhibitReg extends React.Component {
           </Col>
         </Row>
 
-      <Row>
-    <Col className="upload">    
-    <span style={grey}>Upload image (max 2 MB)</span>
+      <Row style={{zIndex:0, position:'relative',height:'200px'}}>
+    <Col>    
+    <span style={grey}>Preview image (max 2 MB)</span>
     <br/>
-    <span style={zindex} className="upload">
+          <i>By uploading I give permission for this image to be reproduced to <br/>
+      promote the art show on the Worldcon75 website, social media <br/>
+      accounts, and at the convention.</i>
+
+    <span className="upload">
         <FileInput 
                accept=".jpg"
-               placeholder="[ Work preview ]" 
+               placeholder="[ Upload ]" 
                onChange={this.handleImage.bind(this, i)} />
                <br/><br/>
         </span><br/>
@@ -390,8 +394,9 @@ export default class ExhibitReg extends React.Component {
   <h2>Worldcon 75 Art Show Registration Form</h2>
   <div style = {center}>
   <i>Please fill in the general fields to register to the W75 art show. 
-  You can edit and fill the details concerning individual art works also later. <br/>
-  The fee is a preliminary estimate and may change. Payment will be due in April latest. 
+  You can come back to edit this form and fill in details concerning individual art works later.<br/>
+  The fee is a preliminary estimate and may change. Payment will be due in April by the latest. 
+  Please wait for confirmation and an invoice from the art show before attempting to pay. <br/>
   Changes and additions to this form will be notified by email.</i></div>
   </CardHeader>
   <CardText>
@@ -439,8 +444,9 @@ export default class ExhibitReg extends React.Component {
     </Row>
     <Row>
     <Col >
-      <TextField  floatingLabelText="Delivery contact if you don't mail or deliver your self" style={{width: '500px' }}
-       floatingLabelStyle={label} onChange={this.handleChange.bind(this, 'agent')} value={this.state.agent} />
+      <TextField  floatingLabelText="Agent name and contact details (if applicable)" style={{width: '500px' }}
+       floatingLabelStyle={label} onChange={this.handleChange.bind(this, 'agent')} value={this.state.agent} 
+       multiLine={true} rows={3} />
     </Col>
   </Row>
 
