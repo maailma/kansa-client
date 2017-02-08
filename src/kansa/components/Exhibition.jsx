@@ -316,15 +316,11 @@ export default class ExhibitReg extends React.Component {
           </Col>
         </Row>
 
-      <Row style={{zIndex:0, position:'relative',height:'200px'}}>
-    <Col>    
+      <Row>
+    <Col style={{ minHeight:'250px',display:'block',marginBottom:'20px'}} >    
     <span style={grey}>Preview image (max 2 MB)</span>
     <br/>
-          <i>By uploading I give permission for this image to be reproduced to <br/>
-      promote the art show on the Worldcon75 website, social media <br/>
-      accounts, and at the convention.</i>
-
-    <span className="upload">
+    <span className="upload" style={zindex}>
         <FileInput 
                accept=".jpg"
                placeholder="[ Upload ]" 
@@ -334,6 +330,11 @@ export default class ExhibitReg extends React.Component {
       {this.state.Works[i].filedata &&
         <img src={this.state.Works[i].filedata} width="250px" />
       }
+      <br/>
+      <span style={{position:'relative', top: '20px'}}>
+      <i>By uploading I give permission for this image to be <br/>
+      reproduced to promote the art show on the Worldcon75 website, <br/>
+      social media accounts, and at the convention.</i></span>
         </Col>
       </Row>
       <Row>
