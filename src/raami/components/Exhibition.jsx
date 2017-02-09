@@ -66,18 +66,20 @@ export default class ExhibitReg extends React.Component {
       }
 
 
-    raami.GET(`${member}̀/artist`).then((data)=>{
-      if(data.length > 0 && data[0].id > 0) {
-        this.setState(data[0])
-        ID = data[0].id
+    raami.GET(`${member}/artist`).then((data)=>{
+      console.log(data)
+      if(data.people_id > 0) {
+        // this.setState(data)
+        ID = data.id
         var _work = this.state.Works.slice();
         _work[0].people_id = member
         raami.GET(`${member}/works`).then(res => {
+          console.log(res)
           if('works' in res) {
-            res.works.forEach((item) => {
-              _work.unshift(item)
+            // res.works.forEach((item) => {
+            //   _work.unshift(item)
               
-            })
+            // })
           this.setState({Works:_work})
           }
           console.log('artist',this.state)
@@ -117,7 +119,7 @@ export default class ExhibitReg extends React.Component {
     console.log('work ', JSON.stringify(work))
 
     if(_id !== null) {
-      raami.PUT(`${work.peple_id}/work/${_id}`, work).then(res=>{
+      raami.PUT(`${work.people_id}/work/${_id}`, work).then(res=>{
         console.log(res)
 
       })      
