@@ -68,9 +68,9 @@ export default class ExhibitReg extends React.Component {
 
     raami.GET(`${member}/artist`).then((data)=>{
       console.log(data)
-      if(data.people_id > 0) {
-        // this.setState(data)
-        ID = data.id
+      if(data && data.people_id > 0) {
+        this.setState(data)
+        ID = data.people_id
         var _work = this.state.Works.slice();
         _work[0].people_id = member
         raami.GET(`${member}/works`).then(res => {
