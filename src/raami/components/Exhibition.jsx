@@ -76,10 +76,10 @@ export default class ExhibitReg extends React.Component {
         raami.GET(`${member}/works`).then(res => {
           console.log(res)
           if('works' in res) {
-            // res.works.forEach((item) => {
-            //   _work.unshift(item)
+            res.works.forEach((item) => {
+              _work.unshift(item)
               
-            // })
+            })
           this.setState({Works:_work})
           }
           console.log('artist',this.state)
