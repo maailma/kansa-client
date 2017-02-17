@@ -119,12 +119,12 @@ export default class ExhibitReg extends React.Component {
     console.log('work ', JSON.stringify(work))
 
     if(_id !== null) {
-      raami.PUT(`${work.people_id}/work/${_id}`, work).then(res=>{
+      raami.PUT(`${work.people_id}/works/${_id}`, work).then(res=>{
         console.log(res)
       })      
     } else {
       // delete work.id
-      raami.POST(`${work.people_id}/work`, work).then(res=>{
+      raami.POST(`${work.people_id}/works`, work).then(res=>{
         // console.log(res)
         var _work = this.state.Works.slice();
         _work[i].id = res.inserted
@@ -139,7 +139,7 @@ export default class ExhibitReg extends React.Component {
 
         var work = this.state.Works[i]
 
-        raami.DELETE(`${work.people_id}/work/${work.id}`).then(res=>{
+        raami.DELETE(`${work.people_id}/works/${work.id}`).then(res=>{
           console.log(res)
     
         })
