@@ -125,7 +125,7 @@ export default class ExhibitReg extends React.Component {
       })      
     } else {
       // delete work.id
-      raami.POST('${work.people_id}/work', work).then(res=>{
+      raami.POST(`${work.people_id}/work` , work).then(res=>{
         // console.log(res)
         var _work = this.state.Works.slice();
         _work[i].id = res.inserted
