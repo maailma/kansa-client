@@ -173,9 +173,12 @@ export default class ExhibitReg extends React.Component {
 
   handleWork(i, field, e) {
     var _work = this.state.Works.slice();
-    _work[i][field] = e.target.value; 
-    this.setState({Works:_work});    
-    
+    if(e.target.value === parseInt(e.target.value) && e.target.value < 0) {
+      _work[i][field] = 0; 
+    } else {
+      _work[i][field] = e.target.value; 
+    }
+    this.setState({Works:_work});      
   }
 
   selectWork(i, field, e, key, val) {
@@ -187,7 +190,11 @@ export default class ExhibitReg extends React.Component {
 
   handleChange(field, e) {
     var newState = {}; 
-    newState[field] = e.target.value; 
+    if(e.target.value === parseInt(e.target.value) && e.target.value < 0) {
+      newState[field] = 0; 
+    } else {
+      newState[field] = e.target.value; 
+    }
     this.setState(newState);    
     
   }

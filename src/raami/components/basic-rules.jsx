@@ -11,9 +11,13 @@ To view, bid, or purchase artwork, one must have an attending Worldcon 75 member
 We welcome all styles of original art by creators from all backgrounds within the auction gallery, the print shop, and the digital gallery. Subject matter should stay under the very broad umbrella of ‘science fiction, fantasy, horror, astronomical, fannish, or related themes’.<br/><br/>
 Worldcon 75 will reserve the right to leave out artworks or artists that fail to meet our quality standards or are otherwise unsuitable for the art show.<br/><br/>
 Wordcon 75 art show has three sections: the auction gallery, the print shop and the digital gallery. Artists are welcome to display work in any section of the art show or in all of them.<br/><br/>
-The auction gallery will contain works that may be available for purchase via written auction. Work in the auction gallery must be singular in that no other copies of that image or work may be on display in the same section, regardless of medium or size. NFS or “Not For Sale” work is allowed in the auction gallery, but we would appreciate it if at least half of your work is for sale. You may not enter works into the auction if they are also for sale in the print shop or the dealers room (but you may enter the original of a work for which you are selling prints in the print shop or the dealers room).<br/><br/>
-The print shop will contain work that is available for immediate purchase. Art works placed in this section must have fixed price and be ready for immediate pick up during opening hours of the art show. There must be a minimum of five (5) identical copies of each image entered into the print shop.<br/><br/>
-The digital gallery is a digital display of art works which can not be purchased (though the originals may also be entered into the auction gallery or print shop for sale as appropriate).<br/><br/>
+The auction gallery will contain works that may be available for purchase via written auction. 
+<b>Please note that we will NOT be holding a live voice art auction, for reasons of language and logistics. The auction will be run on paper bid sheets only; please price your 
+works accordingly.</b> Work in the auction gallery must be singular in that no other copies of that image or work may be on display in 
+the same section, regardless of medium or size. NFS or “Not For Sale” work is allowed in the auction gallery, 
+but we would appreciate it if at least half of your work is for sale. You may not enter works into the auction 
+if they are also for sale in the print shop or the dealers room (but you may enter the original of a work for which you are 
+selling prints in the print shop or the dealers room).<br/><br/>
 <b>Copyright:</b><br/>
 All artworks must be created by the submitting artist. If the artwork is a product of collaboration with other artist(s) that must be clearly indicated when submitting said artwork to the art show. The Worldcon 75 art show does not accept art for resale.<br/><br/>
 <b>Reproduction Rights:</b><br/>
