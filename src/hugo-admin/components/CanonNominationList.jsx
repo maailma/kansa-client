@@ -98,7 +98,7 @@ class CanonNominationList extends React.Component {
         const ci = nom.get('canon_id');
         if (ci) {
           const nc = nom.get('category');
-          return nom.set('data', canon.getIn([nc, ci]));
+          return nom.merge(canon.getIn([nc, ci]));
         } else {
           return nom;
         }
@@ -136,7 +136,7 @@ class CanonNominationList extends React.Component {
     const cl = [];
     const nom = index >= 0 && nominations.get(index);
     if (nom) {
-      if (nom.getIn(['data', 'disqualified'])) cl.push('disqualified');
+      if (nom.get('disqualified')) cl.push('disqualified');
       if (this.props.selected.includes(nom)) cl.push('selected');
     }
     return cl.join(' ');
@@ -151,7 +151,7 @@ class CanonNominationList extends React.Component {
     const { sortBy, sortDirection } = this.state;
     let list = this.list.sortBy(n => sortBy === 'ballotCount'
       ? this.ballotCount(n)
-      : n.getIn(['data', sortBy], '').toLowerCase().trim()
+      : n.getIn(['data', sortBy], '').toLowerCase().trim().replace(/^(?:a|an|the) +/, '')
     );
     if (sortDirection === SortDirection.DESC) list = list.reverse();
     return (
