@@ -72,8 +72,12 @@ export default class ExhibitReg extends React.Component {
     });
   }
 
-  handleSubmit(artist) {
-    this.state.api.POST('artist', artist).then(res => console.log(res));
+  handleSubmit() {
+    const artist = Object.assign({}, this.state, {
+      api: undefined,
+      Works: undefined
+    });
+    this.state.api.POST('artist', artist).then(res => console.log('POST ARTIST', res));
   }
 
   submitWork(i) {
@@ -83,7 +87,6 @@ export default class ExhibitReg extends React.Component {
     work.width = parseFloat(work.width);
     work.height = parseFloat(work.height);
     work.depth = parseFloat(work.depth);
-    console.log('WORK', JSON.stringify(work));
     const raami = this.state.api;
     if (work.id) {
       raami.POST(`works/${work.id}`, work).then(res => console.log('POST WORK', res));
@@ -99,11 +102,16 @@ export default class ExhibitReg extends React.Component {
 
   deleteWork(i) {
     const work = this.state.Works[i];
-    if (work.id) {
-      this.state.api.DELETE(`works/${work.id}`).then(res => console.log(res));
-    } else {
-      alert('Cant delete nothing!')
-    }
+    if (work.id) this.state.api.DELETE(`works/${work.id}`)
+      .then(res => console.log('DELETE WORK', res))
+      .catch(() => {
+        this.state.api.GET('works').then(works => {
+          if (Array.isArray(works)) this.setState({ Works: works });
+        });
+      });
+    const works = this.state.Works.slice();
+    delete works[i];
+    this.setState({ Works: works });
   }
   
   addWork() {
