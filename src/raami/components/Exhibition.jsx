@@ -18,9 +18,6 @@ import BasicRules from './basic-rules';
 import { API_ROOT } from '../../constants'
 import API from '../../lib/api'
 
-const raami = new API(`${API_ROOT}raami/`);
-var ID = 0
-
 export default class ExhibitReg extends React.Component {
 
   constructor(props) {
@@ -28,6 +25,7 @@ export default class ExhibitReg extends React.Component {
     const member = props.params.id;
     console.log(props.params);
     this.state = {
+      api: new API(`${API_ROOT}raami/${member}/`),
       people_id: parseInt(member),
       name: '',
       url:'',
@@ -61,146 +59,96 @@ export default class ExhibitReg extends React.Component {
         gallery: ''
       }]
     };
+    const raami = this.state.api;
+    raami.GET('artist').then(artist => {
+      console.log('ARTIST', artist);
+      if (artist && artist.people_id > 0) {
+        this.setState(artist);
+        raami.GET('works').then(works => {
+          console.log('WORKS', works);
+          if (Array.isArray(works)) this.setState({ Works: works });
+        });
       }
-
-    raami.GET(`${member}/artist`).then((data)=>{
-      console.log(data)
-      if(data && data.people_id > 0) {
-        this.setState(data)
-        ID = data.people_id
-        var _work = this.state.Works.slice();
-        _work[0].people_id = member
-        raami.GET(`${member}/works`).then(res => {
-          console.log(res)
-          if('works' in res) {
-            res.works.forEach((item) => {
-              _work.unshift(item)
-            })
-          this.setState({Works:_work})
-          }
-          console.log('artist',this.state)
-      })
-        }
-      })
+    });
   }
 
   handleSubmit(artist) {
-
-    var artist = this.state
-    console.log(artist)
-      raami.POST(`${artist.people_id}/artist`, artist).then(res=>{
-        console.log(res)
-      })      
+    this.state.api.POST('artist', artist).then(res => console.log(res));
   }
 
   submitWork(i) {
-
-    var work = this.state.Works[i]
-    
-    work.year = parseInt(work.year)
-    work.price = parseFloat(work.price)
-    work.width = parseFloat(work.width)
-    work.height = parseFloat(work.height)
-    work.depth = parseFloat(work.depth)
-    
-    var _id = null
-
-    if(this.state.Works[i].id !== null) {
-        _id =  this.state.Works[i].id
-    }
-
-    console.log('work ', JSON.stringify(work))
-
-    if(_id !== null) {
-      raami.PUT(`${work.people_id}/works/${_id}`, work).then(res=>{
-        console.log(res)
-      })      
+    const work = this.state.Works[i];
+    work.year = parseInt(work.year);
+    work.price = parseFloat(work.price);
+    work.width = parseFloat(work.width);
+    work.height = parseFloat(work.height);
+    work.depth = parseFloat(work.depth);
+    console.log('WORK', JSON.stringify(work));
+    const raami = this.state.api;
+    if (work.id) {
+      raami.POST(`works/${work.id}`, work).then(res => console.log('POST WORK', res));
     } else {
-      // delete work.id
-      raami.POST(`${work.people_id}/works`, work).then(res=>{
-        console .log(res)
-        var _work = this.state.Works.slice();
-        _work[i].id = res.inserted
-        this.setState({Works:_work})
+      raami.PUT(`works`, work).then(res => {
+        console.log('PUT WORK', res);
+        const works = this.state.Works.slice();
+        works[i] = Object.assign({}, works[i], { id: res.inserted });
+        this.setState({ Works: works });
       })
     }
   }
 
   deleteWork(i) {
-    if(this.state.Works[i].id) {
-
-        var work = this.state.Works[i]
-
-        raami.DELETE(`${work.people_id}/works/${work.id}`).then(res=>{
-          console.log(res)
-    
-        })
-      } else {
-        alert('Cant delete nothing!')
-      }
+    const work = this.state.Works[i];
+    if (work.id) {
+      this.state.api.DELETE(`works/${work.id}`).then(res => console.log(res));
+    } else {
+      alert('Cant delete nothing!')
+    }
   }
   
   addWork() {
-    
-    var _work = this.state.Works.slice();
-
-      _work.push(
-          { id: null, 
-            people_id: this.state.people_id, 
-            title: '',
-            width: '',
-            height: '', 
-            technique: '', 
-            orientation: '', 
-            filename: '', 
-            filedata: null, 
-            price: '',
-            year: '', 
-            gallery: ''
-          }
-      )
-
-    this.setState({Works: _work})
-    }
-
-  handleWork(i, field, e) {
-    var _work = this.state.Works.slice();
-    if(e.target.value === parseInt(e.target.value) && e.target.value < 0) {
-      _work[i][field] = 0; 
-    } else {
-      _work[i][field] = e.target.value; 
-    }
-    this.setState({Works:_work});      
+    const works = this.state.Works.slice();
+    works.push({
+      id: null,
+      people_id: this.state.people_id,
+      title: '',
+      width: '',
+      height: '',
+      technique: '',
+      orientation: '',
+      filename: '',
+      filedata: null,
+      price: '',
+      year: '',
+      gallery: ''
+    });
+    this.setState({ Works: works });
   }
 
-  selectWork(i, field, e, key, val) {
-      var _work = this.state.Works.slice();
-      _work[i][field] = val; 
-      this.setState({Works:_work});
-    }
-
-
-  handleChange(field, e) {
-    var newState = {}; 
-    if(e.target.value === parseInt(e.target.value) && e.target.value < 0) {
-      newState[field] = 0; 
-    } else {
-      newState[field] = e.target.value; 
-    }
-    this.setState(newState);    
-    
+  handleWork(i, field, { target: { value } }) {
+    if (typeof value === 'number' && value < 0) value = 0;
+    const works = this.state.Works.slice();
+    works[i] = Object.assign({}, works[i], { [field]: value });
+    this.setState({ Works: works });
   }
 
-  handleCheck(field, e, val) {
-    var newState = {}; 
-    newState[field] = val; 
-    this.setState(newState);
+  selectWork(i, field, e, key, value) {
+    const works = this.state.Works.slice();
+    works[i] = Object.assign({}, works[i], { [field]: value });
+    this.setState({ Works: works });
   }
 
-  handleSelect(field, e, key, val) {
-    var newState = {}; 
-    newState[field] = val; 
-    this.setState(newState);   
+  handleChange(field, { target: { value } }) {
+    if (typeof value === 'number' && value < 0) value = 0;
+    this.setState({ [field]: value });
+  }
+
+  handleCheck(field, e, value) {
+    this.setState({ [field]: value });
+  }
+
+  handleSelect(field, e, key, value) {
+    this.setState({ [field]: value });
   }
 
   handleOpen = (e) => {
@@ -213,33 +161,16 @@ export default class ExhibitReg extends React.Component {
   };
 
   handleImage(i, e) {
-     // e.preventDefault();
-
-    var reader = new FileReader();
-    var file = e.target.files[0];
+    const reader = new FileReader();
+    const file = e.target.files[0];
     reader.onloadend = () => {
-
-          var _work = this.state.Works.slice();
-          _work[i]['filename'] = file.name;
-          _work[i]['filedata'] = reader.result;
-          this.setState({Works:_work});   
-      }
-    reader.readAsDataURL(file)
-    // console.log('image',this.state.Works[i])
-    }
-
-  handlePreview(e) {
-     // e.preventDefault();
-
-    var reader = new FileReader();
-    var file = e.target.files[0];
-    reader.onloadend = () => {
-
-      this.setState({
+      const works = this.state.Works.slice();
+      works[i] = Object.assign({}, works[i], {
         filename: file.name,
         filedata: reader.result
       });
-    }
+      this.setState({ Works: works });
+    };
     reader.readAsDataURL(file)
   }
 
@@ -411,7 +342,9 @@ export default class ExhibitReg extends React.Component {
       </Col>
     ));
 
-  var total = this.state.auction*20+this.state.print*10+(this.state.digital ? 20 : 0)+(this.state.postage > 0 ? parseInt(this.state.postage) + 20 : 0 )
+    let total = this.state.auction * 20 + this.state.print * 10;
+    if (this.state.digital) total += 20;
+    if (this.state.postage > 0) total += parseInt(this.state.postage) + 20;
 
     return (
       <Card>
