@@ -2,7 +2,6 @@ import React from 'react';
 
 import Checkbox from 'material-ui/Checkbox';
 import Dialog from 'material-ui/Dialog';
-import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton'
 import MenuItem from 'material-ui/MenuItem';
 import SelectField from 'material-ui/SelectField';
@@ -10,9 +9,8 @@ import TextField from 'material-ui/TextField';
 const { Col, Row } = require('react-flexbox-grid');
 import { Card, CardActions, CardHeader, CardText } from 'material-ui/Card'
 import Divider from 'material-ui/Divider';
-import Paper from 'material-ui/Paper';
-import FileInput from 'react-file-input';
 
+import Artwork from './Artwork';
 import BasicRules from './basic-rules';
 
 import { API_ROOT } from '../../constants'
@@ -43,21 +41,7 @@ export default class ExhibitReg extends React.Component {
       waitlist: false,
       postage: 0,
       open: false,
-      Works: [{
-        id: null,
-        people_id: member,
-        title: '',
-        width: 0,
-        height: 0,
-        depth: 0,
-        technique: '',
-        orientation: '',
-        filename: '',
-        filedata: null,
-        year: 0,
-        price: 0,
-        gallery: ''
-      }]
+      Works: [{ id: null }]
     };
     const raami = this.state.api;
     raami.GET('artist').then(artist => {
@@ -80,29 +64,27 @@ export default class ExhibitReg extends React.Component {
     this.state.api.POST('artist', artist).then(res => console.log('POST ARTIST', res));
   }
 
-  submitWork(i) {
-    const work = this.state.Works[i];
-    work.year = parseInt(work.year);
-    work.price = parseFloat(work.price);
-    work.width = parseFloat(work.width);
-    work.height = parseFloat(work.height);
-    work.depth = parseFloat(work.depth);
+  saveWork(i, id, work) {
     const raami = this.state.api;
-    if (work.id) {
-      raami.POST(`works/${work.id}`, work).then(res => console.log('POST WORK', res));
+    if (id) {
+      raami.POST(`works/${id}`, work).then(res => {
+        console.log('POST WORK', res);
+        const works = this.state.Works.slice();
+        works[i] = Object.assign({}, work, { id });
+        this.setState({ Works: works });
+      });
     } else {
       raami.PUT(`works`, work).then(res => {
         console.log('PUT WORK', res);
         const works = this.state.Works.slice();
-        works[i] = Object.assign({}, works[i], { id: res.inserted });
+        works[i] = Object.assign({}, work, { id: res.inserted });
         this.setState({ Works: works });
       })
     }
   }
 
-  deleteWork(i) {
-    const work = this.state.Works[i];
-    if (work.id) this.state.api.DELETE(`works/${work.id}`)
+  deleteWork(i, id) {
+    if (id) this.state.api.DELETE(`works/${id}`)
       .then(res => console.log('DELETE WORK', res))
       .catch(() => {
         this.state.api.GET('works').then(works => {
@@ -116,33 +98,7 @@ export default class ExhibitReg extends React.Component {
   
   addWork() {
     const works = this.state.Works.slice();
-    works.push({
-      id: null,
-      people_id: this.state.people_id,
-      title: '',
-      width: '',
-      height: '',
-      technique: '',
-      orientation: '',
-      filename: '',
-      filedata: null,
-      price: '',
-      year: '',
-      gallery: ''
-    });
-    this.setState({ Works: works });
-  }
-
-  handleWork(i, field, { target: { value } }) {
-    if (typeof value === 'number' && value < 0) value = 0;
-    const works = this.state.Works.slice();
-    works[i] = Object.assign({}, works[i], { [field]: value });
-    this.setState({ Works: works });
-  }
-
-  selectWork(i, field, e, key, value) {
-    const works = this.state.Works.slice();
-    works[i] = Object.assign({}, works[i], { [field]: value });
+    works.push({ id: null });
     this.setState({ Works: works });
   }
 
@@ -168,20 +124,6 @@ export default class ExhibitReg extends React.Component {
     this.setState({open: false});
   };
 
-  handleImage(i, e) {
-    const reader = new FileReader();
-    const file = e.target.files[0];
-    reader.onloadend = () => {
-      const works = this.state.Works.slice();
-      works[i] = Object.assign({}, works[i], {
-        filename: file.name,
-        filedata: reader.result
-      });
-      this.setState({ Works: works });
-    };
-    reader.readAsDataURL(file)
-  }
-
   render() {
     /**** inline styles ****/
 
@@ -196,157 +138,17 @@ export default class ExhibitReg extends React.Component {
       fontSize: '16px',
     };
 
-    const paper = {
-      display: 'inline-block',
-      float: 'left',
-      padding: '20px',
-      marginTop: '20px',
-      marginLeft: '20px'
-    };
-
-    const zindex = {
-      zIndex: '0',
-      position: 'absolute'
-    };
-
     const center = {
       textAlign: 'center'
     };
 
     const works = this.state.Works.map((work, i) => (
       <Col key={ i }>
-        <Paper style={paper}>
-          <Row>
-            <Col>
-              <TextField
-                floatingLabelStyle={label}
-                floatingLabelText="Artwork title"
-                onChange={this.handleWork.bind(this, i, 'title')}
-                style={{ width: '500px' }}
-                value={work.title}
-              />
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <label style={label}>Select Gallery</label>
-              <br/>
-              <SelectField
-                floatingLabelStyle={label}
-                floatingLabelText=""
-                onChange={this.selectWork.bind(this, i, 'gallery')}
-                value={work.gallery}
-              >
-                <MenuItem value={'Auction'} primaryText="Auction gallery" />
-                <MenuItem value={'Printshop'} primaryText="Printshop" />
-                <MenuItem value={'Digital'} primaryText="Digital gallery" />
-              </SelectField>
-            </Col>
-          </Row>
-          <Row>
-            <Col style={{ minHeight:'250px',display:'block',marginBottom:'20px'}} >
-              <span style={grey}>Preview image (max 2 MB)</span>
-              <br/>
-              <span className="upload" style={zindex}>
-                <FileInput
-                  accept=".jpg"
-                  onChange={this.handleImage.bind(this, i)}
-                  placeholder="[ Upload ]"
-                />
-                <br/><br/>
-              </span>
-              <br/>
-              {work.filedata && <img src={work.filedata} width="250px" />}
-              <br/>
-              <span style={{position:'relative', top: '20px'}}>
-                <i>By uploading I give permission for this image to be <br/>
-                reproduced to promote the art show on the Worldcon 75 website, <br/>
-                social media accounts, and at the convention.</i>
-              </span>
-            </Col>
-          </Row>
-          <Row>
-            <Col >
-              <TextField
-                type="number"
-                floatingLabelText="Width"
-                style={{width: '100px' }}
-                floatingLabelStyle={label}
-                value={work.width}
-                onChange={this.handleWork.bind(this, i, 'width')}
-              />
-            </Col>
-            <Col >
-              <TextField
-                type="number"
-                floatingLabelText="Height"
-                style={{width: '100px' }}
-                floatingLabelStyle={label}
-                value={work.height}
-                onChange={this.handleWork.bind(this, i, 'height')}
-              />
-            </Col>
-            <Col >
-              <TextField
-                type="number"
-                floatingLabelText="Depth"
-                style={{width: '100px' }}
-                floatingLabelStyle={label}
-                value={work.depth}
-                onChange={this.handleWork.bind(this, i, 'depth')}
-              /> cm
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <SelectField
-                floatingLabelStyle={label}
-                floatingLabelText="Technique"
-                value={work.technique}
-                onChange={this.selectWork.bind(this, i, 'technique')}
-              >
-                <MenuItem value={'Painting'} primaryText="Painting" />
-                <MenuItem value={'Drawing'} primaryText="Drawing" />
-                <MenuItem value={'Mixed'} primaryText="Mixed media" />
-                <MenuItem value={'Photograph'} primaryText="Photograph" />
-                <MenuItem value={'Digital'} primaryText="Digital" />
-                <MenuItem value={'3D'} primaryText="3D (ie. sculpture)" />
-                <MenuItem value={'Other'} primaryText="Other (eg. jewellery)" />
-              </SelectField>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <SelectField
-                floatingLabelText="Display"
-                floatingLabelStyle={label}
-                onChange={this.selectWork.bind(this, i, 'orientation')}
-                value={this.state.Works[i].orientation}
-              >
-                <MenuItem value={'Table'} primaryText="Table-top display" />
-                <MenuItem value={'Wall'} primaryText="Wall mounted" />
-              </SelectField>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <FlatButton
-                type="submit"
-                label="Save"
-                onClick={this.submitWork.bind(this, i)}
-                className="button-submit"
-                primary={true}
-              />
-              <FlatButton
-                type="submit"
-                label="Delete"
-                onClick={this.deleteWork.bind(this, i)}
-                className="button-submit"
-                secondary={true}
-              />
-            </Col>
-          </Row>
-        </Paper>
+        <Artwork
+          onDelete={() => this.deleteWork(i, work.id)}
+          onSave={newWork => this.saveWork(i, work.id, newWork)}
+          work={work}
+        />
       </Col>
     ));
 
