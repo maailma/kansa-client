@@ -248,8 +248,10 @@ export default class ExhibitReg extends React.Component {
             </Col>
           </Row>
           <Row>
-            <Col sm={6}>
-              <label style={label}>Auction gallery</label>
+            <Col sm={2}> 
+              <label style={label}>Auction gallery </label>
+              </Col>
+              <Col sm={4}>
               <TextField
                 type="number"
                 floatingLabelStyle={label}
@@ -262,8 +264,10 @@ export default class ExhibitReg extends React.Component {
             </Col>
           </Row>
           <Row>
-            <Col sm={6}>
-              <label style={label}>Printshop gallery</label>
+            <Col sm={2}>
+              <label style={label}>Printshop gallery </label>
+              </Col>
+              <Col sm={4}>
               <TextField
                 type="number"
                 floatingLabelStyle={label}
