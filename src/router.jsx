@@ -18,6 +18,7 @@ import Upgrade from './membership/components/Upgrade'
 import Payments from './payments'
 import NewPayment from './payments/new-payment'
 import ExhibitRegistration from './raami/components/Registration'
+import VolunteerRegistration from './voltti/components/Registration'
 
 const hugoRoutes = (path, requireAuth) => (
   <Route path={path} >
@@ -85,6 +86,7 @@ export default class AppRouter extends Route {
           <Redirect from="login" to="/" />
           <Redirect from="profile" to="/" />
           <Route path="exhibition/:id" component={ExhibitRegistration} onEnter={this.requireAuth} />
+          <Route path="volunteer/:id" component={VolunteerRegistration} o nEnter={this.requireAuth} />
           {hugoRoutes('hugo', this.requireAuth)}
           <Route path="new" component={NewMemberIndex} />
           <Route path="new/:membership" component={NewMemberForm} />
