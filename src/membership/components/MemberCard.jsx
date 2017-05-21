@@ -8,6 +8,7 @@ import ThumbUp from 'material-ui/svg-icons/action/thumb-up'
 import ContentCreate from 'material-ui/svg-icons/content/create'
 import Palette from 'material-ui/svg-icons/image/palette'
 import LocationCity from 'material-ui/svg-icons/social/location-city'
+import Accessibility from 'material-ui/svg-icons/action/accessibility'
 const ImmutablePropTypes = require('react-immutable-proptypes')
 
 import Rocket from '../../lib/rocket-icon'
@@ -106,7 +107,7 @@ class MemberCard extends React.Component {
       <Action
         key="vo"
         innerDivStyle={{ paddingLeft: 60 }}
-        leftIcon={<Rocket />}
+        leftIcon={<Accessibility />}
         onTouchTap={ () => push(`/volunteer/${id}`) }
         primaryText="Register to Volunteer"
       />

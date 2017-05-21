@@ -8,6 +8,7 @@ import ThumbUp from 'material-ui/svg-icons/action/thumb-up'
 import Palette from 'material-ui/svg-icons/image/palette'
 import People from 'material-ui/svg-icons/social/people'
 import PersonAdd from 'material-ui/svg-icons/social/person-add'
+import Accessibility from 'material-ui/svg-icons/action/accessibility'
 
 import Rocket from '../../lib/rocket-icon'
 
@@ -22,6 +23,11 @@ const singleWithKey = (currentMember, otherMembers, key) => (
 const linkArtshowRegistration = (currentMember) => {
   const ms = currentMember && currentMember.get('membership');
   return ['Supporter', 'Youth', 'FirstWorldcon', 'Adult'].indexOf(ms) !== -1;
+};
+
+const linkVolunteerRegistration = (currentMember) => {
+  const ms = currentMember && currentMember.get('membership');
+  return ['Youth', 'FirstWorldcon', 'Adult'].indexOf(ms) !== -1;
 };
 
 const linkHugoNominations = (currentMember, otherMembers) => (
@@ -56,6 +62,13 @@ const NavMenu = ({ currentMember, handleNav, otherMembers }) => {
     primaryText="Register for the Art Show"
     style={{ fontSize: 14 }}
     value={`/exhibition/${id}`}
+  />);
+  if (linkArtshowRegistration(currentMember)) memberItems.push(<ListItem
+    key="art"
+    leftIcon={<Accessibility/>}
+    primaryText="Register to Volunteer"
+    style={{ fontSize: 14 }}
+    value={`/volunteer/${id}`}
   />);
   if (memberItems.length) memberItems.push(<Divider
     key="div"
