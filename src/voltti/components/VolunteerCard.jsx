@@ -95,7 +95,6 @@ const VolunteerCard = ({ volunteer: { birth, phone, experience, JV, hygiene, fir
     <SelectField
       floatingLabelStyle={labelStyle}
       floatingLabelText="T-shirt size"
-      fullWidth={true}
       onChange={(ev, key, value) => onChange({ tshirt: value })}
       value={tshirt}
     >
@@ -110,7 +109,7 @@ const VolunteerCard = ({ volunteer: { birth, phone, experience, JV, hygiene, fir
 
     <SelectField
       floatingLabelStyle={labelStyle}
-      floatingLabelText="Hugo seremony"
+      floatingLabelText="Hugo ceremony"
       onChange={(ev, key, value) => onChange({ hugo: value })}
       value={hugo}
     >
