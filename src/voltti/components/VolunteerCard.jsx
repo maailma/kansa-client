@@ -15,7 +15,9 @@ const labelStyle = {
   fontSize: 16
 };
 
-const VolunteerCard = ({ volunteer: { birth, phone, experience, JV, hygiene, firstaid, languages, tshirt , allergies, notes
+const VolunteerCard = ({ volunteer: { birth, phone, experience, JV, 
+  hygiene, firstaid, languages, tshirt ,allergies, notes, hours,
+  Tue8, Wed9, Thu10, Fri11, Sat12, Sun13, Mon14
  }, onChange, onSave, style }) => <Card style={style}>
   <CardHeader style={{ fontWeight: 600 }} title="Volunteer Details"/>
   <CardText>
@@ -118,7 +120,7 @@ const VolunteerCard = ({ volunteer: { birth, phone, experience, JV, hygiene, fir
       <MenuItem value="yXL" primaryText="XL" />
  
     </SelectField>
-     Link to seizes table
+     Link to sizes table
 
     <TextField
       floatingLabelStyle={labelStyle}
@@ -130,20 +132,70 @@ const VolunteerCard = ({ volunteer: { birth, phone, experience, JV, hygiene, fir
     />
   </CardText>
   <CardHeader style={{ fontWeight: 600 }} title="Hours and Dates"/>
-
-
   <CardText>
--- Hours
--- Tuesday August 8 (MIMO only) 
--- Wednesday August 9 
--- Thursday August 10 
--- Friday August 11 
--- Saturday August 12 
--- Sunday August 13 
--- Monday August 14 (MIMO only)
-
--- Tue8, Wed9, Thu10, Fri11, Sat12, Sun13, Mon14
-</CardText>
+  <TextField
+      floatingLabelStyle={labelStyle}
+      floatingLabelText="How many hours are you willing to work, in total?"
+      fullWidth={true}
+      onChange={ev => onChange({ hours: ev.target.value })}
+      value={hours}
+      type='number'
+    />
+    <label style={labelStyle} >If you register as a volunteer by July 31, you will get your volunteer t-shirt for 15 hours of work. If you register on August 1 or later, you will need 20 hours of work for the t-shirt. 
+    (If you wish to work for more than 20 hours, please check "20" and come to the Volunteers desk at the convention for extra work.)
+    </label>
+    <hr/>
+    
+    <Checkbox
+      checked={Tue8}
+      label = 'On Tuesday August 8 (MIMO only)'
+      labelStyle={labelStyle}
+      onCheck={(ev, value) => onChange({ Tue8: value })}
+      style={{ width: '100%' }}
+    />
+    <Checkbox
+      label = 'On Wednesday August 9'  
+      checked={Wed9}
+      labelStyle={labelStyle}
+      onCheck={(ev, value) => onChange({ Wed9: value })}
+      style={{ width: '100%' }}
+    />
+    <Checkbox
+      label='On Thursday August 10' 
+      checked={Thu10}
+      labelStyle={labelStyle}
+      onCheck={(ev, value) => onChange({ Thu10: value })}
+      style={{ width: '100%' }}
+    />
+    <Checkbox
+      label='On Friday August 11' 
+      checked={Fri11}
+      labelStyle={labelStyle}
+      onCheck={(ev, value) => onChange({ Fri11: value })}
+      style={{ width: '100%' }}
+    />
+    <Checkbox
+      label='On Saturday August 12' 
+      checked={Sat12}
+      labelStyle={labelStyle}
+      onCheck={(ev, value) => onChange({ Sat12: value })}
+      style={{ width: '100%' }}
+    />
+    <Checkbox
+      label='On Sunday August 13' 
+      checked={Thu10}
+      labelStyle={labelStyle}
+      onCheck={(ev, value) => onChange({ Sun13: value })}
+      style={{ width: '100%' }}
+    />
+    <Checkbox
+      label='On Moday August 14 (MIMO only)' 
+      checked={Mon14}
+      labelStyle={labelStyle}
+      onCheck={(ev, value) => onChange({ Mon14: value })}
+      style={{ width: '100%' }}
+    />
+  </CardText>
 
 
   <CardActions style={{ alignItems: 'center', display: 'flex', padding: 16 }}>
@@ -167,7 +219,6 @@ VolunteerCard.propTypes = {
     firstaid: React.PropTypes.string,
     languages: React.PropTypes.string,
     tshirt: React.PropTypes.string,
-    allergies: React.PropTypes.string,
     // hugo: React.PropTypes.string,
     // ex_mimo: React.PropTypes.string,
     // ex_con: React.PropTypes.string,
@@ -181,7 +232,7 @@ VolunteerCard.propTypes = {
     // site: React.PropTypes.string,
     // members: React.PropTypes.string,
     // design: React.PropTypes.string,
-    notes: React.PropTypes.string,
+    hours: React.PropTypes.number,
     
   }).isRequired,
   onChange: React.PropTypes.func.isRequired,
