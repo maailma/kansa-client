@@ -6,7 +6,6 @@ import RaisedButton from 'material-ui/RaisedButton'
 import MenuItem from 'material-ui/MenuItem';
 import SelectField from 'material-ui/SelectField';
 import TextField from 'material-ui/TextField';
-import DatePicker from 'material-ui/DatePicker';
 import { Card, CardActions, CardHeader, CardText } from 'material-ui/Card'
 import OpenInNew from 'material-ui/svg-icons/action/open-in-new'
 
@@ -16,10 +15,9 @@ const labelStyle = {
   fontSize: 16
 };
 
-const VolunteerCard = ({ volunteer: { birth, phone, experience, JV, hygiene, firstaid, languages, tshirt , allergies,
-  hugo, ex_mimo, ex_con, reg, outreach, program, helpdesk, logistic, turva, ops, site, members, design, notes
+const VolunteerCard = ({ volunteer: { birth, phone, experience, JV, hygiene, firstaid, languages, tshirt , allergies, notes
  }, onChange, onSave, style }) => <Card style={style}>
-  <CardHeader style={{ fontWeight: 600 }} title="Volunteer information"/>
+  <CardHeader style={{ fontWeight: 600 }} title="Volunteer Details"/>
   <CardText>
     
     <TextField
@@ -98,157 +96,29 @@ const VolunteerCard = ({ volunteer: { birth, phone, experience, JV, hygiene, fir
       onChange={(ev, key, value) => onChange({ tshirt: value })}
       value={tshirt}
     >
-      <MenuItem value="S" primaryText="S" />
-      <MenuItem value="M" primaryText="M" />
-      <MenuItem value="L" primaryText="L" />
-      <MenuItem value="XL" primaryText="XL" />
-      <MenuItem value="XXL" primaryText="XXL" />
+      <MenuItem disabled primaryText="Unisex" />
+      <MenuItem value="uS" primaryText="S" />
+      <MenuItem value="uM" primaryText="M" />
+      <MenuItem value="uL" primaryText="L" />
+      <MenuItem value="uXL" primaryText="XL" />
+      <MenuItem value="u2XL" primaryText="2XL" />
+      <MenuItem value="u3XL" primaryText="3XL" />
+      <MenuItem value="u4XL" primaryText="4XL" />
+      <MenuItem value="u5XL" primaryText="5XL" />
+     <MenuItem disabled primaryText="Ladyfit" />
+      <MenuItem value="lS" primaryText="S" />
+      <MenuItem value="lM" primaryText="M" />
+      <MenuItem value="lL" primaryText="L" />
+      <MenuItem value="lXL" primaryText="XL" />
+      <MenuItem value="l2XL" primaryText="2XL" />
+      <MenuItem disabled primaryText="Youth" />
+      <MenuItem value="yS" primaryText="S" />
+      <MenuItem value="yM" primaryText="M" />
+      <MenuItem value="yL" primaryText="L" />
+      <MenuItem value="yXL" primaryText="XL" />
+ 
     </SelectField>
-
-    <h3>Volunteer Roles</h3>
-
-    <SelectField
-      floatingLabelStyle={labelStyle}
-      floatingLabelText="Hugo ceremony"
-      onChange={(ev, key, value) => onChange({ hugo: value })}
-      value={hugo}
-    >
-      <MenuItem value="yes" primaryText="Definitely" />
-      <MenuItem value="if" primaryText="If needed" />
-      <MenuItem value="not" primaryText="Absolutely not" />
-    </SelectField>
-
-    <SelectField
-      floatingLabelStyle={labelStyle}
-      floatingLabelText="Exhibtion MIMO"
-      onChange={(ev, key, value) => onChange({ ex_mimo: value })}
-      value={ex_mimo}
-    >
-      <MenuItem value="yes" primaryText="Definitely" />
-      <MenuItem value="if" primaryText="If needed" />
-      <MenuItem value="not" primaryText="Absolutely not" />
-    </SelectField>
-
-      <SelectField
-      floatingLabelStyle={labelStyle}
-      floatingLabelText="Exhibition at con"
-      onChange={(ev, key, value) => onChange({ ex_con: value })}
-      value={ex_con}
-    >
-      <MenuItem value="yes" primaryText="Definitely" />
-      <MenuItem value="if" primaryText="If needed" />
-      <MenuItem value="not" primaryText="Absolutely not" />
-    </SelectField>
-
-    <SelectField
-      floatingLabelStyle={labelStyle}
-      floatingLabelText="Registration"
-      onChange={(ev, key, value) => onChange({ reg: value })}
-      value={reg}
-    >
-      <MenuItem value="yes" primaryText="Definitely" />
-      <MenuItem value="if" primaryText="If needed" />
-      <MenuItem value="not" primaryText="Absolutely not" />
-    </SelectField>
-
-    <SelectField
-      floatingLabelStyle={labelStyle}
-      floatingLabelText="Outreach"
-      onChange={(ev, key, value) => onChange({ outreach: value })}
-      value={outreach}
-    >
-      <MenuItem value="yes" primaryText="Definitely" />
-      <MenuItem value="if" primaryText="If needed" />
-      <MenuItem value="not" primaryText="Absolutely not" />
-    </SelectField>
-
-    <SelectField
-      floatingLabelStyle={labelStyle}
-      floatingLabelText="Programme"
-      onChange={(ev, key, value) => onChange({ program: value })}
-      value={program}
-    >
-      <MenuItem value="yes" primaryText="Definitely" />
-      <MenuItem value="if" primaryText="If needed" />
-      <MenuItem value="not" primaryText="Absolutely not" />
-    </SelectField>
-
-    <SelectField
-      floatingLabelStyle={labelStyle}
-      floatingLabelText="Help Desk"
-      onChange={(ev, key, value) => onChange({ helpdesk: value })}
-      value={helpdesk}
-    >
-      <MenuItem value="yes" primaryText="Definitely" />
-      <MenuItem value="if" primaryText="If needed" />
-      <MenuItem value="not" primaryText="Absolutely not" />
-    </SelectField>
-
-    <SelectField
-      floatingLabelStyle={labelStyle}
-      floatingLabelText="Logistics"
-      onChange={(ev, key, value) => onChange({ logistic: value })}
-      value={logistic}
-    >
-      <MenuItem value="yes" primaryText="Definitely" />
-      <MenuItem value="if" primaryText="If needed" />
-      <MenuItem value="not" primaryText="Absolutely not" />
-    </SelectField>
-
-    <SelectField
-      floatingLabelStyle={labelStyle}
-      floatingLabelText="Turva at con"
-      onChange={(ev, key, value) => onChange({ turva: value })}
-      value={turva}
-    >
-      <MenuItem value="yes" primaryText="Definitely" />
-      <MenuItem value="if" primaryText="If needed" />
-      <MenuItem value="not" primaryText="Absolutely not" />
-    </SelectField>
-
-    <SelectField
-      floatingLabelStyle={labelStyle}
-      floatingLabelText="Ops"
-      onChange={(ev, key, value) => onChange({ ops: value })}
-      value={ops}
-    >
-      <MenuItem value="yes" primaryText="Definitely" />
-      <MenuItem value="if" primaryText="If needed" />
-      <MenuItem value="not" primaryText="Absolutely not" />
-    </SelectField>
-
-    <SelectField
-      floatingLabelStyle={labelStyle}
-      floatingLabelText="Site Selection"
-      onChange={(ev, key, value) => onChange({ site: value })}
-      value={site}
-    >
-      <MenuItem value="yes" primaryText="Definitely" />
-      <MenuItem value="if" primaryText="If needed" />
-      <MenuItem value="not" primaryText="Absolutely not" />
-    </SelectField>
-
-    <SelectField
-      floatingLabelStyle={labelStyle}
-      floatingLabelText="Member Services"
-      onChange={(ev, key, value) => onChange({ members: value })}
-      value={members}
-    >
-      <MenuItem value="yes" primaryText="Definitely" />
-      <MenuItem value="if" primaryText="If needed" />
-      <MenuItem value="not" primaryText="Absolutely not" />
-    </SelectField>
-
-    <SelectField
-      floatingLabelStyle={labelStyle}
-      floatingLabelText="Design resources"
-      onChange={(ev, key, value) => onChange({ design: value })}
-      value={design}
-    >
-      <MenuItem value="yes" primaryText="Definitely" />
-      <MenuItem value="if" primaryText="If needed" />
-      <MenuItem value="not" primaryText="Absolutely not" />
-    </SelectField>
+     Link to seizes table
 
     <TextField
       floatingLabelStyle={labelStyle}
@@ -258,8 +128,23 @@ const VolunteerCard = ({ volunteer: { birth, phone, experience, JV, hygiene, fir
       value={notes}
       rows= {4}
     />
-
   </CardText>
+  <CardHeader style={{ fontWeight: 600 }} title="Hours and Dates"/>
+
+
+  <CardText>
+-- Hours
+-- Tuesday August 8 (MIMO only) 
+-- Wednesday August 9 
+-- Thursday August 10 
+-- Friday August 11 
+-- Saturday August 12 
+-- Sunday August 13 
+-- Monday August 14 (MIMO only)
+
+-- Tue8, Wed9, Thu10, Fri11, Sat12, Sun13, Mon14
+</CardText>
+
 
   <CardActions style={{ alignItems: 'center', display: 'flex', padding: 16 }}>
     <RaisedButton
@@ -283,19 +168,19 @@ VolunteerCard.propTypes = {
     languages: React.PropTypes.string,
     tshirt: React.PropTypes.string,
     allergies: React.PropTypes.string,
-    hugo: React.PropTypes.string,
-    ex_mimo: React.PropTypes.string,
-    ex_con: React.PropTypes.string,
-    reg: React.PropTypes.string,
-    outreach: React.PropTypes.string,
-    program: React.PropTypes.string,
-    helpdesk: React.PropTypes.string,
-    logistic: React.PropTypes.string,
-    turva: React.PropTypes.string,
-    ops: React.PropTypes.string,
-    site: React.PropTypes.string,
-    members: React.PropTypes.string,
-    design: React.PropTypes.string,
+    // hugo: React.PropTypes.string,
+    // ex_mimo: React.PropTypes.string,
+    // ex_con: React.PropTypes.string,
+    // reg: React.PropTypes.string,
+    // outreach: React.PropTypes.string,
+    // program: React.PropTypes.string,
+    // helpdesk: React.PropTypes.string,
+    // logistic: React.PropTypes.string,
+    // turva: React.PropTypes.string,
+    // ops: React.PropTypes.string,
+    // site: React.PropTypes.string,
+    // members: React.PropTypes.string,
+    // design: React.PropTypes.string,
     notes: React.PropTypes.string,
     
   }).isRequired,
