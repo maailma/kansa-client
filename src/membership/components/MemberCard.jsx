@@ -102,6 +102,13 @@ class MemberCard extends React.Component {
         leftIcon={<Palette />}
         onTouchTap={ () => push(`/exhibition/${id}`) }
         primaryText="Register for the Art Show"
+      />,
+      <Action
+        key="vo"
+        innerDivStyle={{ paddingLeft: 60 }}
+        leftIcon={<Rocket />}
+        onTouchTap={ () => push(`/volunteer/${id}`) }
+        primaryText="Register to Volunteer"
       />
     )
     return actions
