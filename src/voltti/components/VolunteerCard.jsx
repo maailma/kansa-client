@@ -122,7 +122,7 @@ const VolunteerCard = ({ volunteer: { birth, phone, experience, JV,
     </SelectField>
 
     <TShirtDialog>
-      <span style={{ cursor: 'pointer', textDecoration: 'underline', paddingLeft:'10' }}>
+      <span style={{ cursor: 'pointer', textDecoration: 'underline', paddingLeft:'10',position:'relative',top:'-7' }}>
         <strong>T-shirt size details</strong>
         <OpenInNew style={{ color: '#888', height: 16, marginLeft: 2, position: 'relative', top: 3 }} />
       </span>
@@ -147,8 +147,9 @@ const VolunteerCard = ({ volunteer: { birth, phone, experience, JV,
       value={hours}
       type='number'
     />
-    <label style={labelStyle} >If you register as a volunteer by July 31, you will get your volunteer t-shirt for 15 hours of work. If you register on August 1 or later, you will need 20 hours of work for the t-shirt. 
-    (If you wish to work for more than 20 hours, please check "20" and come to the Volunteers desk at the convention for extra work.)
+    <label style={labelStyle} >If you register as a volunteer by <strong>July 31</strong>, you will get your volunteer t-shirt for <strong>15</strong> hours of work. If you register on <strong>August 1</strong> or later, you will need 20 hours of work for the t-shirt. 
+    <br/>
+    (If you wish to work for more than 20 hours, come to the Volunteers desk at the convention for extra work.)
     </label>
     <hr/>
     
