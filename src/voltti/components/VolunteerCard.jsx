@@ -8,8 +8,8 @@ import SelectField from 'material-ui/SelectField';
 import TextField from 'material-ui/TextField';
 import { Card, CardActions, CardHeader, CardText } from 'material-ui/Card'
 import OpenInNew from 'material-ui/svg-icons/action/open-in-new'
-
-
+import { TShirtDialog } from './tshirtdialog'
+                                
 const labelStyle = {
   color: '#888',
   fontSize: 16
@@ -120,7 +120,13 @@ const VolunteerCard = ({ volunteer: { birth, phone, experience, JV,
       <MenuItem value="yXL" primaryText="XL" />
  
     </SelectField>
-     Link to sizes table
+
+    <TShirtDialog>
+      <span style={{ cursor: 'pointer', textDecoration: 'underline', paddingLeft:'10' }}>
+        <strong>T-shirt size details</strong>
+        <OpenInNew style={{ color: '#888', height: 16, marginLeft: 2, position: 'relative', top: 3 }} />
+      </span>
+    </TShirtDialog>
 
     <TextField
       floatingLabelStyle={labelStyle}
