@@ -23,78 +23,62 @@ class Registration extends React.Component {
     setScene: React.PropTypes.func.isRequired,
   }
 
-  constructor(props) {
-    super(props);
-    const member = props.params.id;
-    this.state = {
-      api: new API(`${API_ROOT}voltti/${member}/`),
-      people_id: parseInt(member),
-      birth:'', 
-      phone:'', 
-      experience:'',
-      JV: '', 
-      hygiene: '',
-      firstaid: '', 
-      languages:'',
-      tshirt: '',
-      allergies: '',
-      hugo: '',
-      ex_mimo: '',
-      ex_con: '', 
-      reg: '',
-      outreach: '',
-      program: '',
-      helpdesk: '',
-      logistic: '', 
-      turva: '',
-      ops: '', 
-      site: '', 
-      members: '',
+  static getInitialState(id) {
+    return {
+      people_id: parseInt(id),
+
+      // personal info
+      birth:'', phone:'', experience:'', jv: '', hygiene: '', firstaid: '',
+      languages:'', tshirt: '', allergies: '',
+
+      // roles
+      hugo: '', ex_mimo: '', ex_con: '', reg: '', outreach: '', program: '',
+      helpdesk: '', logistics: '', turva: '', ops: '', site: '', members: '',
       design: '',
+
       notes: '',
       hours: 0,
-      Tue8: false, 
-      Wed9: false, 
-      Thu10: false, 
-      Fri11: false, 
-      Sat12: false, 
-      Sun13: false, 
-      Mon14: false
-
-    };
-    const volunteer = this.state.api;
-    volunteer.GET('volunteer').then(volunteer => {
-            if (volunteer && volunteer.people_id > 0) {
-              this.setState(volunteer);
-              console.log('voltti', volunteer);
+      day_in: false, day_1: false, day_2: false, day_3: false, day_4: false, day_5: false, day_out: false
     }
-    });
+  }
 
+  constructor(props) {
+    super(props)
+    const { id } = props.params
+    this.state = Registration.getInitialState(id)
+    this.api = new API(`${API_ROOT}voltti/${id}/`)
+    this.api.GET('volunteer').then(volunteer => {
+      if (volunteer && volunteer.people_id > 0) {
+        this.setState(volunteer);
+        console.log('voltti', volunteer);
+      }
+    })
   }
 
   componentDidMount() {
     this.props.setScene({ title: 'Volunteer Registration', dockSidebar: false });
-
   }
 
-  handleSubmit() {
-    const volunteer = Object.assign({}, this.state, {
-      api: undefined,
+  componentWillReceiveProps({ params: { id } }) {
+    if (id !== this.props.params.id) {
+      this.api = new API(`${API_ROOT}voltti/${id}/`)
+      this.api.GET('volunteer').then(volunteer => {
+        this.setState(
+          volunteer && volunteer.people_id > 0 ? volunteer
+          : Registration.getInitialState(id)
+        )
+        console.log('voltti', volunteer)
+      })
+    }
+  }
+
+  handleSubmit = () => {
+    this.api.POST('volunteer', this.state).then(res => {
+      console.log('POST VOLUNTEER', this.state, res)
     });
-    this.state.api.POST('volunteer', volunteer).then(res => console.log('POST VOLUNTEER', volunteer, res));
-  }
-
-  saveVolunteer(i, id, work) {
-    const volunteer = this.state.api;
-    if (id) {
-      volunteer.POST(`volunteer`, volunteer).then(res => {
-        console.log('POST VOLUNTEER', res);
-      });
-    } 
   }
 
   render() {
-
     return (<Row>
       <Col
         xs={12} sm={6}
@@ -104,19 +88,19 @@ class Registration extends React.Component {
         <VolunteerCard
           volunteer={this.state}
           onChange={update => this.setState(update)}
-          onSave={() => this.handleSubmit()}
+          onSave={this.handleSubmit}
           style={{ marginBottom: '1rem' }}
         />
       </Col>
       <Col
         xs={12} sm={6}
-        md={5} 
-        lg={4} 
+        md={5}
+        lg={4}
       >
         <RolesCard
           volunteer={this.state}
           onChange={update => this.setState(update)}
-          onSave={() => this.handleSubmit()}
+          onSave={this.handleSubmit}
           style={{ marginBottom: '1rem' }}
         />
       </Col>

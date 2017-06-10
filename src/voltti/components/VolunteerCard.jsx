@@ -1,32 +1,32 @@
-import React from 'react';
+import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 
-import Checkbox from 'material-ui/Checkbox';
+import Checkbox from 'material-ui/Checkbox'
 import RaisedButton from 'material-ui/RaisedButton'
-import MenuItem from 'material-ui/MenuItem';
-import SelectField from 'material-ui/SelectField';
-import TextField from 'material-ui/TextField';
+import MenuItem from 'material-ui/MenuItem'
+import SelectField from 'material-ui/SelectField'
+import TextField from 'material-ui/TextField'
 import { Card, CardActions, CardHeader, CardText } from 'material-ui/Card'
 import OpenInNew from 'material-ui/svg-icons/action/open-in-new'
 import { TShirtDialog } from './tshirtdialog'
-                                
+
 const labelStyle = {
   color: '#888',
   fontSize: 16
-};
+}
 
-const VolunteerCard = ({ volunteer: { birth, phone, experience, JV, 
+const VolunteerCard = ({ volunteer: { birth, phone, experience, jv,
   hygiene, firstaid, languages, tshirt ,allergies, notes, hours,
-  Tue8, Wed9, Thu10, Fri11, Sat12, Sun13, Mon14
+  day_in, day_1, day_2, day_3, day_4, day_5, day_out
  }, onChange, onSave, style }) => <Card style={style}>
   <CardHeader style={{ fontWeight: 600 }} title="Volunteer Details"/>
   <CardText>
-    
+
     <TextField
       floatingLabelStyle={labelStyle}
       floatingLabelText="Year of Birfth"
       fullWidth={true}
-      onChange={ev => onChange({ birth: ev.target.value })}
+      onChange={(_, birth) => onChange({ birth })}
       value={birth}
     />
 
@@ -35,7 +35,7 @@ const VolunteerCard = ({ volunteer: { birth, phone, experience, JV,
       floatingLabelStyle={labelStyle}
       floatingLabelText="Phone Number"
       fullWidth={true}
-      onChange={ev => onChange({ phone: ev.target.value })}
+      onChange={(_, phone) => onChange({ phone })}
       value={phone}
     />
 
@@ -43,7 +43,7 @@ const VolunteerCard = ({ volunteer: { birth, phone, experience, JV,
       floatingLabelStyle={labelStyle}
       floatingLabelText="Previous Con Experience"
       fullWidth={true}
-      onChange={ev => onChange({ experience: ev.target.value })}
+      onChange={(_, experience) => onChange({ experience })}
       value={experience}
       rows={4}
 
@@ -53,15 +53,15 @@ const VolunteerCard = ({ volunteer: { birth, phone, experience, JV,
       floatingLabelStyle={labelStyle}
       floatingLabelText="Security Officer Licence and expiration date"
       fullWidth={true}
-      onChange={ev => onChange({ JV: ev.target.value })}
-      value={JV}
+      onChange={(_, jv) => onChange({ jv })}
+      value={jv}
     />
 
     <TextField
       floatingLabelStyle={labelStyle}
       floatingLabelText="Hygiene Passport and expiration date"
       fullWidth={true}
-      onChange={ev => onChange({ hygiene: ev.target.value })}
+      onChange={(_, hygiene) => onChange({ hygiene })}
       value={hygiene}
     />
 
@@ -69,7 +69,7 @@ const VolunteerCard = ({ volunteer: { birth, phone, experience, JV,
       floatingLabelStyle={labelStyle}
       floatingLabelText="First Aid Training"
       fullWidth={true}
-      onChange={ev => onChange({ firstaid: ev.target.value })}
+      onChange={(_, firstaid) => onChange({ firstaid })}
       value={firstaid}
       rows={3}
     />
@@ -77,7 +77,7 @@ const VolunteerCard = ({ volunteer: { birth, phone, experience, JV,
       floatingLabelStyle={labelStyle}
       floatingLabelText="List of Languages"
       fullWidth={true}
-      onChange={ev => onChange({ languages: ev.target.value })}
+      onChange={(_, languages) => onChange({ languages })}
       value={languages}
       rows={3}
     />
@@ -87,7 +87,7 @@ const VolunteerCard = ({ volunteer: { birth, phone, experience, JV,
       floatingLabelStyle={labelStyle}
       floatingLabelText="Allergies / Special Diet"
       fullWidth={true}
-      onChange={ev => onChange({ allergies: ev.target.value })}
+      onChange={(_, allergies) => onChange({ allergies })}
       value={allergies}
       rows={3}
     />
@@ -95,7 +95,7 @@ const VolunteerCard = ({ volunteer: { birth, phone, experience, JV,
     <SelectField
       floatingLabelStyle={labelStyle}
       floatingLabelText="T-shirt size"
-      onChange={(ev, key, value) => onChange({ tshirt: value })}
+      onChange={(ev, key, tshirt) => onChange({ tshirt })}
       value={tshirt}
     >
       <MenuItem disabled primaryText="Unisex" />
@@ -107,7 +107,7 @@ const VolunteerCard = ({ volunteer: { birth, phone, experience, JV,
       <MenuItem value="u3XL" primaryText="3XL" />
       <MenuItem value="u4XL" primaryText="4XL" />
       <MenuItem value="u5XL" primaryText="5XL" />
-     <MenuItem disabled primaryText="Ladyfit" />
+      <MenuItem disabled primaryText="Ladyfit" />
       <MenuItem value="lS" primaryText="S" />
       <MenuItem value="lM" primaryText="M" />
       <MenuItem value="lL" primaryText="L" />
@@ -118,11 +118,10 @@ const VolunteerCard = ({ volunteer: { birth, phone, experience, JV,
       <MenuItem value="yM" primaryText="M" />
       <MenuItem value="yL" primaryText="L" />
       <MenuItem value="yXL" primaryText="XL" />
- 
     </SelectField>
 
     <TShirtDialog>
-      <span style={{ cursor: 'pointer', textDecoration: 'underline', paddingLeft:'10',position:'relative',top:'-7' }}>
+      <span style={{ cursor: 'pointer', textDecoration: 'underline', paddingLeft: 10, position: 'relative', top: -7 }}>
         <strong>T-shirt size details</strong>
         <OpenInNew style={{ color: '#888', height: 16, marginLeft: 2, position: 'relative', top: 3 }} />
       </span>
@@ -132,7 +131,7 @@ const VolunteerCard = ({ volunteer: { birth, phone, experience, JV,
       floatingLabelStyle={labelStyle}
       floatingLabelText="Other Notes (Please note here if you have a car you can use for MIMO/during the convention)"
       fullWidth={true}
-      onChange={ev => onChange({ notes: ev.target.value })}
+      onChange={(_, notes) => onChange({ notes })}
       value={notes}
       rows= {4}
     />
@@ -143,63 +142,64 @@ const VolunteerCard = ({ volunteer: { birth, phone, experience, JV,
       floatingLabelStyle={labelStyle}
       floatingLabelText="How many hours are you willing to work, in total?"
       fullWidth={true}
-      onChange={ev => onChange({ hours: ev.target.value })}
+      onChange={(_, hours) => onChange({ hours })}
       value={hours}
       type='number'
     />
-    <label style={labelStyle} >If you register as a volunteer by <strong>July 31</strong>, you will get your volunteer t-shirt for <strong>15</strong> hours of work. If you register on <strong>August 1</strong> or later, you will need 20 hours of work for the t-shirt. 
-    <br/>
-    (If you wish to work for more than 20 hours, come to the Volunteers desk at the convention for extra work.)
+    <label style={labelStyle}>
+      If you register as a volunteer by <strong>July 31</strong>, you will get your volunteer t-shirt for <strong>15</strong> hours of work. If you register on <strong>August 1</strong> or later, you will need 20 hours of work for the t-shirt.
+      <br/>
+      (If you wish to work for more than 20 hours, come to the Volunteers desk at the convention for extra work.)
     </label>
     <hr/>
-    
+
     <Checkbox
-      checked={Tue8}
+      checked={day_in}
       label = 'On Tuesday August 8 (MIMO only)'
       labelStyle={labelStyle}
-      onCheck={(ev, value) => onChange({ Tue8: value })}
+      onCheck={(_, day_in) => onChange({ day_in })}
       style={{ width: '100%' }}
     />
     <Checkbox
-      label = 'On Wednesday August 9'  
-      checked={Wed9}
+      label = 'On Wednesday August 9'
+      checked={day_1}
       labelStyle={labelStyle}
-      onCheck={(ev, value) => onChange({ Wed9: value })}
+      onCheck={(_, day_1) => onChange({ day_1 })}
       style={{ width: '100%' }}
     />
     <Checkbox
-      label='On Thursday August 10' 
-      checked={Thu10}
+      label='On Thursday August 10'
+      checked={day_2}
       labelStyle={labelStyle}
-      onCheck={(ev, value) => onChange({ Thu10: value })}
+      onCheck={(_, day_2) => onChange({ day_2 })}
       style={{ width: '100%' }}
     />
     <Checkbox
-      label='On Friday August 11' 
-      checked={Fri11}
+      label='On Friday August 11'
+      checked={day_3}
       labelStyle={labelStyle}
-      onCheck={(ev, value) => onChange({ Fri11: value })}
+      onCheck={(_, day_3) => onChange({ day_3 })}
       style={{ width: '100%' }}
     />
     <Checkbox
-      label='On Saturday August 12' 
-      checked={Sat12}
+      label='On Saturday August 12'
+      checked={day_4}
       labelStyle={labelStyle}
-      onCheck={(ev, value) => onChange({ Sat12: value })}
+      onCheck={(_, day_4) => onChange({ day_4 })}
       style={{ width: '100%' }}
     />
     <Checkbox
-      label='On Sunday August 13' 
-      checked={Thu10}
+      label='On Sunday August 13'
+      checked={day_5}
       labelStyle={labelStyle}
-      onCheck={(ev, value) => onChange({ Sun13: value })}
+      onCheck={(_, day_5) => onChange({ day_5 })}
       style={{ width: '100%' }}
     />
     <Checkbox
-      label='On Moday August 14 (MIMO only)' 
-      checked={Mon14}
+      label='On Moday August 14 (MIMO only)'
+      checked={day_out}
       labelStyle={labelStyle}
-      onCheck={(ev, value) => onChange({ Mon14: value })}
+      onCheck={(_, day_out) => onChange({ day_out })}
       style={{ width: '100%' }}
     />
   </CardText>
@@ -214,36 +214,37 @@ const VolunteerCard = ({ volunteer: { birth, phone, experience, JV,
     />
   </CardActions>
 
-</Card>;
+</Card>
 
 VolunteerCard.propTypes = {
-  volunteer: React.PropTypes.shape({
-    birth: React.PropTypes.string,
-    phone: React.PropTypes.string,
-    experience: React.PropTypes.string,
-    JV: React.PropTypes.string,
-    hygiene: React.PropTypes.string,
-    firstaid: React.PropTypes.string,
-    languages: React.PropTypes.string,
-    tshirt: React.PropTypes.string,
-    // hugo: React.PropTypes.string,
-    // ex_mimo: React.PropTypes.string,
-    // ex_con: React.PropTypes.string,
-    // reg: React.PropTypes.string,
-    // outreach: React.PropTypes.string,
-    // program: React.PropTypes.string,
-    // helpdesk: React.PropTypes.string,
-    // logistic: React.PropTypes.string,
-    // turva: React.PropTypes.string,
-    // ops: React.PropTypes.string,
-    // site: React.PropTypes.string,
-    // members: React.PropTypes.string,
-    // design: React.PropTypes.string,
-    hours: React.PropTypes.number,
-    
-  }).isRequired,
-  onChange: React.PropTypes.func.isRequired,
-  onSave: React.PropTypes.func.isRequired,
-};
+  volunteer: PropTypes.shape({
+    birth: PropTypes.string,
+    phone: PropTypes.string,
+    experience: PropTypes.string,
+    jv: PropTypes.string,
+    hygiene: PropTypes.string,
+    firstaid: PropTypes.string,
+    languages: PropTypes.string,
+    allergies: PropTypes.string,
+    tshirt: PropTypes.string,
+    // hugo: PropTypes.string,
+    // ex_mimo: PropTypes.string,
+    // ex_con: PropTypes.string,
+    // reg: PropTypes.string,
+    // outreach: PropTypes.string,
+    // program: PropTypes.string,
+    // helpdesk: PropTypes.string,
+    // logistic: PropTypes.string,
+    // turva: PropTypes.string,
+    // ops: PropTypes.string,
+    // site: PropTypes.string,
+    // members: PropTypes.string,
+    // design: PropTypes.string,
+    hours: PropTypes.number,
 
-export default VolunteerCard;
+  }).isRequired,
+  onChange: PropTypes.func.isRequired,
+  onSave: PropTypes.func.isRequired,
+}
+
+export default VolunteerCard

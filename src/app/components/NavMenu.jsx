@@ -3,12 +3,12 @@ const ImmutablePropTypes = require('react-immutable-proptypes');
 
 import Divider from 'material-ui/Divider'
 import { List, ListItem, makeSelectable } from 'material-ui/List'
+import Accessibility from 'material-ui/svg-icons/action/accessibility'
 import EuroSymbol from 'material-ui/svg-icons/action/euro-symbol'
 import ThumbUp from 'material-ui/svg-icons/action/thumb-up'
 import Palette from 'material-ui/svg-icons/image/palette'
 import People from 'material-ui/svg-icons/social/people'
 import PersonAdd from 'material-ui/svg-icons/social/person-add'
-import Accessibility from 'material-ui/svg-icons/action/accessibility'
 
 import Rocket from '../../lib/rocket-icon'
 
@@ -63,10 +63,10 @@ const NavMenu = ({ currentMember, handleNav, otherMembers }) => {
     style={{ fontSize: 14 }}
     value={`/exhibition/${id}`}
   />);
-  if (linkArtshowRegistration(currentMember)) memberItems.push(<ListItem
-    key="art"
+  if (linkVolunteerRegistration(currentMember)) memberItems.push(<ListItem
+    key="vo"
     leftIcon={<Accessibility/>}
-    primaryText="Register to Volunteer"
+    primaryText="Register as a Volunteer"
     style={{ fontSize: 14 }}
     value={`/volunteer/${id}`}
   />);

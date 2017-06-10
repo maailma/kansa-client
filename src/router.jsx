@@ -86,7 +86,6 @@ export default class AppRouter extends Route {
           <Redirect from="login" to="/" />
           <Redirect from="profile" to="/" />
           <Route path="exhibition/:id" component={ExhibitRegistration} onEnter={this.requireAuth} />
-          <Route path="volunteer/:id" component={VolunteerRegistration} o nEnter={this.requireAuth} />
           {hugoRoutes('hugo', this.requireAuth)}
           <Route path="new" component={NewMemberIndex} />
           <Route path="new/:membership" component={NewMemberForm} />
@@ -98,6 +97,7 @@ export default class AppRouter extends Route {
             <IndexRoute component={Upgrade} />
             <Route path=":id" component={Upgrade} />
           </Route>
+          <Route path="volunteer/:id" component={VolunteerRegistration} onEnter={this.requireAuth} />
         </Route>
       </Router>
     )

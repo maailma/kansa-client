@@ -1,219 +1,118 @@
-import React from 'react';
+import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 
-import Checkbox from 'material-ui/Checkbox';
+import Checkbox from 'material-ui/Checkbox'
 import RaisedButton from 'material-ui/RaisedButton'
-import MenuItem from 'material-ui/MenuItem';
-import SelectField from 'material-ui/SelectField';
-import TextField from 'material-ui/TextField';
+import MenuItem from 'material-ui/MenuItem'
+import SelectField from 'material-ui/SelectField'
+import TextField from 'material-ui/TextField'
 import { Card, CardActions, CardHeader, CardText } from 'material-ui/Card'
 import OpenInNew from 'material-ui/svg-icons/action/open-in-new'
 
+const roles = {
+  hugo: {
+    title: 'Hugo ceremony',
+    desc: 'Positions at the Hugo ceremony include presenter guides (finding presenters in the audience and guiding them to the stage), award escorts (receiving awards from Hugo Admins and carrying them on stage, escorting winners off stage) and finalist section ushers & ramp support (escorting finalists from pre-reception to the venue & support next to the stage during event). Hugos also need runners/problem solvers who are fluent in both Finnish and English and have local knowledge of Helsinki.'
+  },
+  ex_mimo: {
+    title: 'Exhibits MIMO',
+    desc: 'Move-In happens mostly on Tuesday and a bit on Wednesday, Move-Out on Sunday. Tasks will involve physical labour but not all of it will involve lifting (also measuring spaces and hanging posters).'
+  },
+  ex_con: {
+    title: 'Exhibits at-con',
+    desc: 'At-con jobs for Exhibits include but are not limited to manning various desks, monitoring areas, and acting as liaison for dealers, as well as looking after the craft area and fan lounge.'
+  },
+  reg: {
+    title: 'Registration',
+    desc: 'Registration needs custom service -oriented people behind the registration desk to welcome attendees of Worldcon75. Registration volunteers will check IDs, print name stickers and attach them to the badge, which is handed to the attendee.'
+  },
+  outreach: {
+    title: 'Outreach',
+    desc: 'Outreach needs press office receptionists, who welcome members of the press, direct them to the interview room and take messages as needed. Outreach also needs people for the Worldcon merchandise table.'
+  },
+  program: {
+    title: 'Program',
+    desc: 'Program runners keep track of time, remind participants to use mics, carry mics to audience for questions, help out with tech, make sure there&tilde;s water/cups in the rooms for the participants and count the number of people in the audience.'
+  },
+  helpdesk: {
+    title: 'HelpDesk',
+    desc: 'HelpDesk volunteers help members and staff with all kinds of technical questions. Good customer service attitude needed!'
+  },
+  logistics: {
+    title: 'Logistics/MIMO',
+    desc: 'For both Move-In/Move-Out and at-con, Turva needs volunteers who can move things around both inside and outside the venue. Volunteers with their own car in the Helsinki area are most welcome, but others are needed as well.'
+  },
+  turva: {
+    title: 'Turva at-con',
+    desc: 'Turva at-con volunteers are needed for the cloakroom and the con office.'
+  },
+  ops: {
+    title: 'Ops',
+    desc: 'Ops needs radio operators, desk staff and rovers, who wander the convention and ensure that everything goes smoothly.'
+  },
+  site: {
+    title: 'Site Selection',
+    desc: 'Site selection needs volunteers to sit at the site selection desk and take payments from voters, and to answer questions about the ballot system. Site selection also needs ballot counters.'
+  },
+  members: {
+    title: 'Member services',
+    desc: 'Member services needs volunteers for the info desk, alien/tourist info desk, and access desk, as well as the teen lounge.'
+  },
+  design: {
+    title: 'Design resources',
+    desc: ' Design resources needs contributing editors for the con newsletter. Duties include submitting short news pieces and photographs via email, and editing one issue of the newsletter. Proficiency with Adobe Creative Suite is a plus.'
+  }
+}
 
-const labelStyle = {
-  color: '#888',
-  fontSize: 16
-};
-
-const RolesCard = ({ volunteer: { hugo, ex_mimo, ex_con, reg, outreach, program, helpdesk, logistic, turva, ops, site, members, design
- }, onChange, onSave, style }) => <Card style={style}>
-        <CardHeader style={{ fontWeight: 600 }} title="Roles Description"/>
-        <CardText>
-          <p><strong>Hugo ceremony</strong> - Positions at the Hugo ceremony include presenter guides (finding presenters in the audience and guiding them to the stage), award escorts (receiving awards from Hugo Admins and carrying them on stage, escorting winners off stage) and finalist section ushers & ramp support (escorting finalists from pre-reception to the venue & support next to the stage during event). Hugos also need runners/problem solvers who are fluent in both Finnish and English and have local knowledge of Helsinki.
-          </p><p><strong>
-          Exhibits MIMO</strong> - Move-In happens mostly on Tuesday and a bit on Wednesday, Move-Out on Sunday. Tasks will involve physical labour but not all of it will involve lifting (also measuring spaces and hanging posters).
-          </p><p><strong>
-          Exhibits at-con</strong> - At-con jobs for Exhibits include but are not limited to manning various desks, monitoring areas, and acting as liaison for dealers, as well as looking after the craft area and fan lounge.
-          </p><p><strong>
-          Registration</strong> - Registration needs custom service -oriented people behind the registration desk to welcome attendees of Worldcon75. Registration volunteers will check IDs, print name stickers and attach them to the badge, which is handed to the attendee.
-          </p><p><strong>
-          Outreach</strong> - Outreach needs press office receptionists, who welcome members of the press, direct them to the interview room and take messages as needed. Outreach also needs people for the Worldcon merchandise table.
-          </p><p><strong>
-          Program</strong> - Program runners keep track of time, remind participants to use mics, carry mics to audience for questions, help out with tech, make sure there&tilde;s water/cups in the rooms for the participants and count the number of people in the audience.
-          </p><p><strong>
-          HelpDesk</strong> - HelpDesk volunteers help members and staff with all kinds of technical questions. Good customer service attitude needed!
-          </p><p><strong>
-          Logistics/MIMO</strong> - For both Move-In/Move-Out and at-con, Turva needs volunteers who can move things around both inside and outside the venue. Volunteers with their own car in the Helsinki area are most welcome, but others are needed as well.
-          </p><p><strong>
-          Turva at-con</strong> - Turva at-con volunteers are needed for the cloakroom and the con office.
-          </p><p><strong>
-          Ops</strong> - Ops needs radio operators, desk staff and rovers, who wander the convention and ensure that everything goes smoothly.
-          </p><p><strong>
-          Site Selection</strong> - Site selection needs volunteers to sit at the site selection desk and take payments from voters, and to answer questions about the ballot system. Site selection also needs ballot counters.
-          </p><p><strong>
-          Member services</strong> - Member services needs volunteers for the info desk, alien/tourist info desk, and access desk, as well as the teen lounge.
-          </p><p><strong>
-          Design resources</strong> -  Design resources needs contributing editors for the con newsletter. Duties include submitting short news pieces and photographs via email, and editing one issue of the newsletter. Proficiency with Adobe Creative Suite is a plus.
-          </p>
-          </CardText>
+const RolesCard = ({ onChange, onSave, style, volunteer }) => (
+  <Card style={style}>
+    <CardHeader style={{ fontWeight: 600 }} title="Roles Description"/>
+    <CardText>
+      {Object.keys(roles).map(name => {
+        const { desc, title } = roles[name]
+        return <p key={name}><b>{title}</b> - {desc}</p>
+      })}
+    </CardText>
     <CardHeader style={{ fontWeight: 600 }} title="Volunteer Roles"/>
-      <CardText>
-    <SelectField
-      floatingLabelStyle={labelStyle}
-      floatingLabelText="Hugo ceremony"
-      onChange={(ev, key, value) => onChange({ hugo: value })}
-      value={hugo}
-    >
-      <MenuItem value="yes" primaryText="Definitely" />
-      <MenuItem value="if" primaryText="If needed" />
-      <MenuItem value="not" primaryText="Absolutely not" />
-    </SelectField>
-
-    <SelectField
-      floatingLabelStyle={labelStyle}
-      floatingLabelText="Exhibtion MIMO"
-      onChange={(ev, key, value) => onChange({ ex_mimo: value })}
-      value={ex_mimo}
-    >
-      <MenuItem value="yes" primaryText="Definitely" />
-      <MenuItem value="if" primaryText="If needed" />
-      <MenuItem value="not" primaryText="Absolutely not" />
-    </SelectField>
-
-      <SelectField
-      floatingLabelStyle={labelStyle}
-      floatingLabelText="Exhibition at con"
-      onChange={(ev, key, value) => onChange({ ex_con: value })}
-      value={ex_con}
-    >
-      <MenuItem value="yes" primaryText="Definitely" />
-      <MenuItem value="if" primaryText="If needed" />
-      <MenuItem value="not" primaryText="Absolutely not" />
-    </SelectField>
-
-    <SelectField
-      floatingLabelStyle={labelStyle}
-      floatingLabelText="Registration"
-      onChange={(ev, key, value) => onChange({ reg: value })}
-      value={reg}
-    >
-      <MenuItem value="yes" primaryText="Definitely" />
-      <MenuItem value="if" primaryText="If needed" />
-      <MenuItem value="not" primaryText="Absolutely not" />
-    </SelectField>
-
-    <SelectField
-      floatingLabelStyle={labelStyle}
-      floatingLabelText="Outreach"
-      onChange={(ev, key, value) => onChange({ outreach: value })}
-      value={outreach}
-    >
-      <MenuItem value="yes" primaryText="Definitely" />
-      <MenuItem value="if" primaryText="If needed" />
-      <MenuItem value="not" primaryText="Absolutely not" />
-    </SelectField>
-
-    <SelectField
-      floatingLabelStyle={labelStyle}
-      floatingLabelText="Programme"
-      onChange={(ev, key, value) => onChange({ program: value })}
-      value={program}
-    >
-      <MenuItem value="yes" primaryText="Definitely" />
-      <MenuItem value="if" primaryText="If needed" />
-      <MenuItem value="not" primaryText="Absolutely not" />
-    </SelectField>
-
-    <SelectField
-      floatingLabelStyle={labelStyle}
-      floatingLabelText="Help Desk"
-      onChange={(ev, key, value) => onChange({ helpdesk: value })}
-      value={helpdesk}
-    >
-      <MenuItem value="yes" primaryText="Definitely" />
-      <MenuItem value="if" primaryText="If needed" />
-      <MenuItem value="not" primaryText="Absolutely not" />
-    </SelectField>
-
-    <SelectField
-      floatingLabelStyle={labelStyle}
-      floatingLabelText="Logistics"
-      onChange={(ev, key, value) => onChange({ logistic: value })}
-      value={logistic}
-    >
-      <MenuItem value="yes" primaryText="Definitely" />
-      <MenuItem value="if" primaryText="If needed" />
-      <MenuItem value="not" primaryText="Absolutely not" />
-    </SelectField>
-
-    <SelectField
-      floatingLabelStyle={labelStyle}
-      floatingLabelText="Turva at con"
-      onChange={(ev, key, value) => onChange({ turva: value })}
-      value={turva}
-    >
-      <MenuItem value="yes" primaryText="Definitely" />
-      <MenuItem value="if" primaryText="If needed" />
-      <MenuItem value="not" primaryText="Absolutely not" />
-    </SelectField>
-
-    <SelectField
-      floatingLabelStyle={labelStyle}
-      floatingLabelText="Ops"
-      onChange={(ev, key, value) => onChange({ ops: value })}
-      value={ops}
-    >
-      <MenuItem value="yes" primaryText="Definitely" />
-      <MenuItem value="if" primaryText="If needed" />
-      <MenuItem value="not" primaryText="Absolutely not" />
-    </SelectField>
-
-    <SelectField
-      floatingLabelStyle={labelStyle}
-      floatingLabelText="Site Selection"
-      onChange={(ev, key, value) => onChange({ site: value })}
-      value={site}
-    >
-      <MenuItem value="yes" primaryText="Definitely" />
-      <MenuItem value="if" primaryText="If needed" />
-      <MenuItem value="not" primaryText="Absolutely not" />
-    </SelectField>
-
-    <SelectField
-      floatingLabelStyle={labelStyle}
-      floatingLabelText="Member Services"
-      onChange={(ev, key, value) => onChange({ members: value })}
-      value={members}
-    >
-      <MenuItem value="yes" primaryText="Definitely" />
-      <MenuItem value="if" primaryText="If needed" />
-      <MenuItem value="not" primaryText="Absolutely not" />
-    </SelectField>
-
-    <SelectField
-      floatingLabelStyle={labelStyle}
-      floatingLabelText="Design resources"
-      onChange={(ev, key, value) => onChange({ design: value })}
-      value={design}
-    >
-      <MenuItem value="yes" primaryText="Definitely" />
-      <MenuItem value="if" primaryText="If needed" />
-      <MenuItem value="not" primaryText="Absolutely not" />
-    </SelectField>
-
-  </CardText>
+    <CardText>
+      {Object.keys(roles).map(name => {
+        const { title } = roles[name]
+        return (
+          <SelectField
+            key={name}
+            floatingLabelStyle={{ color: '#888', fontSize: 16 }}
+            floatingLabelText={title}
+            onChange={(ev, key, value) => onChange({ [name]: value })}
+            value={volunteer[name]}
+          >
+            <MenuItem value="yes" primaryText="Definitely" />
+            <MenuItem value="if" primaryText="If needed" />
+            <MenuItem value="not" primaryText="Absolutely not" />
+          </SelectField>
+        )
+      })}
+    </CardText>
   </Card>
-;
+)
 
 RolesCard.propTypes = {
-  volunteer: React.PropTypes.shape({
-    hugo: React.PropTypes.string,
-    ex_mimo: React.PropTypes.string,
-    ex_con: React.PropTypes.string,
-    reg: React.PropTypes.string,
-    outreach: React.PropTypes.string,
-    program: React.PropTypes.string,
-    helpdesk: React.PropTypes.string,
-    logistic: React.PropTypes.string,
-    turva: React.PropTypes.string,
-    ops: React.PropTypes.string,
-    site: React.PropTypes.string,
-    members: React.PropTypes.string,
-    design: React.PropTypes.string,
-    
+  volunteer: PropTypes.shape({
+    hugo: PropTypes.string,
+    ex_mimo: PropTypes.string,
+    ex_con: PropTypes.string,
+    reg: PropTypes.string,
+    outreach: PropTypes.string,
+    program: PropTypes.string,
+    helpdesk: PropTypes.string,
+    logistics: PropTypes.string,
+    turva: PropTypes.string,
+    ops: PropTypes.string,
+    site: PropTypes.string,
+    members: PropTypes.string,
+    design: PropTypes.string,
   }).isRequired,
-  onChange: React.PropTypes.func.isRequired,
-  onSave: React.PropTypes.func.isRequired,
-};
+  onChange: PropTypes.func.isRequired,
+  onSave: PropTypes.func.isRequired,
+}
 
-export default RolesCard;
+export default RolesCard

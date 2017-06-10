@@ -1,27 +1,13 @@
 import React from 'react'
 import Dialog from 'material-ui/Dialog'
-import '../../img/unisex-size-chart-gildan.png'
-import '../../img/ladyfit-size-chart-gildan.png'
-import '../../img/youth-size-chart-gildan.png'
 
-export const TShirtSizes = () => <div>
-  <p>
-  <h3>Unisez Sizes</h3>
-  <img src="../../img/unisex-size-chart-gildan.png" />
-  </p>
-  <p>
-  <h3>Ladyfit Sizes</h3>
-  <img src="../../img/ladyfit-size-chart-gildan.png" />
-  </p>
-  <p>
-  <h3>Youth Sizes</h3>
-  <img src="../../img/youth-size-chart-gildan.png" />
-  </p>
-</div>;
+import unisexImg from '../img/unisex-size-chart-gildan.png'
+import ladyfitImg from '../img/ladyfit-size-chart-gildan.png'
+import youthImg from '../img/youth-size-chart-gildan.png'
 
 export class TShirtDialog extends React.Component {
 
-  state = { open: false };
+  state = { open: false }
 
   render() {
     return <span>
@@ -38,8 +24,13 @@ export class TShirtDialog extends React.Component {
         open={this.state.open}
         title="T-Shirt Size Details"
       >
-        <TShirtSizes />
+        <h3>Unisex Sizes</h3>
+        <img src={unisexImg} />
+        <h3>Ladyfit Sizes</h3>
+        <img src={ladyfitImg} />
+        <h3>Youth Sizes</h3>
+        <img src={youthImg} />
       </Dialog>
-    </span>;
+    </span>
   }
 }
