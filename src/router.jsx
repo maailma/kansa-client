@@ -19,6 +19,7 @@ import Upgrade from './membership/components/Upgrade'
 import Payments from './payments'
 import NewPayment from './payments/new-payment'
 import ExhibitRegistration from './raami/components/Registration'
+import VolunteerRegistration from './voltti/components/Registration'
 
 const hugoRoutes = (path, requireAuth) => (
   <Route path={path} >
@@ -98,6 +99,7 @@ export default class AppRouter extends Route {
             <IndexRoute component={Upgrade} />
             <Route path=":id" component={Upgrade} />
           </Route>
+          <Route path="volunteer/:id" component={VolunteerRegistration} onEnter={this.requireAuth} />
         </Route>
       </Router>
     )

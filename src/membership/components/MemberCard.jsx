@@ -4,6 +4,7 @@ import { push } from 'react-router-redux'
 
 import { Card, CardHeader, CardActions } from 'material-ui/Card'
 import { List, ListItem } from 'material-ui/List'
+import Accessibility from 'material-ui/svg-icons/action/accessibility'
 import ThumbUp from 'material-ui/svg-icons/action/thumb-up'
 import ContentCreate from 'material-ui/svg-icons/content/create'
 import Palette from 'material-ui/svg-icons/image/palette'
@@ -102,8 +103,15 @@ class MemberCard extends React.Component {
         key="as"
         innerDivStyle={{ paddingLeft: 60 }}
         leftIcon={<Palette />}
-        onTouchTap={ () => push(`/exhibition/${id}`) }
+        onTouchTap={() => push(`/exhibition/${id}`)}
         primaryText="Register for the Art Show"
+      />,
+      <Action
+        key="vo"
+        innerDivStyle={{ paddingLeft: 60 }}
+        leftIcon={<Accessibility />}
+        onTouchTap={() => push(`/volunteer/${id}`)}
+        primaryText="Register as a Volunteer"
       />
     )
     return actions

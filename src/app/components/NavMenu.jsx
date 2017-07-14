@@ -3,6 +3,7 @@ const ImmutablePropTypes = require('react-immutable-proptypes');
 
 import Divider from 'material-ui/Divider'
 import { List, ListItem, makeSelectable } from 'material-ui/List'
+import Accessibility from 'material-ui/svg-icons/action/accessibility'
 import EuroSymbol from 'material-ui/svg-icons/action/euro-symbol'
 import ThumbUp from 'material-ui/svg-icons/action/thumb-up'
 import Palette from 'material-ui/svg-icons/image/palette'
@@ -22,6 +23,11 @@ const singleWithKey = (currentMember, otherMembers, key) => (
 const linkArtshowRegistration = (currentMember) => {
   const ms = currentMember && currentMember.get('membership');
   return ['Supporter', 'Exhibitor', 'Youth', 'FirstWorldcon', 'Adult'].indexOf(ms) !== -1;
+};
+
+const linkVolunteerRegistration = (currentMember) => {
+  const ms = currentMember && currentMember.get('membership');
+  return ['Youth', 'FirstWorldcon', 'Adult'].indexOf(ms) !== -1;
 };
 
 const linkHugoNominations = (currentMember, otherMembers) => (
@@ -56,6 +62,13 @@ const NavMenu = ({ currentMember, handleNav, otherMembers }) => {
     primaryText="Register for the Art Show"
     style={{ fontSize: 14 }}
     value={`/exhibition/${id}`}
+  />);
+  if (linkVolunteerRegistration(currentMember)) memberItems.push(<ListItem
+    key="vo"
+    leftIcon={<Accessibility/>}
+    primaryText="Register as a Volunteer"
+    style={{ fontSize: 14 }}
+    value={`/volunteer/${id}`}
   />);
   if (memberItems.length) memberItems.push(<Divider
     key="div"
