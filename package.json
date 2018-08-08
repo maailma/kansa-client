@@ -7,7 +7,7 @@
   "main": "src/index.js",
   "repository": "maailma/kansa-client",
   "scripts": {
-    "start": "webpack-dev-server -d --progress --colors",
+    "start": "webpack-dev-server -d --progress --colors --host 0.0.0.0",
     "build": "webpack -d --progress --colors",
     "build:prod": "NODE_ENV=production webpack -p",
     "prettier": "prettier --write 'src/**' webpack.config.js",
