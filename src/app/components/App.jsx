@@ -145,9 +145,9 @@ class App extends Component {
         />
       ]
     ) : (
-      <h1 style={{ paddingTop: 24 }}>
-        <Worldcon75 className="h1-logo" />
-        {title}
+      <h1 className="h1-logo">
+        <a href="https://conzealand.nz" class="h1-logo--link"><img src="img/conzealand-logo.png" alt="CoNZealand" class="img-responsive" /></a>
+        <span className="h1-logo--text">{title}</span>
       </h1>
     )
   }

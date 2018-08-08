@@ -1,5 +1,20 @@
 @import 'https://fonts.googleapis.com/css?family=Open+Sans:300,400,600';
+/* ---------------------------------------------------------------------------------------------- */
+/*  WorldCon 78 - CSS
+/* ----------------------------------------------------------------------------------------------
 
+1. BASE
+
+2. LAYOUT
+
+3. COMPONENTS AND MODULES
+
+4. STATE AND UTLITIES
+
+*/
+/* --------------------------------------------------------------------- */
+/* Base
+/* --------------------------------------------------------------------- */
 * {
   box-sizing: border-box;
 }
@@ -9,7 +24,7 @@ html {
 }
 
 body {
-  background: url(https://maailma.github.io/kansa-client/master/img/bg-aurora.jpg)
+  background: url(../img/conzealand-bg.jpg)
     center top / cover no-repeat fixed #005383;
   font-family: 'Open Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -39,19 +54,18 @@ main {
 }
 
 h1 {
-  color: #fc7c39;
+  color: #0034d4;
   font-size: 36px;
-  font-weight: 300;
+  font-weight: 400;
   text-align: center;
-  text-shadow: 0 0 2px #fc7c39;
 }
 
 h2 {
-  color: #fc7c39;
+  color: #0034d4;
   font-size: 24px;
 }
 h3 {
-  color: #fc7c39;
+  color: #0034d4;
   font-size: 18px;
 }
 
@@ -68,24 +82,14 @@ a {
   text-decoration: none;
 }
 a:active {
-  color: #fc7c39;
+  color: #0034d4;
 }
 a:hover {
   text-decoration: underline;
 }
-
-.action-head {
-  background-color: #3da9d4 !important;
-}
-.action-head * {
-  color: white !important;
-}
-
-.body-card {
-  margin: 30px 0;
-  padding: 5px 15px;
-}
-
+/* --------------------------------------------------------------------- */
+/* Layout
+/* --------------------------------------------------------------------- */
 .html-container > :first-child {
   margin-top: 0;
   padding-top: 0;
@@ -94,7 +98,23 @@ a:hover {
   margin-bottom: 0;
   padding-bottom: 0;
 }
+/* --------------------------------------------------------------------- */
+/* Components and Modules
+/* --------------------------------------------------------------------- */
+/* ------------------- Action Head -------------------*/
+.action-head {
+  background-color: #5c91ff !important;
+}
+.action-head * {
+  color: black !important;
+}
+/* ------------------- Body Card -------------------*/
+.body-card {
+  margin: 30px 0;
+  padding: 5px 15px;
+}
 
+/* ------------------- Form -------------------*/
 div.upload {
   min-height: 100px;
   display: block;
@@ -108,7 +128,7 @@ span.upload input {
   border: 0px;
   opacity: 0.7;
 }
-
+/* ------------------- Logo -------------------*/
 .logo {
   color: #999 !important;
   height: 56px !important;
@@ -122,19 +142,49 @@ span.upload input {
 }
 
 .logo.navbar {
-  color: #fc7c39 !important;
+  color: #0034d4 !important;
   height: 80px !important;
   left: 24px !important;
   top: -10px !important;
 }
 
 .h1-logo {
-  color: #fc7c39 !important;
-  height: 72px !important;
-  margin: 0 8px -24px 0;
-  width: auto !important;
+  padding: 15px 25px;
+  margin: 0;
+  background: rgba(0,0,0,.6);
+  color: #fff;
+  font-size: 1.25em;
+  text-transform: uppercase;
 }
-
+.h1-logo--link {
+  display: block;
+  margin: 0 auto;
+}
+.h1-logo--text {
+  display: block;
+  text-align: right;
+  margin: 0 auto;
+}
+@media only screen and (min-width: 768px) {
+  .h1-logo {
+    font-size: 2em;
+  }
+}
+@media only screen and (min-width: 992px) {
+  .h1-logo {
+    padding: 15px;
+  }
+  .h1-logo--link,
+  .h1-logo--text {
+    max-width: 65%;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .h1-logo--link,
+  .h1-logo--text {
+    max-width: 65%;
+  }
+}
 .logoutHint {
   opacity: 0;
   transition: opacity 450ms;
@@ -142,7 +192,7 @@ span.upload input {
 .logoutButton:hover .logoutHint {
   opacity: 1;
 }
-
+/* ------------------- Vote Module -------------------*/
 .vote-intro h3 {
   font-size: 18px;
   font-weight: 400;
@@ -161,4 +211,23 @@ span.upload input {
 .vote-item > div > div > div:last-child {
   height: auto !important;
   white-space: normal !important;
+}
+
+/* --------------------------------------------------------------------- */
+/* States and Utilities
+/* --------------------------------------------------------------------- */
+.s-invisible {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+.img-responsive {
+  max-width: 100%;
+  width: 100%;
+  height: auto;
 }
