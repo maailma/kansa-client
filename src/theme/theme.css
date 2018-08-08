@@ -24,7 +24,7 @@ html {
 }
 
 body {
-  background: url(../img/conzealand-bg.jpg)
+  background: url(https://cdn.matthew.nz/img/conzealand-bg.jpg)
     center top / cover no-repeat fixed #005383;
   font-family: 'Open Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
