@@ -1,4 +1,4 @@
-export const API_ROOT = API_HOST ? `https://${API_HOST}/api/` : '/api/'
+export const API_ROOT = API_HOST ? `http://${API_HOST}/api/` : '/api/'
 
 export const JS_ROOT = (() => {
   let script = document.currentScript
