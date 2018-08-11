@@ -34,7 +34,11 @@ const store = createStore(reducers, middleware(history))
   'ga'
 )
 
-ga('create', 'UA-66635432-3', 'auto')
+if (window.location.host.match(/members-staging/)) {
+  ga('create', 'UA-123745786-1', 'auto')
+} else {
+  ga('create', 'UA-123745786-2', 'auto')
+}
 history.listen(({ pathname }) => {
   if (pathname.indexOf('/login') !== -1) pathname = '/login'
   ga('set', 'page', pathname)
