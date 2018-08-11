@@ -36,7 +36,7 @@ class Voter extends Component {
     showMessage: PropTypes.func.isRequired
   }
 
-  static voterTypes = ['Supporter', 'Youth', 'FirstWorldcon', 'Adult']
+  static voterTypes = ['Supporter', 'Youth', 'Unwaged', 'Adult']
 
   static get defaultState() {
     return {

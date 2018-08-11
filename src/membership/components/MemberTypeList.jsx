@@ -17,34 +17,34 @@ const SelectableList = makeSelectable(List)
 
 export const memberTypeData = {
   Adult: {
-    primary: 'Adult membership',
+    primary: 'Adult Membership',
     daypass: 'Adult day pass (from NZD $25/day)',
     icon: <DirectionsWalk />
   },
-  FirstWorldcon: {
-    primary: 'First Worldcon membership',
-    secondary: 'Have never been a Worldcon member',
+  Unwaged: {
+    primary: 'Unwaged Membership',
+    secondary: 'NZ residents only',
     icon: <StarTicket />
   },
   Youth: {
-    primary: 'Youth membership',
-    daypass: 'Youth day pass (from NZD $15/day)',
-    secondary: 'Born on or after 10 August 1991',
+    primary: 'Young Adult Membership',
+    daypass: 'Young Adult day pass (from NZD $15/day)',
+    secondary: 'born in or after 2000',
     icon: <DirectionsRun />
   },
   Child: {
-    primary: 'Child membership',
+    primary: 'Child Membership',
     daypass: 'Child day pass (from NZD $10/day)',
-    secondary: 'Born on or after 10 August 2001',
+    secondary: 'born in or after 2005',
     icon: <SmilingFace />
   },
   KidInTow: {
-    primary: 'Kid-in-tow membership',
-    secondary: 'Born on or after 10 August 2011',
+    primary: 'Kid-in-tow',
+    secondary: 'born in or after 2015',
     icon: <ChildFriendly />
   },
   Supporter: {
-    primary: 'Supporting membership',
+    primary: 'Supporting Membership',
     icon: <EventSeat />
   },
   Upgrade: {

@@ -47,7 +47,7 @@ export const membershipTypes = [
   'KidInTow',
   'Child',
   'Youth',
-  'FirstWorldcon',
+  'Unwaged',
   'Adult'
 ]
 

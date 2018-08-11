@@ -32,9 +32,9 @@ const contents = {
       </div>
     ),
     memberships: [
-      'FirstWorldcon',
-      'Youth',
       'Adult',
+      'Youth',
+      'Unwaged',
       '_divider',
       'Child',
       'KidInTow',
@@ -63,7 +63,7 @@ const contents = {
         </p>
       </div>
     ),
-    memberships: ['FirstWorldcon', 'Youth', 'Adult']
+    memberships: ['Unwaged', 'Youth', 'Adult']
   },
 
   child: {
