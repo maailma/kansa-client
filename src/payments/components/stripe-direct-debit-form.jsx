@@ -46,7 +46,7 @@ export default class StripeDirectDebitForm extends React.Component {
     const disabled =
       !city || !country || !IBAN.isValid(iban) || !name || !postal_code
     let label = 'Confirm payment'
-    if (amount) label += ' of €' + (amount / 100).toFixed(2)
+    if (amount) label += ' of NZD $' + (amount / 100).toFixed(2)
     return (
       <form>
         <Row>

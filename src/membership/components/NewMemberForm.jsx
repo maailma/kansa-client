@@ -66,7 +66,7 @@ class NewMemberForm extends React.Component {
     const { member } = this.state
     const amount = this.price
     const email = member.get('email')
-    showMessage(`Charging ${email} EUR ${amount / 100} ...`)
+    showMessage(`Charging ${email} NZD ${amount / 100} ...`)
     buyMembership(member, amount, email, token, () => {
       showMessage('Charge completed; new member registered!')
       push('/')
@@ -154,12 +154,12 @@ class NewMemberForm extends React.Component {
                   paddingRight: 16
                 }}
               >
-                {amount > 0 ? `Total: €${amount / 100}` : ''}
+                {amount > 0 ? `Total: NZD $${amount / 100}` : ''}
               </div>
               {amount > 0 ? (
                 <StripeCheckout
                   amount={amount}
-                  currency="EUR"
+                  currency="NZD"
                   description={this.description}
                   disabled={!valid}
                   email={member.get('email')}

@@ -116,7 +116,7 @@ class NewPayment extends React.Component {
       .merge({ amount, category, type })
       .filter(v => v)
       .toJS()
-    showMessage(`Charging ${purchase.get('email')} EUR ${amount / 100}...`)
+    showMessage(`Charging ${purchase.get('email')} NZD ${amount / 100}...`)
     buyOther(account, email, source, [item], () => {
       showMessage('Payment successful!')
       push('/pay')
@@ -175,7 +175,7 @@ class NewPayment extends React.Component {
               <StripeCheckout
                 account={account}
                 amount={amount}
-                currency="EUR"
+                currency="NZD"
                 description={title}
                 email={purchase.get('email')}
                 onCheckout={this.onCheckout}
@@ -191,7 +191,7 @@ class NewPayment extends React.Component {
               </StripeCheckout>
               <div>
                 Amount:
-                <span style={{ paddingLeft: 8, paddingRight: 8 }}>€</span>
+                <span style={{ paddingLeft: 8, paddingRight: 8 }}>NZD $</span>
                 <span>{(amount / 100).toFixed(2)}</span>
               </div>
             </CardActions>

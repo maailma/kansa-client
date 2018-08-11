@@ -31,12 +31,12 @@ const PaymentActions = ({ buyOther, purchase, showMessage, userIds }) => {
           <StripeCheckout
             account={account}
             amount={amount}
-            currency="EUR"
+            currency="NZD"
             description={`Invoice #${invoice || id}`}
             email={payment_email}
             key="invoice"
             onCheckout={source => {
-              showMessage(`Charging ${payment_email} EUR ${amount / 100}...`)
+              showMessage(`Charging ${payment_email} NZD ${amount / 100}...`)
               buyOther(account, payment_email, source, [{ id }], () => {
                 showMessage('Payment successful!')
               })

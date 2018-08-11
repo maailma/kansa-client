@@ -110,7 +110,7 @@ export const MembershipSelect = ({
             key={type}
             disabled={amount < 0 || idx < prevIdx}
             value={type}
-            primaryText={amount <= 0 ? label : `${label} (€${amount / 100})`}
+            primaryText={amount <= 0 ? label : `${label} (NZD $${amount / 100})`}
           />
         )
       })}

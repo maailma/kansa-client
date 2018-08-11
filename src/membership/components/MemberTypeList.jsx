@@ -18,7 +18,7 @@ const SelectableList = makeSelectable(List)
 export const memberTypeData = {
   Adult: {
     primary: 'Adult membership',
-    daypass: 'Adult day pass (from €25/day)',
+    daypass: 'Adult day pass (from NZD $25/day)',
     icon: <DirectionsWalk />
   },
   FirstWorldcon: {
@@ -28,13 +28,13 @@ export const memberTypeData = {
   },
   Youth: {
     primary: 'Youth membership',
-    daypass: 'Youth day pass (from €15/day)',
+    daypass: 'Youth day pass (from NZD $15/day)',
     secondary: 'Born on or after 10 August 1991',
     icon: <DirectionsRun />
   },
   Child: {
     primary: 'Child membership',
-    daypass: 'Child day pass (from €10/day)',
+    daypass: 'Child day pass (from NZD $10/day)',
     secondary: 'Born on or after 10 August 2001',
     icon: <SmilingFace />
   },
@@ -77,7 +77,7 @@ export default class MemberTypeList extends Component {
         : amount < 0
           ? primary
           : amount > 0
-            ? `${primary} (€${amount / 100})`
+            ? `${primary} (NZD $${amount / 100})`
             : !prevType
               ? `${primary} (free)`
               : canAddPaperPubs

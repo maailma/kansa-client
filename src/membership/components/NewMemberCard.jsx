@@ -54,7 +54,7 @@ const contents = {
         </p>
         <p>
           Persons born on 10 August 1991 or later qualify for <b>Youth</b>{' '}
-          attending memberships of Worldcon 75 (€100).
+          attending memberships of Worldcon 75 (NZD $100).
         </p>
         <p>
           All attending memberships carry the same rights as supporting

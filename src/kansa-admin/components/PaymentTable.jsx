@@ -79,12 +79,12 @@ class PaymentTable extends PureComponent {
                 <Column dataKey="status" label="Status" width={80} />
                 <Column
                   dataKey="amount"
-                  label="€"
+                  label="NZD $"
                   width={50}
                   cellDataGetter={({ rowData }) => {
                     let amount = rowData.get('amount') / 100
                     const currency = rowData.get('currency', '').toUpperCase()
-                    if (currency && currency !== 'EUR') amount += ' ' + currency
+                    if (currency && currency !== 'NZD') amount += ' ' + currency
                     return amount
                   }}
                 />

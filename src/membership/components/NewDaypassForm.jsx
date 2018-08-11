@@ -101,7 +101,7 @@ class NewDaypassForm extends React.Component {
     const { person } = this.state
     const amount = this.price
     const email = person.get('email')
-    showMessage(`Charging ${email} EUR ${amount / 100} ...`)
+    showMessage(`Charging ${email} NZD ${amount / 100} ...`)
     buyDaypass(person, amount, email, token, () => {
       showMessage('Charge completed; day pass purchased!')
       push('/')
@@ -185,7 +185,7 @@ class NewDaypassForm extends React.Component {
                     >
                       <RaisedButton
                         fullWidth
-                        label={`${label} (€${daypassPrices.getIn([type, day]) /
+                        label={`${label} (NZD $${daypassPrices.getIn([type, day]) /
                           100})`}
                         onClick={() =>
                           this.setState({ person: person.set(day, !selected) })
@@ -214,7 +214,7 @@ class NewDaypassForm extends React.Component {
             >
               <StripeCheckout
                 amount={amount}
-                currency="EUR"
+                currency="NZD"
                 description={this.description}
                 disabled={paymentDisabled}
                 email={person.get('email')}
@@ -231,7 +231,7 @@ class NewDaypassForm extends React.Component {
                 />
               </StripeCheckout>
               <div>
-                {amount > 0 ? `Total: €${(amount / 100).toFixed(2)}` : ''}
+                {amount > 0 ? `Total: NZD $${(amount / 100).toFixed(2)}` : ''}
               </div>
             </CardActions>
           </Card>

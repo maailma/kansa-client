@@ -26,7 +26,7 @@ const SelectNewPaymentCard = ({ data, onSelect, title }) => {
     .map(([key, typeData]) => {
       const amount = typeData.get('amount')
       const label = typeData.get('label')
-      const primary = label + (amount > 0 ? ` (€${amount / 100})` : '')
+      const primary = label + (amount > 0 ? ` (NZD $${amount / 100})` : '')
       return (
         <ListItem
           key={key}

@@ -35,7 +35,7 @@ const PaymentCardHeader = ({ amount, status, subtitle, title, updated }) => {
     >
       <div style={{ flexGrow: 1, textAlign: 'right' }}>
         <div style={{ color: amountColor, fontSize: 15 }}>
-          €{amount / 100}
+          NZD ${amount / 100}
           <br />
         </div>
         <div
