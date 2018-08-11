@@ -97,11 +97,6 @@ class Index extends Component {
             expandable={isLoggedIn}
             onSelectType={() => push(upgradePath)}
           />
-          <NewMemberCard
-            category="daypass"
-            expandable
-            onSelectType={type => push(`/daypass/${type}`)}
-          />
         </Col>
       </Row>
     )
