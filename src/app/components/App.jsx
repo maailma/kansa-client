@@ -10,7 +10,7 @@ import Menu from 'material-ui/svg-icons/navigation/menu'
 
 import api from '../../lib/api'
 import { ConfigProvider } from '../../lib/config-context'
-import Worldcon75 from '../../lib/worldcon75'
+import Logo from '../../lib/logo'
 import { primary2Color } from '../../theme/colors'
 import { hideMessage } from '../actions/app'
 import { logout } from '../actions/auth'
@@ -125,7 +125,7 @@ class App extends Component {
     const { menuDocked, menuOpen, menuWidth } = this.state
     return email ? (
       [
-        <Worldcon75 key="logo" className={menuOpen ? 'logo navbar' : 'logo'} />,
+        <Logo key="logo" className={menuOpen ? 'logo navbar' : 'logo'} />,
         <NavDrawer
           docked={menuDocked}
           id={Number(id) || undefined}

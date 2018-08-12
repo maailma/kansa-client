@@ -114,20 +114,21 @@ span.upload input {
 .logo {
   color: #999 !important;
   height: 56px !important;
-  left: 48px !important;
+  left: 30px !important;
   pointer-events: none;
   position: absolute;
   top: 0 !important;
   transition: all 600ms !important;
-  width: auto !important;
+  width: 250px !important;
   z-index: 9999;
 }
 
 .logo.navbar {
-  color: #0034d4 !important;
-  height: 80px !important;
-  left: 24px !important;
-  top: -10px !important;
+  color: #000 !important;
+  height: 70px !important;
+  width: 250px !important;
+  left: 5px !important;
+  top: -5px !important;
 }
 
 .h1-logo {
