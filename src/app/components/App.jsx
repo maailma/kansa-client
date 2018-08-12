@@ -146,7 +146,7 @@ class App extends Component {
       ]
     ) : (
       <h1 className="h1-logo">
-        <a href="https://conzealand.nz" class="h1-logo--link"><img src="https://cdn.matthew.nz/img/conzealand-logo.png" alt="CoNZealand" class="img-responsive" /></a>
+        <a href="https://conzealand.nz" class="h1-logo--link"><img src="https://cdn.matthew.nz/img/conzealand-logo.svg" alt="CoNZealand" class="img-responsive" /></a>
         <span className="h1-logo--text">{title}</span>
       </h1>
     )
