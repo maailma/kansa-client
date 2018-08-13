@@ -18,7 +18,7 @@ import SouvenirBook from '../../lib/souvenir-book'
 import { requestSlackInvite } from '../actions'
 import { isAttendingMember, isWSFSMember } from '../constants'
 import MemberEdit from './MemberEdit'
-import ShowBarcode from './show-barcode'
+// import ShowBarcode from './show-barcode'
 
 const badgeName = member =>
   member.get('badge_name') || member.get('preferred_name')
@@ -67,20 +67,6 @@ class MemberCard extends React.Component {
         />
       </MemberEdit>
     ]
-    if (
-      membership !== 'Supporter' &&
-      (membership !== 'NonMember' || member.get('daypass'))
-    )
-      actions.push(
-        <ShowBarcode key="bc" memberId={id}>
-          <Action
-            innerDivStyle={{ paddingLeft: 60 }}
-            leftIcon={<Receipt />}
-            primaryText="Show registration barcode"
-            secondaryText=""
-          />
-        </ShowBarcode>
-      )
     if (membership !== 'Adult' || !member.get('paper_pubs'))
       actions.push(
         <Action

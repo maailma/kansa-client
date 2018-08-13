@@ -189,22 +189,6 @@ export default class MemberForm extends Component {
                   hintText={member.get('country')}
                 />
               </Col>
-              {isAdmin ? (
-                <Col xs={12} sm={3} md={2}>
-                  <PreviewBadgeButton
-                    member={member}
-                    style={{ float: 'right' }}
-                  />
-                </Col>
-              ) : (
-                <Col xs={12} style={hintStyle}>
-                  <PreviewBadgeButton
-                    member={member}
-                    style={{ float: 'right' }}
-                  />
-                  {this.msg('badge_hint')}
-                </Col>
-              )}
             </Row>
           )}
         <Row>
