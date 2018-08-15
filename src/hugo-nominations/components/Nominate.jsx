@@ -63,13 +63,13 @@ const NominationsHead = ({ active, name, signature }) => (
         </p>
       ) : null}
       <p>
-        Thank you for participating in the 2017 Hugo Awards and the John W.
+        Thank you for participating in the 2020 Hugo Awards and the John W.
         Campbell Award! Please choose up to five eligible candidates in each
         category. We recommend that you nominate whatever works and creators you
         have personally read or seen that were your favorites from 2016.
       </p>
       <p>
-        The deadline for nominations is 17 March 2017 at 11:59pm Pacific
+        The deadline for nominations is 17 March 2020 at 11:59pm Pacific
         Daylight Time (2:59pm Eastern Daylight Time, 0659 Greenwich Mean Time,
         0859 in Finland, all on 18 March). You can make as many changes as you
         like up to your nomination ballot until then. Your current ballot will
@@ -101,7 +101,7 @@ const NominationsHead = ({ active, name, signature }) => (
       <p>
         Works published in 2016 for the first time anywhere, or for the first
         time in English translation or in the United States, are eligible for
-        the 2017 Hugo Awards. Books are considered to have been published in the
+        the 2020 Hugo Awards. Books are considered to have been published in the
         year of the publication date, which usually appears with the copyright
         information on the back of the title page. If there is no stated
         publication date, the copyright date will be used instead. A dated

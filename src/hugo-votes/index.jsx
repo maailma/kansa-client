@@ -107,7 +107,7 @@ class Vote extends React.Component {
                   seconds. You will receive a confirmation email of your votes
                   thirty minutes after your last change.
                 </p>
-                <p>Thank you for voting in the 2017 Hugo Awards!</p>
+                <p>Thank you for voting in the 2020 Hugo Awards!</p>
                 <p>
                   <Link to="/">&laquo; Return to the main member page</Link>
                 </p>

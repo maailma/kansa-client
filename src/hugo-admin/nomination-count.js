@@ -1,6 +1,6 @@
 /**
  * Select the Hugo Award finalists according to the WSFS constitution, as valid
- * for Worldcon 75 selecting the awards in 2017.
+ * for Worldcon 75 selecting the awards in 2020.
  *
  * Uses collections from immutable.js.
  *

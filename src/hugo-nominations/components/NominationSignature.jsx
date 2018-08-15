@@ -40,7 +40,7 @@ export default class NominationSignature extends React.Component {
           seen that were your favorites from 2016.
         </p>
         <p>
-          The deadline for nominations is 17 March 2017 at 11:59pm Pacific
+          The deadline for nominations is 17 March 2020 at 11:59pm Pacific
           Daylight Time (2:59am Eastern Daylight Time, 0659 Greenwich Mean Time,
           0859 in Finland, all on 18 March). You can make as many changes as you
           like up until then. Your current ballot will be emailed to you an hour

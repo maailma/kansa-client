@@ -89,7 +89,7 @@ class KeyRequest extends React.Component {
           </p>
           <p>
             If your email address is associated with more than one membership
-            that is eligible to vote or nominate in the 2017 Hugo Awards, you'll
+            that is eligible to vote or nominate in the 2020 Hugo Awards, you'll
             need to use the separately emailed Hugo login link to access those
             services. For further assistance with Hugo nominations, please
             e-mail{' '}
