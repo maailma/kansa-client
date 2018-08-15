@@ -100,19 +100,19 @@ class MemberCard extends React.Component {
         />
       )
     }
-    if (isWSFSMember(member)) {
-      actions.push(
-        <Action
-          key="sb"
-          innerDivStyle={{ paddingLeft: 60 }}
-          leftIcon={<SouvenirBook />}
-          onClick={() => {
-            window.location = '/member-files/souvenir-book.pdf'
-          }}
-          primaryText="Open souvenir book (PDF)"
-        />
-      )
-    }
+    // if (isWSFSMember(member)) {
+    //   actions.push(
+    //     <Action
+    //       key="sb"
+    //       innerDivStyle={{ paddingLeft: 60 }}
+    //       leftIcon={<SouvenirBook />}
+    //       onClick={() => {
+    //         window.location = '/member-files/souvenir-book.pdf'
+    //       }}
+    //       primaryText="Open souvenir book (PDF)"
+    //     />
+    //   )
+    // }
     return actions
   }
 
