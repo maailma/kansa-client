@@ -28,7 +28,7 @@ const contents = {
     ),
     memberships: [
       'Adult',
-      'Youth',
+      'YoungAdult',
       'Unwaged',
       '_divider',
       'Child',
@@ -53,7 +53,7 @@ const contents = {
         </p>
       </div>
     ),
-    memberships: ['Unwaged', 'Youth', 'Adult']
+    memberships: ['Unwaged', 'YoungAdult', 'Adult']
   },
 
   child: {
@@ -81,7 +81,7 @@ const contents = {
         </p>
       </div>
     ),
-    memberships: ['Adult', 'Youth', 'Child']
+    memberships: ['Adult', 'YoungAdult', 'Child']
   },
 
   support: {

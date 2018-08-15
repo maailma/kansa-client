@@ -26,7 +26,7 @@ export const memberTypeData = {
     secondary: 'NZ residents only',
     icon: <StarTicket />
   },
-  Youth: {
+  YoungAdult: {
     primary: 'Young Adult Membership',
     daypass: 'Young Adult day pass (from NZD $15/day)',
     secondary: 'born in or after 2000',

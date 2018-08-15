@@ -19,7 +19,7 @@ export const membershipTypes = [
   'Supporter',
   'KidInTow',
   'Child',
-  'Youth',
+  'YoungAdult',
   'Unwaged',
   'Adult'
 ]
@@ -31,7 +31,7 @@ export const isAttendingMember = member => {
     'Exhibitor',
     'KidInTow',
     'Child',
-    'Youth',
+    'YoungAdult',
     'Unwaged',
     'Adult'
   ]
@@ -41,7 +41,7 @@ export const isAttendingMember = member => {
 }
 
 export const isWSFSMember = member => {
-  const types = ['Supporter', 'Youth', 'Unwaged', 'Adult']
+  const types = ['Supporter', 'YoungAdult', 'Unwaged', 'Adult']
   const membership =
     typeof member === 'string' ? member : member.get('membership')
   return types.indexOf(membership) !== -1
