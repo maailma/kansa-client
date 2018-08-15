@@ -141,11 +141,6 @@ const PaperPubs = ({
                 paid_paper_pubs={paid_paper_pubs}
                 tabIndex={tabIndex}
               />
-              {!isAdmin && (
-                <div style={hintStyle}>
-                  {ppMsg.hint_checkbox({ paid: true })}
-                </div>
-              )}
               {!isAdmin && hasPaperPubs ? (
                 <div style={hintStyle}>{ppMsg.hint_fields()}</div>
               ) : null}

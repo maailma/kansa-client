@@ -82,8 +82,8 @@ class KeyRequest extends React.Component {
             If you're not able to enter a valid address, or if you do not
             receive the login link within 30 minutes or so, please get in touch
             with us at{' '}
-            <a href="mailto:registration@worldcon.fi">
-              registration@worldcon.fi
+            <a href="mailto:registration@conzealand.nz">
+              registration@conzealand.nz
             </a>{' '}
             and we'll help you get sorted.
           </p>
@@ -93,7 +93,7 @@ class KeyRequest extends React.Component {
             need to use the separately emailed Hugo login link to access those
             services. For further assistance with Hugo nominations, please
             e-mail{' '}
-            <a href="mailto:hugohelp@worldcon.fi">hugohelp@worldcon.fi</a>.
+            <a href="mailto:registration@conzealand.nz">registration@conzealand.nz</a>.
           </p>
         </div>
       </div>

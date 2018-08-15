@@ -3,7 +3,7 @@
   "legal_name_hint": "We'll need to check this against an official ID at the con, but otherwise it'll stay confidential.",
   "email": "Email",
   "new_email_hint": "How we'll get in touch with you before the con, and where we'll send important information about the Hugo Awards and Worldcon Site Selection.",
-  "edit_email_hint": "To change the email address associated with this membership, please get in touch with us at <a href=\"mailto:registration@worldcon.fi\">registration@worldcon.fi</a>",
+  "edit_email_hint": "To change the email address associated with this membership, please get in touch with us at <a href=\"mailto:registration@conzealand.nz\">registration@conzealand.nz</a>",
   "badge_name": "Badge name",
   "badge_subtitle": "Badge subtitle",
   "badge_hint": "The text we'll print on your badge; by default your preferred name and your country of origin. Both fields are completely free to modify and support most Unicode characters except for emoji.",
@@ -13,7 +13,7 @@
   "city": "City",
   "state": "State/province",
   "country": "Country",
-  "location_hint": "Where you're from. Not strictly speaking necessary, but we'd love to know how much world is coming to our Worldcon. Be as specific as you wish; not all fields will apply to everyone.",
+  "location_hint": "Where you're from. Not strictly speaking necessary, but we'd love to know how much world is coming to our CoNZealand. Be as specific as you wish; not all fields will apply to everyone.",
   "paper_pubs": {
     "name": "Paper pubs name",
     "address": "Paper pubs address",

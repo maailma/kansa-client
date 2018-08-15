@@ -35,8 +35,7 @@ export const memberFields = [
   'public_last_name',
   'country',
   'state',
-  'city',
-  'paper_pubs'
+  'city'
 ]
 
 export const membershipTypes = [
@@ -67,11 +66,6 @@ class Member extends PureComponent {
       country: PropTypes.string,
       state: PropTypes.string,
       city: PropTypes.string,
-      paper_pubs: ImmutablePropTypes.mapContains({
-        name: PropTypes.string.isRequired,
-        address: PropTypes.string.isRequired,
-        country: PropTypes.string.isRequired
-      })
     }),
     printer: PropTypes.string,
     setMember: PropTypes.func.isRequired,
@@ -116,46 +110,6 @@ class Member extends PureComponent {
         onClick={() => this.save().then(handleClose)}
       />
     ]
-
-    if (!locked) {
-      const email = member.get('email')
-      const legal_name = member.get('legal_name')
-      const paper_pubs = member.get('paper_pubs')
-      actions.unshift(
-        <MemberLog key="log" getLog={() => api.GET(`people/${id}/log`)} id={id}>
-          <FlatButton label="View log" style={{ float: 'left' }} />
-        </MemberLog>,
-
-        <Upgrade
-          key="upgrade"
-          membership={membership}
-          paper_pubs={paper_pubs}
-          name={`${legal_name} <${email}>`}
-          upgrade={res =>
-            api
-              .POST(`people/${id}/upgrade`, res)
-              .then(() => showMessage(`${legal_name} upgraded`))
-          }
-        >
-          <FlatButton label="Upgrade" style={{ float: 'left' }} />
-        </Upgrade>,
-
-        <NewInvoice
-          key="invoice"
-          onSubmit={invoice =>
-            api
-              .POST(`purchase/invoice`, {
-                email,
-                items: [invoice]
-              })
-              .then(() => showMessage(`Invoice created for ${legal_name}`))
-          }
-          person={member}
-        >
-          <FlatButton label="New invoice" style={{ float: 'left' }} />
-        </NewInvoice>
-      )
-    }
 
     const daypass = member.get('daypass')
     if (

@@ -96,7 +96,7 @@ const NewPaymentForm = ({
                     textAlign: 'right'
                   }}
                 >
-                  If you've received an invoice from Worldcon 75, please include
+                  If you've received an invoice from CoNZealand, please include
                   its invoice number here.
                 </div>
               ]

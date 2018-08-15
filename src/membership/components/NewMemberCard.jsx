@@ -11,22 +11,17 @@ const contents = {
     body: (
       <div>
         <p>
-          Persons who have never been attending or supporting members of any
-          previous Worldcon are eligible for a <b>First Worldcon</b> attending
-          membership of Worldcon 75.
-        </p>
-        <p>
           <b>Child</b> members are not eligible to participate in the Hugo
           Awards or Site Selection processes.
         </p>
         <p>
-          A <b>Supporting</b> membership of Worldcon 75 grants you the right to
+          A <b>Supporting</b> membership of CoNZealand grants you the right to
           participate in the functions of the World Science Fiction Society
           (Hugo Awards and Site Selection), but does not grant general admission
           to the convention.
         </p>
         <p>
-          Participants of the 2017 Worldcon Site Selection have been
+          Participants of the New Zealand in 2020 Worldcon Site Selection have been
           automatically granted supporting membership.
         </p>
       </div>
@@ -48,13 +43,8 @@ const contents = {
     body: (
       <div>
         <p>
-          Persons who have never been attending or supporting members of any
-          previous Worldcon are eligible for a <b>First Worldcon</b> attending
-          membership of Worldcon 75.
-        </p>
-        <p>
-          Persons born on 10 August 1991 or later qualify for <b>Youth</b>{' '}
-          attending memberships of Worldcon 75 (NZD $100).
+          Persons born on or after 2000 qualify for <b>Young Adult</b>{' '}
+          attending memberships of CoNZealand (NZD $225).
         </p>
         <p>
           All attending memberships carry the same rights as supporting
@@ -84,12 +74,6 @@ const contents = {
     body: (
       <div>
         <p>
-          If you are only able to come to Worldcon 75 for a day or two, we have
-          day passes available. This pass will entitle you to enjoy the
-          activities, programming and events of Worldcon for that day, except
-          for the parties in the evenings.
-        </p>
-        <p>
           Day passes do not include guaranteed seating to the Hugo Ceremony
           (Friday) and the Masquerade (Saturday). While we expect to be able to
           seat everyone, those with full attending memberships will have
@@ -105,12 +89,12 @@ const contents = {
     body: (
       <div>
         <p>
-          A non-attending membership of Worldcon 75 which will grant you the
+          A non-attending membership of CoNZealand which will grant you the
           right to participate in the functions of the World Science Fiction
           Society (Hugo Awards and Site Selection).
         </p>
         <p>
-          Participants of the 2017 Worldcon Site Selection have been
+          Participants of the 2020 Worldcon Site Selection have been
           automatically granted supporting membership. Supporting memberships
           may be upgraded to attending memberships.
         </p>
