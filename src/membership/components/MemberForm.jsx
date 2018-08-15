@@ -220,12 +220,6 @@ export default class MemberForm extends Component {
             </Col>
           )}
         </Row>
-        <PaperPubs
-          data={data}
-          isAdmin={isAdmin}
-          newMember={newMember}
-          {...inputProps}
-        />
       </form>
     )
   }
