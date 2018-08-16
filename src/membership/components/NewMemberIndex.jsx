@@ -65,10 +65,6 @@ class NewMemberIndex extends Component {
             onSelectType={this.onSelectType}
             data={data}
           />
-          <NewMemberCard
-            category="daypass"
-            onSelectType={type => push(`/daypass/${type}`)}
-          />
         </Col>
       </Row>
     )
