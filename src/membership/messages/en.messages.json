@@ -10,8 +10,8 @@
   "public_first_name": "Public First Name",
   "public_last_name": "Public Last Name",
   "public_name_hint": "This is the name you would like to be addressed by. If it is left blank, you will be addressed by your legal name.",
-  "city": "City",
-  "state": "State/province",
+  "city": "Address line 1",
+  "state": "Address line 2",
   "country": "Country",
   "location_hint": "Where do you get your mail? This should match your credit card address, if you use one.",
   "paper_pubs": {
