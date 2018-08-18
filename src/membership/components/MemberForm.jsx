@@ -125,7 +125,7 @@ export default class MemberForm extends Component {
     return (
       <form>
         <Row>
-          <Col xs={12} sm={6}>
+          <Col xs={12}>
             <TextInput
               {...inputProps}
               inputRef={ref => {
@@ -138,7 +138,43 @@ export default class MemberForm extends Component {
               <div style={hintStyle}>{this.msg('legal_name_hint')}</div>
             )}
           </Col>
+        </Row>
+        <Row>
           <Col xs={12} sm={6}>
+            <TextInput {...inputProps} path="public_first_name" />
+          </Col>
+          <Col xs={12} sm={6}>
+            <TextInput {...inputProps} path="public_last_name" />
+          </Col>
+          {!isAdmin && (
+            <Col xs={12} style={hintStyle}>
+              {this.msg('public_name_hint')}
+            </Col>
+          )}
+        </Row>
+        {lc !== 'daypass' &&
+          isAttendingMember(member) && (
+            <Row style={{ alignItems: 'flex-end' }}>
+              <Col xs={12} sm={6}>
+                <TextInput
+                  hintText={member.get('preferred_name')}
+                  multiLine
+                  path="badge_name"
+                  rowsMax={2}
+                  {...inputProps}
+                />
+              </Col>
+              <Col xs={12} sm={isAdmin ? 3 : 6} md={isAdmin ? 4 : 6}>
+                <TextInput
+                  {...inputProps}
+                  path="badge_subtitle"
+                  hintText={member.get('country')}
+                />
+              </Col>
+            </Row>
+          )}
+        <Row>
+          <Col xs={12} sm={4}>
             {isAdmin || newDaypass || newMember
               ? [
                   <TextInput
@@ -169,56 +205,16 @@ export default class MemberForm extends Component {
                   </div>
                 ]}
           </Col>
-        </Row>
-        {lc !== 'daypass' &&
-          isAttendingMember(member) && (
-            <Row style={{ alignItems: 'flex-end' }}>
-              <Col xs={12} sm={6}>
-                <TextInput
-                  hintText={member.get('preferred_name')}
-                  multiLine
-                  path="badge_name"
-                  rowsMax={2}
-                  {...inputProps}
-                />
-              </Col>
-              <Col xs={12} sm={isAdmin ? 3 : 6} md={isAdmin ? 4 : 6}>
-                <TextInput
-                  {...inputProps}
-                  path="badge_subtitle"
-                  hintText={member.get('country')}
-                />
-              </Col>
-            </Row>
-          )}
-        <Row>
-          <Col xs={12} sm={6}>
-            <TextInput {...inputProps} path="public_first_name" />
-          </Col>
-          <Col xs={12} sm={6}>
-            <TextInput {...inputProps} path="public_last_name" />
-          </Col>
-          {!isAdmin && (
-            <Col xs={12} style={hintStyle}>
-              {this.msg('public_name_hint')}
-            </Col>
-          )}
-        </Row>
-        <Row>
-          <Col xs={12} sm={4}>
+          <Col xs={12} sm={8}>
             <TextInput {...inputProps} path="city" />
-          </Col>
-          <Col xs={12} sm={4}>
             <TextInput {...inputProps} path="state" />
-          </Col>
-          <Col xs={12} sm={4}>
             <TextInput {...inputProps} path="country" />
+            {!isAdmin && (
+              <Col xs={12} style={hintStyle}>
+                {this.msg('location_hint')}
+              </Col>
+            )}
           </Col>
-          {!isAdmin && (
-            <Col xs={12} style={hintStyle}>
-              {this.msg('location_hint')}
-            </Col>
-          )}
         </Row>
       </form>
     )
