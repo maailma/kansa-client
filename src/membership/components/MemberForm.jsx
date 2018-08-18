@@ -206,9 +206,9 @@ export default class MemberForm extends Component {
                 ]}
           </Col>
           <Col xs={12} sm={8}>
-            <TextInput {...inputProps} path="city" />
+            <TextInput {...inputProps} path="city" required />
             <TextInput {...inputProps} path="state" />
-            <TextInput {...inputProps} path="country" />
+            <TextInput {...inputProps} path="country" required />
             {!isAdmin && (
               <Col xs={12} style={hintStyle}>
                 {this.msg('location_hint')}
