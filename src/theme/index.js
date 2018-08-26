@@ -1,6 +1,6 @@
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
 
-import '../img/bg-aurora.jpg'
+import '../img/conzealand-bg.jpg'
 import '../img/conzealand-logo.svg'
 import '../img/conzealand-logo-vertical.png'
 import './theme.css'
