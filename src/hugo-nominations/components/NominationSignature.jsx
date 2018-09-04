@@ -30,28 +30,27 @@ export default class NominationSignature extends React.Component {
         open={open}
       >
         <p>
-          You have received this link because you are a member of MidAmeriCon
-          II, Worldcon 75 and/or Worldcon 76 in San José. This is your personal
+          You have received this link because you are a member of Worldcon 76 in San Jos&eacute;, 
+          Dublin 2019, an Irish Worldcon, and/or CoNZealand. This is your personal
           nominations ballot.
         </p>
         <p>
           Please choose up to five nominees in each category. We recommend that
           you nominate whatever works and creators you have personally read or
-          seen that were your favorites from 2016.
+          seen that were your favorites from 2018.
         </p>
         <p>
-          The deadline for nominations is 17 March 2017 at 11:59pm Pacific
-          Daylight Time (2:59am Eastern Daylight Time, 0659 Greenwich Mean Time,
-          0859 in Finland, all on 18 March). You can make as many changes as you
+          The deadline for nominations is YY 2019 at 11:59pm GMT.
+          You can make as many changes as you
           like up until then. Your current ballot will be emailed to you an hour
           after you stop making changes.
         </p>
         <p>
           If you have difficulties accessing the online ballot, or you have more
           general questions on the Hugo process, you can e-mail{' '}
-          <a href="mailto:hugohelp@worldcon.fi">hugohelp@worldcon.fi</a> for
+          <a href="mailto:hugohelp@dublin2019.com">hugohelp@dublin2019.com</a> for
           assistance. See{' '}
-          <a href="http://www.worldcon.fi/wsfs/hugo/" target="_blank">
+          <a href="http://www.dublin2019.com/wsfs/hugo/" target="_blank">
             here
           </a>{' '}
           for more information about the Hugo Awards.

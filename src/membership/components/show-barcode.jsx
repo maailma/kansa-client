@@ -54,7 +54,7 @@ export default class ShowBarcode extends React.Component {
         <Dialog
           actions={
             <FlatButton
-              download={`w75-barcode-${memberId}.pdf`}
+              download={`dublin2019-barcode-${memberId}.pdf`}
               href={this.barcodeUrl('pdf')}
               label="Download PDF"
               primary

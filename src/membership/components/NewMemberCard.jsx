@@ -13,20 +13,20 @@ const contents = {
         <p>
           Persons who have never been attending or supporting members of any
           previous Worldcon are eligible for a <b>First Worldcon</b> attending
-          membership of Worldcon 75.
+          membership of Dublin 2019, an Irish Worldcon.
         </p>
         <p>
           <b>Child</b> members are not eligible to participate in the Hugo
           Awards or Site Selection processes.
         </p>
         <p>
-          A <b>Supporting</b> membership of Worldcon 75 grants you the right to
+          A <b>Supporting</b> membership of Dublin 2019, an Irish Worldcon grants you the right to
           participate in the functions of the World Science Fiction Society
           (Hugo Awards and Site Selection), but does not grant general admission
           to the convention.
         </p>
         <p>
-          Participants of the 2017 Worldcon Site Selection have been
+          Participants of the 2019 Worldcon Site Selection have been
           automatically granted supporting membership.
         </p>
       </div>
@@ -105,12 +105,12 @@ const contents = {
     body: (
       <div>
         <p>
-          A non-attending membership of Worldcon 75 which will grant you the
+          A non-attending membership of Dublin 2019, an Irish Worldcon which will grant you the
           right to participate in the functions of the World Science Fiction
           Society (Hugo Awards and Site Selection).
         </p>
         <p>
-          Participants of the 2017 Worldcon Site Selection have been
+          Participants of the 2019 Worldcon Site Selection have been
           automatically granted supporting membership. Supporting memberships
           may be upgraded to attending memberships.
         </p>

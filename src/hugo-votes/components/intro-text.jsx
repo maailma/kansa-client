@@ -4,7 +4,7 @@ import React from 'react'
 const VoteIntroText = () => (
   <CardText className="vote-intro" style={{ padding: '16px 32px' }}>
     <h3>
-      Thank you for participating in the 2017 Hugo Awards and the John W.
+      Thank you for participating in the 2019 Hugo Awards and the John W.
       Campbell Award!
     </h3>
 
@@ -12,13 +12,13 @@ const VoteIntroText = () => (
       The Hugo Award is the leading award for excellence in the field of science
       fiction and fantasy. The Hugo Awards are awarded each year by the World
       Science Fiction Society (“WSFS”), at the World Science Fiction Convention
-      (“Worldcon”). The finalists for the 2017 Hugo Awards and John W. Campbell
-      Award for Best New Writer were announced on Tuesday 4 April 2017.
+      (“Worldcon”). The finalists for the 2019 Hugo Awards and John W. Campbell
+      Award for Best New Writer were announced on XX 2019.
     </p>
     <p>
-      The Hugo Awards will be presented at a formal ceremony on Friday 11 August
-      2017, at Worldcon 75, the 75th World Science Fiction Convention, in
-      Helsinki, Finland. We currently plan to continue the recent tradition of
+      The Hugo Awards will be presented at a formal ceremony on YY
+      2019, at Dublin 2019, an Irish Worldcon, in
+      Dublin, Ireland. We currently plan to continue the recent tradition of
       streaming the ceremony live via the Internet, enabling fans around the
       world to experience the event.
     </p>
@@ -35,9 +35,8 @@ const VoteIntroText = () => (
     <h3>Deadline for Voting</h3>
 
     <p>
-      The deadline for voting is Saturday 15 July 2017 at 11:59pm Pacific
-      Daylight Time (2:59 am Eastern Daylight Time, 07:59 British Summer Time,
-      09:59 in Finland, all on 16 July). Your ballot at that time will be your
+      The deadline for voting is ZZ 2019 at 11:59pm BST 
+      Your ballot at that time will be your
       final vote.
     </p>
 
@@ -123,7 +122,7 @@ const VoteIntroText = () => (
     </p>
     <p>
       If you have questions regarding the ballot, please contact{' '}
-      <a href="mailto:hugohelp@worldcon.fi">hugohelp@worldcon.fi</a>.
+      <a href="mailto:hugohelp@dublin2019.com">hugohelp@dublin2019.com</a>.
     </p>
 
     <h3>Hugo Voter Packet</h3>
@@ -150,7 +149,7 @@ const VoteIntroText = () => (
       The Hugo Voter Packet will be available for download until the voting
       deadline specified above. Again, if you have any questions regarding the
       packet, please contact{' '}
-      <a href="mailto:hugohelp@worldcon.fi">hugohelp@worldcon.fi</a>.
+      <a href="mailto:hugohelp@dublin2019.com">hugohelp@dublin2019.com</a>.
     </p>
     <p>
       We ask that voters honor publishers’ and creators’ request that they

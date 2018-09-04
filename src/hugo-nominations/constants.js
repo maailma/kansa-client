@@ -1,4 +1,4 @@
-const YEAR = 2016
+const YEAR = 2018
 
 export const maxNominationsPerCategory = 5
 

@@ -42,11 +42,11 @@ const VoteIntro = ({ person, setSignature, signature }) => (
             </p>
             <p>
               If your email address is associated with more than one membership
-              that is eligible to vote or nominate in the 2017 Hugo Awards,
+              that is eligible to vote or nominate in the 2019 Hugo Awards,
               you'll need to use the separately emailed Hugo login link to
               access those services. For further assistance with Hugo
               nominations, please e-mail{' '}
-              <a href="mailto:hugohelp@worldcon.fi">hugohelp@worldcon.fi</a>.
+              <a href="mailto:hugohelp@dublin2019.com">hugohelp@dublin2019.com</a>.
             </p>
             <p>
               <Link to="/">&laquo; Return to the main member page</Link>

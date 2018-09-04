@@ -82,18 +82,18 @@ class KeyRequest extends React.Component {
             If you're not able to enter a valid address, or if you do not
             receive the login link within 30 minutes or so, please get in touch
             with us at{' '}
-            <a href="mailto:registration@worldcon.fi">
-              registration@worldcon.fi
+            <a href="mailto:registration@dublin2019.com">
+              registration@dublin2019.com
             </a>{' '}
             and we'll help you get sorted.
           </p>
           <p>
             If your email address is associated with more than one membership
-            that is eligible to vote or nominate in the 2017 Hugo Awards, you'll
+            that is eligible to vote or nominate in the 2019 Hugo Awards, you'll
             need to use the separately emailed Hugo login link to access those
             services. For further assistance with Hugo nominations, please
             e-mail{' '}
-            <a href="mailto:hugohelp@worldcon.fi">hugohelp@worldcon.fi</a>.
+            <a href="mailto:hugohelp@dublin2019.com">hugohelp@dublin2019.com</a>.
           </p>
         </div>
       </div>

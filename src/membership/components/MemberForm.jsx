@@ -200,8 +200,8 @@ export default class MemberForm extends Component {
                   <div key="hint" style={hintStyle}>
                     To change the email address associated with this membership,
                     please get in touch with us at{' '}
-                    <a href="mailto:registration@worldcon.fi">
-                      registration@worldcon.fi
+                    <a href="mailto:registration@dublin2019.com">
+                      registration@dublin2019.com
                     </a>
                   </div>
                 ]}

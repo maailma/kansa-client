@@ -18,7 +18,7 @@ The default dev-configured server provides an admin account with which you may l
 <http://localhost:8080/#/login/admin@example.com/key>
 
 ```
-API_HOST=members.worldcon.fi npm start
+API_HOST=api.dublin2019.com npm start
 ```
 
 For other environment variables, see [`webpack.config.js`](./webpack.config.js). If you're running
