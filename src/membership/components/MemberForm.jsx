@@ -159,6 +159,16 @@ export default class MemberForm extends Component {
       onChange: this.onChange,
       tabIndex
     }
+    
+    const haveBadgeName = false; // TODO: once it exists in the backend, toggle
+    const badgeName = haveBadgeName ? (
+            <Row>
+              <Col xs={12}>
+                <TextInput { ...inputProps } path='badgename' />
+              </Col>
+            </Row>
+          ) : null;
+
       // TODO: once 'zipcode' and 'address' exists in the backend, toggle this:
     const haveAddressAndZipCode = false;
     const addressFields = haveAddressAndZipCode ? (<div>
@@ -184,7 +194,6 @@ export default class MemberForm extends Component {
          </Col>
        </Row>
      </div>) : (
-                                                                                                                                                           <Row>
           <Col xs={12} sm={4}>
             <TextInput { ...inputProps } path='city' />
           </Col>
@@ -196,7 +205,6 @@ export default class MemberForm extends Component {
           </Col>
         </Row>
     );
-
 
     return (
       <form>
@@ -267,6 +275,7 @@ export default class MemberForm extends Component {
             </Col>
           )}
         </Row>
+	{{ badgeName }}
 	{{ addressFields }}
         <PaperPubs
           data={data}
