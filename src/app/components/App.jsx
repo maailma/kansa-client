@@ -13,7 +13,7 @@ import {
   defaultConfig,
   getConfig
 } from '../../lib/config-context'
-import Worldcon75 from '../../lib/worldcon75'
+import Worldcon77 from '../../lib/worldcon77'
 import { primary2Color } from '../../theme/colors'
 import { hideMessage } from '../actions/app'
 import { logout } from '../actions/auth'
@@ -128,7 +128,7 @@ class App extends Component {
     const { menuDocked, menuOpen, menuWidth } = this.state
     return email ? (
       [
-        <Worldcon75 key="logo" className={menuOpen ? 'logo navbar' : 'logo'} />,
+        <Worldcon77 key="logo" className={menuOpen ? 'logo navbar' : 'logo'} />,
         <NavDrawer
           docked={menuDocked}
           id={Number(id) || undefined}
@@ -149,7 +149,7 @@ class App extends Component {
       ]
     ) : (
       <h1 style={{ paddingTop: 24 }}>
-        <Worldcon75 className="h1-logo" />
+        <Worldcon77 className="h1-logo" />
         {title}
       </h1>
     )
