@@ -139,7 +139,7 @@ const PaperPubsCheckbox = ({ getDefaultValue, getValue, onChange }) => {
         marginTop: '37px',
         verticalAlign: 'top'
       }}
-      label="Add paper publications"
+      label="Add paper progress reports"
       checked={!!getValue(path)}
       disabled={!!getDefaultValue(path)}
       onCheck={(ev, checked) =>

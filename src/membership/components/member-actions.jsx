@@ -108,8 +108,8 @@ let UpgradeAction = ({ member, paidPaperPubs, purchaseData, push }) => {
   const upgrade = mpt.some(t => t.get('amount') > prevAmount)
   const addPP = paidPaperPubs && !member.get('paper_pubs')
   if (!upgrade && !addPP) return null
-  const primaryText = upgrade ? 'Upgrade membership' : 'Add paper publications'
-  const secondaryText = upgrade && addPP ? 'and/or add paper publications' : ''
+  const primaryText = upgrade ? 'Upgrade membership' : 'Add paper progress reports'
+  const secondaryText = upgrade && addPP ? 'and/or add paper progress reports' : ''
   return (
     <Action
       leftIcon={<ThumbUp style={upgrade && addPP ? { top: 12 } : null} />}
