@@ -10,6 +10,9 @@
   "city": "City / Town",
   "state": "State / Province / Region",
   "country": "Country",
+  "postcode": "Postal Code",
+  "address": "Address",
+  "badge_text": "Badge Name",
   "location_hint": "",
   "paper_pubs": {
     "name": "Paper pubs name",
