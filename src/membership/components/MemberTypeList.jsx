@@ -19,6 +19,7 @@ export const memberTypeData = {
   Adult: {
     primary: 'Adult membership',
     daypass: 'Adult day pass (from €25/day)',
+    secondary: 'Born on or before 15 August 1993',
     icon: <DirectionsWalk />
   },
   FirstWorldcon: {
