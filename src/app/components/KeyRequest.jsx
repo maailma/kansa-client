@@ -31,10 +31,15 @@ class KeyRequest extends React.Component {
           <CardText style={{ marginTop: -16 }}>
             <div className="html-container">
               <p>
-                To access our services, you'll need to use a login link sent to
-                you via email. To request a new login link, please enter your
-                email address below, and it'll be sent to you. The address you
-                enter will need to match the one we have in our database for
+	        People that voted in Site Selection in Helsinki or were
+	        Dublin BID Presupporters / Backers / Friends / Super Friends,
+	        or are members of Dublin 2019 Worldcon,
+	        will need to use a login link sent to you via email.
+	      </p>
+	      <p>
+	        To request a new login link, please enter your email address below,
+	        and it'll be sent to you. The address you enter will
+                need to match the one we have in our database for
                 you; it's the one that you provided when signing up, and at
                 which you've previously received messages from us.
               </p>
