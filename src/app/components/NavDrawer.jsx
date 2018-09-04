@@ -26,7 +26,7 @@ class NavDrawer extends React.Component {
     if (people.size === 1) return people.first()
     if (id) return people.find(p => p.get('id') === id)
     const nonKids = people.filter(
-      p => ['KidInTow', 'Child'].indexOf(p.get('membership')) === -1
+      p => ['Infant', 'Child'].indexOf(p.get('membership')) === -1
     )
     return nonKids.size === 1 ? nonKids.first() : null
   }

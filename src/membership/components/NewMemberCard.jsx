@@ -33,11 +33,11 @@ const contents = {
     ),
     memberships: [
       'FirstWorldcon',
-      'Youth',
+      'YoungAdult',
       'Adult',
       '_divider',
       'Child',
-      'KidInTow',
+      'Infant',
       '_divider',
       'Supporter'
     ]
@@ -50,11 +50,11 @@ const contents = {
         <p>
           Persons who have never been attending or supporting members of any
           previous Worldcon are eligible for a <b>First Worldcon</b> attending
-          membership of Worldcon 75.
+          membership of Dublin 2019, an Irish Worldcon.
         </p>
         <p>
-          Persons born on 10 August 1991 or later qualify for <b>Youth</b>{' '}
-          attending memberships of Worldcon 75 (€100).
+          Persons born on 14 August 1994 or later qualify for <b>YoungAdult</b>{' '}
+          attending memberships of Dublin 2019, an Irish Worldcon.
         </p>
         <p>
           All attending memberships carry the same rights as supporting
@@ -63,20 +63,20 @@ const contents = {
         </p>
       </div>
     ),
-    memberships: ['FirstWorldcon', 'Youth', 'Adult']
+    memberships: ['FirstWorldcon', 'YoungAdult', 'Adult']
   },
 
   child: {
-    title: 'New child/kid-in-tow membership',
+    title: 'New child/infant membership',
     body: (
       <div>
         <p>
-          <b>Child</b> and <b>Kid-in-tow</b> members are not eligible to
+          <b>Child</b> and <b>Infant</b> members are not eligible to
           participate in the Hugo Awards or Site Selection processes.
         </p>
       </div>
     ),
-    memberships: ['Child', 'KidInTow']
+    memberships: ['Child', 'Infant']
   },
 
   daypass: {
@@ -84,7 +84,7 @@ const contents = {
     body: (
       <div>
         <p>
-          If you are only able to come to Worldcon 75 for a day or two, we have
+          If you are only able to come to Dublin 2019, an Irish Worldcon for a day or two, we have
           day passes available. This pass will entitle you to enjoy the
           activities, programming and events of Worldcon for that day, except
           for the parties in the evenings.
@@ -97,7 +97,7 @@ const contents = {
         </p>
       </div>
     ),
-    memberships: ['Adult', 'Youth', 'Child']
+    memberships: ['Adult', 'YoungAdult', 'Child']
   },
 
   support: {
