@@ -275,8 +275,8 @@ export default class MemberForm extends Component {
             </Col>
           )}
         </Row>
-	{{ badgeName }}
-	{{ addressFields }}
+	{ badgeName }
+	{ addressFields }
         <PaperPubs
           data={data}
           isAdmin={isAdmin}
