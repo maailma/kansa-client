@@ -16,7 +16,7 @@ import { ConfigConsumer } from '../../lib/config-context'
 export const hintStyle = {
   color: disabledColor,
   fontSize: 13,
-  marginBottom: 24
+  margin: '12px 0 24px'
 }
 
 const PreviewBadgeButton = ({ member, style }) => (
