@@ -159,6 +159,45 @@ export default class MemberForm extends Component {
       onChange: this.onChange,
       tabIndex
     }
+      // TODO: once 'zipcode' and 'address' exists in the backend, toggle this:
+    const haveAddressAndZipCode = false;
+    const addressFields = haveAddressAndZipCode ? (<div>
+       <Row>
+         <Col xs={12}>
+            <TextInput { ...inputProps } path='address' />
+         </Col>
+       </Row>
+       <Row>
+         <Col xs={12} sm={6}>
+            <TextInput { ...inputProps } path='city' />
+         </Col>
+         <Col xs={12} sm={6}>
+            <TextInput { ...inputProps } path='state' />
+         </Col>
+       </Row>
+       <Row>
+         <Col xs={12} sm={6}>
+           <TextInput { ...inputProps } path='zipcode' />
+         </Col>
+         <Col xs={12} sm={6}>
+           <TextInput { ...inputProps } path='country' />
+         </Col>
+       </Row>
+     </div>) : (
+                                                                                                                                                           <Row>
+          <Col xs={12} sm={4}>
+            <TextInput { ...inputProps } path='city' />
+          </Col>
+          <Col xs={12} sm={4}>
+            <TextInput { ...inputProps } path='state' />
+          </Col>
+          <Col xs={12} sm={4}>
+            <TextInput { ...inputProps } path='country' />
+          </Col>
+        </Row>
+    );
+
+
     return (
       <form>
         <Row>
@@ -228,22 +267,7 @@ export default class MemberForm extends Component {
             </Col>
           )}
         </Row>
-        <Row>
-          <Col xs={12} sm={4}>
-            <TextInput {...inputProps} path="city" />
-          </Col>
-          <Col xs={12} sm={4}>
-            <TextInput {...inputProps} path="state" />
-          </Col>
-          <Col xs={12} sm={4}>
-            <TextInput {...inputProps} path="country" />
-          </Col>
-          {!isAdmin && (
-            <Col xs={12} style={hintStyle}>
-              {this.msg('location_hint')}
-            </Col>
-          )}
-        </Row>
+	{{ addressFields }}
         <PaperPubs
           data={data}
           isAdmin={isAdmin}
