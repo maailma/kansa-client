@@ -39,19 +39,19 @@ main {
 }
 
 h1 {
-  color: #fc7c39;
+  color: #6abd45;
   font-size: 36px;
   font-weight: 300;
   text-align: center;
-  text-shadow: 0 0 2px #fc7c39;
+  text-shadow: 0 0 2px #6abd45;
 }
 
 h2 {
-  color: #fc7c39;
+  color: #6abd45;
   font-size: 24px;
 }
 h3 {
-  color: #fc7c39;
+  color: #6abd45;
   font-size: 18px;
 }
 
@@ -68,7 +68,7 @@ a {
   text-decoration: none;
 }
 a:active {
-  color: #fc7c39;
+  color: #6abd45;
 }
 a:hover {
   text-decoration: underline;
@@ -122,14 +122,14 @@ span.upload input {
 }
 
 .logo.navbar {
-  color: #fc7c39 !important;
+  color: #6abd45 !important;
   height: 80px !important;
   left: 24px !important;
   top: -10px !important;
 }
 
 .h1-logo {
-  color: #fc7c39 !important;
+  color: #6abd45 !important;
   height: 72px !important;
   margin: 0 8px -24px 0;
   width: auto !important;
