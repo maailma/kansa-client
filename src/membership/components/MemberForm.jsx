@@ -194,6 +194,7 @@ export default class MemberForm extends Component {
          </Col>
        </Row>
      </div>) : (
+        <Row>
           <Col xs={12} sm={4}>
             <TextInput { ...inputProps } path='city' />
           </Col>
