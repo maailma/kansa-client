@@ -152,7 +152,7 @@ const PaperPubs = ({
                 </div>
               )}
               {!isAdmin && hasPaperPubs ? (
-                <div style={hintStyle}>{ppMsg.hint_fields()}</div>
+                <div style={hintStyle}><p>{ppMsg.hint_fields()}</p><p>{ppMsg.hint_access()}</p></div>
               ) : null}
             </Col>
           ) : isAdmin ? (

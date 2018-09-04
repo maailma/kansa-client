@@ -20,6 +20,7 @@
     "country": "Paper pubs country",
     "label": "Send paper progress reports{paid_paper_pubs, select, true{ (€{amount})} other{}}",
     "hint_checkbox": "By default, we'll be in touch with you electronically to let you know how our preparations are progressing. If you'd prefer to receive our progress reports by post, select this option{paid_paper_pubs, select, true{ (note the additional fee)} other{}}.",
+    "hint_access": "If paper progress reports are needed for Accessibility, please email registrar@dublin2019.com, and we will provide them at no charge.",
     "hint_fields": "For paper progress reports, we'll need to know where to send your mail. Please enter your address details as you'd wish them to be printed onto a postal label."
   },
   "membership_type": "Membership type",
