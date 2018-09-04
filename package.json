@@ -10,6 +10,7 @@
     "start": "webpack-dev-server -d --progress --colors",
     "build": "webpack -d --progress --colors",
     "build:prod": "NODE_ENV=production webpack -p",
+    "build:deploy": "npm run build:prod && (DST=../dublin2019.github.io/client/master ; MSG=\"$(git log -n1 --pretty=%s)\" ; cp dist/bundle.js $DST && cd $DST && git pull && git commit -m \"$MSG\" bundle.js ; git push)",
     "prettier": "prettier --write 'src/**' webpack.config.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
