@@ -170,8 +170,8 @@ export default class MemberForm extends Component {
           ) : null;
 
       // TODO: once 'zipcode' and 'address' exists in the backend, toggle this:
-    const haveAddressAndZipCode = false;
-    const addressFields = haveAddressAndZipCode ? (<div>
+    const haveAddressAndPostcode = !!localStorage.haveAddressAndPostcode;
+    const addressFields = haveAddressAndPostcode ? (<div>
        <Row>
          <Col xs={12}>
             <TextInput { ...inputProps } path='address' />
@@ -187,7 +187,7 @@ export default class MemberForm extends Component {
        </Row>
        <Row>
          <Col xs={12} sm={6}>
-           <TextInput { ...inputProps } path='zipcode' />
+           <TextInput { ...inputProps } path='postcode' />
          </Col>
          <Col xs={12} sm={6}>
            <TextInput { ...inputProps } path='country' />
