@@ -81,7 +81,7 @@ class KeyRequest extends React.Component {
         </Card>
         <div
           className="bg-text"
-          style={{ fontSize: 14, marginBottom: 20, padding: '0 16px', color: '6abd45' }}
+          style={{ fontSize: 14, margin: '12px 0 20px', padding: '2px 16px', color: '#6abd45', backgroundColor: 'rgba(0, 0, 0, 0.67)' }}
         >
           <p>
             If you're not able to enter a valid address, or if you do not
