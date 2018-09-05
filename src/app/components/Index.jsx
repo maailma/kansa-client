@@ -62,6 +62,7 @@ class Index extends Component {
   render() {
     const { people, purchase, push } = this.props
     const isLoggedIn = !!(people && people.size)
+    const enable_daypass = false
     const upgradePath =
       people && people.size === 1
         ? `/upgrade/${people.first().get('id')}`
@@ -93,11 +94,13 @@ class Index extends Component {
             expandable={isLoggedIn}
             onSelectType={() => push(upgradePath)}
           />
+	  {enable_daypass ? (
           <NewMemberCard
             category="daypass"
             expandable
             onSelectType={type => push(`/daypass/${type}`)}
           />
+          ) : null }
         </Col>
       </Row>
     )
