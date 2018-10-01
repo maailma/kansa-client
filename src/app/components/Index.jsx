@@ -13,6 +13,7 @@ import * as PaymentPropTypes from '../../payments/proptypes'
 import MemberCard from '../../membership/components/member-card'
 import NewMemberCard from '../../membership/components/NewMemberCard'
 import KeyRequest from './KeyRequest'
+import { ConfigConsumer } from '../../lib/config-context'
 
 const InvoiceCards = ({ people, purchase }) => {
   if (!purchase || !purchase.get('list') || !purchase.get('data')) return null
@@ -62,7 +63,18 @@ class Index extends Component {
   render() {
     const { people, purchase, push } = this.props
     const isLoggedIn = !!(people && people.size)
-    const enable_daypass = false
+    const testDayPass = 
+        <ConfigConsumer>
+          {({ enable_daypass }) => {
+              enable_daypass ? (
+                  <NewMemberCard
+                      category="daypass"
+                      expandable
+                      onSelectType={type => push(`/daypass/${type}`)}
+                  />
+              ) : null }
+          }
+        </ConfigConsumer>
     const upgradePath =
       people && people.size === 1
         ? `/upgrade/${people.first().get('id')}`
@@ -94,13 +106,7 @@ class Index extends Component {
             expandable={isLoggedIn}
             onSelectType={() => push(upgradePath)}
           />
-	  {enable_daypass ? (
-          <NewMemberCard
-            category="daypass"
-            expandable
-            onSelectType={type => push(`/daypass/${type}`)}
-          />
-          ) : null }
+	  {testDayPass}
         </Col>
       </Row>
     )

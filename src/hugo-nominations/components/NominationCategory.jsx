@@ -150,9 +150,10 @@ const NominationCategory = ({ category, ...props }) => {
   const { title, description, nominationFieldLabels } = categoryInfo[category]
   const fields = nominationFields(category)
   const colSpan = Math.floor(12 / fields.size)
+  const background = category.startsWith('Retro')?"RetroNominationCategory":"NominationCategory"
 
   return (
-    <Card className="NominationCategory">
+    <Card className={background} >
       <CardHeader
         className="NominationHeader"
         title={title}

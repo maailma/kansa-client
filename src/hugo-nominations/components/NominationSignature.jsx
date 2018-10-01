@@ -40,7 +40,7 @@ export default class NominationSignature extends React.Component {
           seen that were your favorites from 2018.
         </p>
         <p>
-          The deadline for nominations is YY 2019 at 11:59pm GMT.
+          The deadline for nominations is Friday March 15th, 2019 at 11:59pm GMT.
           You can make as many changes as you
           like up until then. Your current ballot will be emailed to you an hour
           after you stop making changes.

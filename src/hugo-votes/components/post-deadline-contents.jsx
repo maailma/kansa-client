@@ -17,9 +17,12 @@ const PostDeadlineContents = () => (
         W. Campbell Award for Best New Writer were announced on XX 2019.
       </p>
       <p>The deadline for voting has now passed.</p>
+      <p>The Retro Hugo Awards will be presented at a formal ceremony on August 15th, 2019, at Dublin 2019, an Irisn Worldcon,
+        in Dublin, Ireland.
+      </p>
       <p>
-        The Hugo Awards will be presented at a formal ceremony on XX 
-        August 2019, at Dublin 2019, an Irisn Worldcon,
+        The Hugo Awards will be presented at a formal ceremony on August 18th, 
+        2019, at Dublin 2019, an Irisn Worldcon,
         in Dublin, Ireland. We currently plan to continue the recent tradition
         of streaming the ceremony live via the Internet, enabling fans around
         the world to experience the event.

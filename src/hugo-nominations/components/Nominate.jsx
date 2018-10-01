@@ -64,13 +64,13 @@ const NominationsHead = ({ active, name, signature }) => (
         </p>
       ) : null}
       <p>
-        Thank you for participating in the 2019 Hugo Awards and the John W.
-        Campbell Award! Please choose up to five eligible candidates in each
+        Thank you for participating in the 2019 Hugo Awards, 1944 Retro Hugo Awards, John W.
+        Campbell Award and Lodestar Award! Please choose up to five eligible candidates in each
         category. We recommend that you nominate whatever works and creators you
-        have personally read or seen that were your favorites from 2018.
+        have personally read or seen that were your favorites from 2018 (or 1944 for the Retro Hugos).
       </p>
       <p>
-        The deadline for nominations is XX 2019 at 11:59pm GMT
+        The deadline for nominations is Friday March 15th, 2019 at 11:59pm GMT
         You can make as many changes as you
         like up to your nomination ballot until then. Your current ballot will
         be emailed to you an hour after you stop making changes to it.
@@ -85,13 +85,6 @@ const NominationsHead = ({ active, name, signature }) => (
           here
         </a>
         .
-      </p>
-      <p>
-        This year we are trialling a new category, Best Series. If you make
-        nominations for Best Series, it will help us if you also list a volume
-        in that series that was published in 2018. Likewise, it will help us if
-        you can give examples of the work of people you nominate for Best
-        Professional Artist, Best Fan Artist and Best fan Writer.
       </p>
       <p>
         “No Award” will appear automatically in every single category on the
