@@ -27,16 +27,16 @@ class KeyRequest extends React.Component {
     return (
       <div>
         <Card style={cardStyle}>
-          <CardHeader title="Request login link" style={{ fontWeight: 600 }} />
+          <CardHeader title="Existing Members" style={{ fontWeight: 600 }} />
           <CardText style={{ marginTop: -16 }}>
             <div className="html-container">
               <p>
-                To access our services, you'll need to use a login link sent to
-                you via email. To request a new login link, please enter your
-                email address below, and it'll be sent to you. The address you
-                enter will need to match the one we have in our database for
-                you; it's the one that you provided when signing up, and at
-                which you've previously received messages from us.
+                If you are already a member, you'll need to use a login link sent to you via email.
+              </p>
+              <p>
+                To request a new login link, please enter your email address below, and it'll be sent to you. The
+                address you enter will need to match the one we have in our database for you; it's the one that you
+                provided when signing up, and at which you've previously received messages from us.
               </p>
               {allowCreate && (
                 <p>
