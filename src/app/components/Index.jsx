@@ -82,9 +82,6 @@ class Index extends Component {
     return (
       <Row style={{ marginBottom: -24 }}>
         <Col xs={12} sm={6} lg={4} lgOffset={2}>
-          {isLoggedIn ? [this.invoiceCards, this.memberCards] : <KeyRequest />}
-        </Col>
-        <Col xs={12} sm={6} lg={4}>
           <NewMemberCard
             category="all"
             data={purchase.get('data')}
@@ -97,6 +94,9 @@ class Index extends Component {
             expandable={isLoggedIn}
             onSelectType={() => push(upgradePath)}
           />
+        </Col>
+        <Col xs={12} sm={6} lg={4}>
+          {isLoggedIn ? [this.invoiceCards, this.memberCards] : <KeyRequest />}
         </Col>
       </Row>
     )
