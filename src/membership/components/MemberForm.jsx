@@ -126,6 +126,8 @@ export default class MemberForm extends Component {
       <form>
         <Row>
           <Col xs={12}>
+            <div style={hintStyle}>{this.msg('billing_hint')}</div>
+
             <TextInput
               {...inputProps}
               inputRef={ref => {

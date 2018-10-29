@@ -1,6 +1,7 @@
 {
   "legal_name": "Legal Name",
   "legal_name_hint": "This is the name that appears on your official ID. We will need to check your ID at registration.",
+  "billing_hint": "This purchase will show as being from 'CoNZealand'. We are based in New Zealand, and use Stripe as our payment processor",
   "email": "Email",
   "new_email_hint": "How we'll get in touch with you before the con, and where we'll send important information about the Hugo Awards and Worldcon Site Selection.",
   "edit_email_hint": "To change the email address associated with this membership, please get in touch with us at <a href=\"mailto:registration@conzealand.nz\">registration@conzealand.nz</a>",
